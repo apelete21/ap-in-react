@@ -1,4 +1,5 @@
 import React from 'react'
+import { icons } from '../../service/icons'
 
 export default function Menu() {
   return (
@@ -16,7 +17,7 @@ export default function Menu() {
         <div class="navbar">
           <div class="logo">
             <a class="logo logo--white" href="index.php">
-              <img src="assets/media/images/logo/logo-light.png" alt="" />
+              <img src={icons.lgLight} alt="" />
             </a>
           </div>
 
@@ -28,7 +29,7 @@ export default function Menu() {
         </div>
 
         <div class="close-nav--toggler-container light-item">
-          <div class="nav--toggler" onclick="closeNav()">
+          <div class="nav--toggler">
             <span class="nav--toggler__bar"></span>
             <span class="nav--toggler__bar"></span>
           </div>
@@ -38,14 +39,14 @@ export default function Menu() {
         <div class="full--width__nav d-flex">
           <div class="nav--links__wrapper">
             <ul>
-              <li><span class="sup">01 </span><a class="nav--menu__link <?= active('home'); ?>" href="home.php">Home</a></li>
-              <li><span class="sup">03 </span><a class="nav--menu__link <?= active('who-we-are'); ?>" href="who-we-are.php">Who we are</a>
+              <li><span class="sup">01 </span><a class="nav--menu__link" href="home.php">Home</a></li>
+              <li><span class="sup">03 </span><a class="nav--menu__link" href="who-we-are.php">Who we are</a>
               </li>
-              <li><span class="sup">02 </span><a class="nav--menu__link <?= active('what-we-do'); ?>" href="what-we-do.php">How we help</a>
+              <li><span class="sup">02 </span><a class="nav--menu__link" href="what-we-do.php">How we help</a>
               </li>
-              <li><span class="sup">04 </span><a class="nav--menu__link <?= active('start-with-us'); ?>" href="start-with-us.php">Get a
+              <li><span class="sup">04 </span><a class="nav--menu__link" href="start-with-us.php">Get a
                 quote</a></li>
-              <li><span class="sup">05 </span><a class="nav--menu__link <?= active('get-in-touch'); ?>" href="get-in-touch.php">Get in touch</a>
+              <li><span class="sup">05 </span><a class="nav--menu__link" href="get-in-touch.php">Get in touch</a>
               </li>
             </ul>
           </div>
@@ -74,16 +75,16 @@ export default function Menu() {
                 <div class="social">
                   <div class="about--hero__social">
                     <a class="social-svg__icon" href="https://www.facebook.com/InnovativeAPIN/" target="_blank">
-                      <img src="assets/media/images/icons/facebook-light.svg" alt="" />
+                      <img src={icons.fbLight} alt="" />
                     </a>
                     <a class="social-svg__icon" href="https://www.linkedin.com/company/akoua-prod-in/" target="_blank">
-                      <img src="assets/media/images/icons/linkedin-light.svg" alt="" />
+                      <img src={icons.inLight} alt="" />
                     </a>
                     <a class="social-svg__icon" href="https://instagram.com/innovativeapin?r=nametag" target="_blank">
-                      <img src="assets/media/images/icons/instagram-light.svg" alt="" />
+                      <img src={icons.itLight} alt="" />
                     </a>
                     <a class="social-svg__icon" href="https://www.youtube.com/channel/UCLq7CKFMZf3yvz5_O49gesg" target="_blank">
-                      <img src="assets/media/images/icons/youtube-light.svg" alt="" />
+                      <img src={icons.ytLight} alt="" />
                     </a>
                   </div>
                 </div>

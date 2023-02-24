@@ -1,4 +1,10 @@
 import React from 'react'
+import { icons } from '../../service/icons'
+import HomeBanner from "../../assets/media/images/hero/home-banner.png"
+import HomeIntro from "../../assets/media/images/home-intro.png"
+import FactIllustration from "../../assets/media/images/home/facts-illustration.png"
+import MenuNav from '../../components/client/MenuNav'
+import { MenuButtonDark } from '../../components/client/MenuButton'
 
 export default function Home() {
     return (
@@ -8,31 +14,14 @@ export default function Home() {
        ===========================--> */}
             <header>
                 <div class="fluid-wrapper main-navigation">
-                    <div class="navbar">
-                        <div class="logo">
-                            <a class="logo logo_fixed logo--white" href="index.php">
-                                <img src="assets/media/images/logo/logo-dark.png" alt="" srcSet="" />
-                            </a>
-                        </div>
-
-                        <div class="get--start">
-                            <a class="btn default-outline" href="start-with-us.php">
-                                start with us
-                            </a>
-                        </div>
-                    </div>
+                    <MenuNav logoImage={icons.lgDark} linkView="darklink" />
+                    <MenuButtonDark />
                     <div class="main-title offset-canva">
                         <h1 class="section--hero__title">
                             All you need <br />
                             to succeed your<span class="upper-text"> digital </span> <br />
                             transformation
                         </h1>
-                    </div>
-                </div>
-                <div class="nav--toggler-container">
-                    <div class="nav--toggler" onclick="openNav()">
-                        <span class="nav--toggler__bar"></span>
-                        <span class="nav--toggler__bar"></span>
                     </div>
                 </div>
             </header>
@@ -48,7 +37,7 @@ export default function Home() {
         ===========================--> */}
 
             <section class="home--banner-section">
-                <img class="fluid-banner" src="assets/media/images/hero/home-banner.png" alt="Home banner" srcset="" />
+                <img class="fluid-banner" src={HomeBanner} alt="Home banner" srcset="" />
             </section>
 
             {/* <!--===========================
@@ -84,7 +73,7 @@ export default function Home() {
                         </div>
 
                         <div class="text--box__bottom">
-                            <img src="assets/media/images/home-intro.png" alt="" srcset="" />
+                            <img src={HomeIntro} alt="" />
                         </div>
                     </div>
 
@@ -115,7 +104,7 @@ export default function Home() {
                                 and conceiving on-demand digital services.
                             </p>
                             <a href="http://">
-                                <span class="play--icon"><img src="assets/media/images/icons/play.svg" alt=""
+                                <span class="play--icon"><img src={icons.playDark} alt=""
                                     srcset="" /></span>
                                 More about us
                             </a>
@@ -249,12 +238,12 @@ export default function Home() {
                                 </p>
 
                                 <a class="btn default-outline light-outline" href="start-with-us.php"> Ge start <span><img
-                                    class="icon-img" src="assets/media/images/icons/white-right-arrow.svg" alt=""
+                                    class="icon-img" src={icons.arLight} alt=""
                                 /></span> </a>
                             </div>
                         </div>
                         <div class="fact-img">
-                            <img src="assets/media/images/home/facts-illustration.png" alt="" />
+                            <img src={FactIllustration} alt="" />
                         </div>
                     </div>
 
@@ -398,7 +387,7 @@ export default function Home() {
 
                         <a class="btn outline-red-btn " href="start-with-us.php"> learn more <span>
                             <img class="icon-img"
-                                src="assets/media/images/icons/right-arrow.svg" alt="" /></span> </a>
+                                src={icons.arLight} alt="" /></span> </a>
                     </div>
                 </div>
             </section>
