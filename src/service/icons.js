@@ -17,6 +17,9 @@ import GlobeLocation from "../assets/media/images/icons/globe-location.svg"
 import ArrowOblic from "../assets/media/images/icons/arrow-oblic.svg"
 import GrayArrowLeft from "../assets/media/images/icons/gray-arrow-left.svg"
 import GrayArrowRight from "../assets/media/images/icons/gray-arrow-right.svg"
+import FacebookDarkThin from "../assets/media/images/icons/facebook-thin.svg"
+import WhatsappDarkThin from "../assets/media/images/icons/whatsapp-thin.svg"
+import TelegramDarkThin from "../assets/media/images/icons/telegram-thin.svg"
 
 // Team imgs importation
 import feikandine from "../assets/media/images/team/feikandine.jpg"
@@ -26,8 +29,13 @@ import Arnaud from "../assets/media/images/team/arnaud.png"
 import Roger from "../assets/media/images/team/roger.jpg"
 import TeamMember6 from "../assets/media/images/team/team-memeber-6.png"
 
+import ProfileIcon from "../assets/media/images/news/author_profile.png"
+
 
 export const icons = {
+    tgDarkThin: TelegramDarkThin,
+    whDarkThin: WhatsappDarkThin,
+    fbDarkThin: FacebookDarkThin,
     ytLight: YoutubeLight,
     itLight: InstagramLight,
     inLight: LinkedinLight,
@@ -46,7 +54,8 @@ export const icons = {
     glocation: GlobeLocation,
     arOblik: ArrowOblic,
     arGray: GrayArrowLeft,
-    alGray: GrayArrowRight
+    alGray: GrayArrowRight,
+    prIcon: ProfileIcon
 }
 
 export const teams = {

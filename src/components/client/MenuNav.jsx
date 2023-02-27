@@ -5,7 +5,7 @@ import { StartNavBtnDark, StartNavBtnLight } from './NavComponents/StartNavBtn'
 export default function MenuNav({ logoImage, linkView }) {
 
     return (
-        <div class="navbar">
+        <div className="navbar">
             <Logo logoImage={logoImage} />
             {
                 linkView === "lightlink" ? <StartNavBtnLight /> :

@@ -14,13 +14,15 @@ import Stories from '../../pages/client/Stories'
 import JobDetails from '../../pages/client/JobDetails'
 import JobList from '../../pages/client/JobList'
 import Newsletter from '../../pages/client/Newsletter'
+import { ClientAppContextProvider } from '../../Contexts/ClientAppContext'
+import News from '../../pages/client/News'
 
 export const ClientRoutes = () => {
 
   const location = useLocation()
 
   return (
-    <>
+    <ClientAppContextProvider>
       <Head />
       <Menu />
       <Routes>
@@ -33,14 +35,15 @@ export const ClientRoutes = () => {
         <Route path="/stories" element={<Stories />} />
         <Route path="/jobs/details" element={<JobDetails />} />
         <Route path="/jobs" element={<JobList />} />
-        <Route path="/subscribe-to-newsletters" element={<Newsletter />} />
+        <Route path="/subscribe" element={<Newsletter />} />
+        <Route path="/news" element={<News />} />
       </Routes>
       {
         location.pathname !== "/get-in-touch" &&
-        location.pathname !== "/subscribe-to-newsletters"
-        && 
+        location.pathname !== "/subscribe"
+        &&
         <Footer />
       }
-    </>
+    </ClientAppContextProvider>
   )
 }
