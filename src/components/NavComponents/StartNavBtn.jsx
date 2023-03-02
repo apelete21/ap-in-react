@@ -1,12 +1,11 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import NavLink from "../NavLink"
 
 export function StartNavBtnLight() {
     return (
         <div className="get--start">
-            <Link className="btn default-outline light-outline" to={"/start-with-us"}>
+            <NavLink className="btn default-outline light-outline" href={"/start-with-us"}>
                 start with us
-            </Link>
+            </NavLink>
         </div>
     )
 }
@@ -14,9 +13,9 @@ export function StartNavBtnLight() {
 export function StartNavBtnDark() {
     return (
         <div className="get--start">
-            <Link className="btn default-outline" to={"/start-with-us"}>
+            <NavLink className="btn default-outline" href={"/start-with-us"}>
                 start with us
-            </Link>
+            </NavLink>
         </div>
     )
 }

@@ -42,8 +42,8 @@ export default function ClientRoutes() {
       {
         location.pathname !== "/get-in-touch" ||
           location.pathname !== "/subscribe" ?
-          null :
-          <Footer />
+          <Footer /> :
+          null
       }
     </ClientAppContextProvider>
   )

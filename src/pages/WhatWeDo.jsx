@@ -5,25 +5,14 @@ import GraphicDesigh from "../assets/media/images/services/graphic-design.png"
 import ToolsImg from "../assets/media/images/services/tools.png"
 import TabletImg from "../assets/media/images/services/tablet.png"
 import ProductGif from "../assets/media/images/services/products.gif"
+import MenuNav from '../components/MenuNav'
+import { MenuButtonDark } from '../components/MenuButton'
 
 export default function WhatWeDo() {
     return (
         <>
             <header>
-                <div class="navbar">
-                    <div class="logo">
-                        <a class="logo logo_fixed logo" href="index.php">
-                            <img src={icons.lgDark} alt="" />
-                        </a>
-                    </div>
-
-                    <div class="get--start">
-                        <a class="btn default-outline " href="start-with-us.php">
-                            start with us
-                        </a>
-                    </div>
-                </div>
-
+                <MenuNav logoImage={icons.lgDark} linkView={"darklink"} />
                 <div class="fluid-wrapper services-hero">
 
                     <div class="main-title offset-canva">
@@ -40,12 +29,7 @@ export default function WhatWeDo() {
                         </p>
                     </div>
                 </div>
-                <div class="nav--toggler-container">
-                    <div class="nav--toggler" onclick="openNav()">
-                        <span class="nav--toggler__bar"></span>
-                        <span class="nav--toggler__bar"></span>
-                    </div>
-                </div>
+                <MenuButtonDark />
             </header>
 
             {/* <!--================================
