@@ -1,12 +1,12 @@
 import React from 'react'
-import { icons, teams } from '../../service/icons'
-import BannerLeft from "../../assets/media/images/about-us/banner-left.png"
-import BannerRight from "../../assets/media/images/about-us/banner-right.png"
-import WorkingBanner from "../../assets/media/images/about-us/working--banner.png"
-import AboutStat from "../../assets/media/images/icons/about-stat.svg"
-import Testimonials from "../../assets/media/images/testimonials/testimonials.png"
-import { MenuButtonDark } from '../../components/client/MenuButton'
-import MenuNav from '../../components/client/MenuNav'
+import { icons, teams } from '../service/icons'
+import BannerLeft from "../assets/media/images/about-us/banner-left.png"
+import BannerRight from "../assets/media/images/about-us/banner-right.png"
+import WorkingBanner from "../assets/media/images/about-us/working--banner.png"
+import AboutStat from "../assets/media/images/icons/about-stat.svg"
+import Testimonials from "../assets/media/images/testimonials/testimonials.png"
+import { MenuButtonDark } from '../components/MenuButton'
+import MenuNav from '../components/MenuNav'
 
 export default function WhoWeAre() {
     return (

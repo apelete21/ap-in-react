@@ -1,12 +1,12 @@
 import React from 'react'
-import MenuNav from '../../components/client/MenuNav'
-import { MenuButtonDark } from "../../components/client/MenuButton"
-import { icons } from '../../service/icons'
-import NewsBanner from "../../assets/media/images/banners/news.png"
-import NewsImg1 from "../../assets/media/images/news/news-one.png"
-import NewsImg2 from "../../assets/media/images/news/news-two.png"
-import OthersImg1 from "../../assets/media/images/news/others_news_bg1.png"
-import OthersImg2 from "../../assets/media/images/news/others_news_bg2.png"
+import MenuNav from '../components/MenuNav'
+import { MenuButtonDark } from "../components/MenuButton"
+import { icons } from '../service/icons'
+import NewsBanner from "../assets/media/images/banners/news.png"
+import NewsImg1 from "../assets/media/images/news/news-one.png"
+import NewsImg2 from "../assets/media/images/news/news-two.png"
+import OthersImg1 from "../assets/media/images/news/others_news_bg1.png"
+import OthersImg2 from "../assets/media/images/news/others_news_bg2.png"
 
 export default function News() {
     return (

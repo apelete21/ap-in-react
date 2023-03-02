@@ -1,5 +1,5 @@
 import React from 'react'
-import { icons } from '../../service/icons'
+import { icons } from '../service/icons'
 
 export default function Stories() {
     return (

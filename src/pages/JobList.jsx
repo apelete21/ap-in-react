@@ -1,8 +1,8 @@
 import React from 'react'
-import { icons } from '../../service/icons'
-import JobBanner from "../../assets/media/images/banners/jobbanner.png"
-import { MenuButtonDark } from '../../components/client/MenuButton'
-import MenuNav from '../../components/client/MenuNav'
+import { icons } from '../service/icons'
+import JobBanner from "../assets/media/images/banners/jobbanner.png"
+import { MenuButtonDark } from '../components/MenuButton'
+import MenuNav from '../components/MenuNav'
 
 export default function JobList() {
     return (

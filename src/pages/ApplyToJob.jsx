@@ -1,7 +1,7 @@
 import React from 'react'
-import { MenuButtonDark } from '../../components/client/MenuButton'
-import MenuNav from '../../components/client/MenuNav'
-import { icons } from '../../service/icons'
+import { MenuButtonDark } from '../components/MenuButton'
+import MenuNav from '../components/MenuNav'
+import { icons } from '../service/icons'
 
 export default function ApplyToJob() {
     return (
@@ -46,7 +46,7 @@ export default function ApplyToJob() {
                     </div>
                 </div>
                 <MenuButtonDark />
-                
+
             </header>
 
             <section class="application-intro offset-canva">

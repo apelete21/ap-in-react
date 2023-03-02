@@ -1,10 +1,10 @@
 import React from 'react'
-import { icons } from '../../service/icons'
-import ServiceHero from "../../assets/media/images/hero/service-hero.png"
-import GraphicDesigh from "../../assets/media/images/services/graphic-design.png"
-import ToolsImg from "../../assets/media/images/services/tools.png"
-import TabletImg from "../../assets/media/images/services/tablet.png"
-import ProductGif from "../../assets/media/images/services/products.gif"
+import { icons } from '../service/icons'
+import ServiceHero from "../assets/media/images/hero/service-hero.png"
+import GraphicDesigh from "../assets/media/images/services/graphic-design.png"
+import ToolsImg from "../assets/media/images/services/tools.png"
+import TabletImg from "../assets/media/images/services/tablet.png"
+import ProductGif from "../assets/media/images/services/products.gif"
 
 export default function WhatWeDo() {
     return (

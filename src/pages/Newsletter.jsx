@@ -1,8 +1,7 @@
 import React from 'react'
-import { MenuButtonDark, MenuButtonLight } from '../../components/client/MenuButton'
-import MenuNav from '../../components/client/MenuNav'
-import Logo from '../../components/client/NavComponents/Logo'
-import { icons } from '../../service/icons'
+import { MenuButtonLight } from '../components/MenuButton'
+import MenuNav from '../components/MenuNav'
+import { icons } from '../service/icons'
 
 export default function Newsletter() {
 

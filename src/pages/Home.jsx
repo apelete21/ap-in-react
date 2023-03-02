@@ -1,10 +1,10 @@
 import React from 'react'
-import { icons } from '../../service/icons'
-import HomeBanner from "../../assets/media/images/hero/home-banner.png"
-import HomeIntro from "../../assets/media/images/home-intro.png"
-import FactIllustration from "../../assets/media/images/home/facts-illustration.png"
-import MenuNav from '../../components/client/MenuNav'
-import { MenuButtonDark } from '../../components/client/MenuButton'
+import { icons } from '../service/icons'
+import HomeBanner from "../assets/media/images/hero/home-banner.png"
+import HomeIntro from "../assets/media/images/home-intro.png"
+import FactIllustration from "../assets/media/images/home/facts-illustration.png"
+import MenuNav from '../components/MenuNav'
+import { MenuButtonDark } from '../components/MenuButton'
 
 export default function Home() {
     return (

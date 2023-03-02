@@ -1,11 +1,13 @@
-import AllRoutes from "./routes/AllRoutes"
+import { BrowserRouter } from "react-router-dom"
+import ClientRoutes from "./routes/Routes"
+import "./assets/style/main.css"
 
 function App() {
 
   return (
-    <>
-      <AllRoutes />
-    </>
+    <BrowserRouter>
+      <ClientRoutes />
+    </BrowserRouter>
   )
 }
 

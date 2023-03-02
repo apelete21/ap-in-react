@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { ClientAppContext } from '../../Contexts/ClientAppContext'
+import { ClientAppContext } from '../Contexts/ClientAppContext'
 
 export function MenuButtonLight() {
     const { openNav } = useContext(ClientAppContext)

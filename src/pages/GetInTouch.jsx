@@ -1,7 +1,7 @@
 import React from 'react'
-import { MenuButtonLight } from '../../components/client/MenuButton'
-import MenuNav from '../../components/client/MenuNav'
-import { icons } from '../../service/icons'
+import { MenuButtonLight } from '../components/MenuButton'
+import MenuNav from '../components/MenuNav'
+import { icons } from '../service/icons'
 
 export default function GetInTouch() {
     return (

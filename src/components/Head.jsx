@@ -1,6 +1,6 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import { icons } from '../../service/icons'
+import { icons } from '../service/icons'
 
 export default function Head() {
   return (
