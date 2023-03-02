@@ -1,8 +1,6 @@
 import React from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import Home from '../../pages/client/Home'
-// import OneYear from '../../pages/client/OneYear'
-import "../../assets/style/main.css"
 import Head from '../../components/client/Head'
 import Menu from '../../components/client/Menu'
 import Footer from '../../components/client/Footer'
@@ -14,8 +12,9 @@ import Stories from '../../pages/client/Stories'
 import JobDetails from '../../pages/client/JobDetails'
 import JobList from '../../pages/client/JobList'
 import Newsletter from '../../pages/client/Newsletter'
-import { ClientAppContextProvider } from '../../Contexts/ClientAppContext'
 import News from '../../pages/client/News'
+import ApplyToJob from '../../pages/client/ApplyToJob'
+import { ClientAppContextProvider } from '../../Contexts/ClientAppContext'
 
 export const ClientRoutes = () => {
 
@@ -23,8 +22,13 @@ export const ClientRoutes = () => {
 
   return (
     <ClientAppContextProvider>
-      <Head />
-      <Menu />
+      {location.pathname.search("/admin") === 0 ?
+        null :
+        <>
+          <Head />
+          <Menu />
+        </>
+      }
       <Routes>
         {/* <Route path="/oneyear" element={<OneYear />} /> */}
         <Route path="/" element={<Home />} />
@@ -35,14 +39,16 @@ export const ClientRoutes = () => {
         <Route path="/stories" element={<Stories />} />
         <Route path="/jobs/details" element={<JobDetails />} />
         <Route path="/jobs" element={<JobList />} />
+        <Route path="/jobs/apply" element={<ApplyToJob />} />
         <Route path="/subscribe" element={<Newsletter />} />
         <Route path="/news" element={<News />} />
       </Routes>
       {
-        location.pathname !== "/get-in-touch" &&
-        location.pathname !== "/subscribe"
-        &&
-        <Footer />
+        location.pathname !== "/get-in-touch" ||
+          location.pathname !== "/admin" ||
+          location.pathname !== "/subscribe" ?
+          null :
+          <Footer />
       }
     </ClientAppContextProvider>
   )

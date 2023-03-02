@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { icons } from '../../service/icons'
 import { CloseMenuButton } from './MenuButton'
 import MenuNav from './MenuNav'
@@ -39,7 +40,7 @@ export default function Menu() {
           <div className="menu--left_container">
             <div className="sub--menu__wrapper">
               <ul>
-                <li><a className="nav--menu__link" href="#">Join the team</a></li>
+                <li><a className="nav--menu__link" href="/jobs">Join the team</a></li>
                 <li><a className="nav--menu__link" href="/news">Newsroom</a></li>
                 <li><a className="nav--menu__link" href="/subscribe">our newsletters</a></li>
               </ul>
