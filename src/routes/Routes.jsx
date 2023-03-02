@@ -10,10 +10,10 @@ import WhatWeDo from '../pages/WhatWeDo'
 import WhoWeAre from '../pages/WhoWeAre'
 import Stories from '../pages/Stories'
 import JobDetails from '../pages/JobDetails'
-import JobList from '../pages/JobList'
 import Newsletter from '../pages/Newsletter'
 import News from '../pages/News'
 import ApplyToJob from '../pages/ApplyToJob'
+import Carreers from '../pages/Carreers'
 import { ClientAppContextProvider } from '../Contexts/ClientAppContext'
 
 export default function ClientRoutes() {
@@ -34,7 +34,7 @@ export default function ClientRoutes() {
         <Route path="/who-we-are" element={<WhoWeAre />} />
         <Route path="/stories" element={<Stories />} />
         <Route path="/jobs/details" element={<JobDetails />} />
-        <Route path="/jobs" element={<JobList />} />
+        <Route path="/jobs" element={<Carreers />} />
         <Route path="/jobs/apply" element={<ApplyToJob />} />
         <Route path="/subscribe" element={<Newsletter />} />
         <Route path="/news" element={<News />} />

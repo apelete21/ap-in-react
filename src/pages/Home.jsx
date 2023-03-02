@@ -105,7 +105,7 @@ export default function Home() {
                             </p>
                             <a href="http://">
                                 <span className="play--icon"><img src={icons.playDark} alt=""
-                                     /></span>
+                                /></span>
                                 More about us
                             </a>
                         </div>
@@ -380,14 +380,16 @@ export default function Home() {
                     </div>
                     <div className="get--start__text">
                         <h1 className="section--hero__title">
-                            Building brands.<br />
-                            Creating product. <br />
+                            Building brands.
+                            Creating product.
                             Transform business.
                         </h1>
 
                         <a className="btn outline-red-btn " href="start-with-us.php"> learn more <span>
-                            <img className="icon-img"
-                                src={icons.arLight} alt="" /></span> </a>
+                            <svg width="29" height="15" viewBox="0 0 29 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21.8853 1L27.4312 7.5M27.4312 7.5L21.8853 14M27.4312 7.5H0.981659" stroke="white" fill='white' />
+                            </svg>
+                        </span> </a>
                     </div>
                 </div>
             </section>

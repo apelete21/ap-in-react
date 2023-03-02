@@ -166,9 +166,13 @@ h3,
 	font-size: 2.6rem
 }
 
-h4,
-.h4 {
+h4 {
 	font-size: 2.2rem
+}
+
+.h4 {
+	font-size: 2.2rem;
+	font-weight:600
 }
 
 h5,
@@ -226,6 +230,11 @@ a:focus {
 .default-paragraph {
 	color: var(--body-color);
 	font-size: 16px;
+}
+
+.p-18 {
+	color: var(--body-color);
+	font-size: 18px;
 }
 
 .white-p {
@@ -345,6 +354,7 @@ a:focus {
 	margin: 0;
 }
 
+
 .navbar {
 	display: flex;
 	justify-content: space-between;
@@ -371,7 +381,6 @@ a:focus {
 	display: flex;
 	flex-direction: column;
 	cursor: pointer;
-	z-index: 20;
 }
 
 .nav--toggler__bar {
@@ -434,6 +443,7 @@ a:focus {
 	background: var(--black-bold);
 	color: #ffffff;
 	border-color: var(--black-bold);
+
 }
 
 .default-btn:hover .svg--icon svg {
@@ -884,12 +894,11 @@ ABOUT US HERO SECTION
 }
 
 .get--quote__form-wrapper .input-group label {
-	font-size: max(1.2vw, 16px);
-	color: var(--black-bold);
+	font-size: 1.2vw;
 }
 
 .get--quote__form-wrapper .input-group input {
-	font-size: max(1.2vw, 16px);
+	font-size: 1.2vw;
 }
 
 .get-quote__contacts {
@@ -946,17 +955,27 @@ ABOUT US HERO SECTION
 
 .bottom__contact .mail span {
 	font-size: 14px;
-	color: darkgray;
+	color: rgb(194, 194, 194);
 	text-transform: uppercase;
 	display: block;
 }
 
-/* 
-.bottom__contact .mail a,
+.bottom__contact .contact_info {
+	margin-bottom: 15px;
+}
+
+.bottom__contact .contact_info .sup {
+	color: #686868;
+}
+
+.bottom__contact .mail,
 .bottom__contact .office,
-.bottom__contact .phone a {
+.bottom__contact .phone {
 	color: var(--ful-white);
-} */
+	font-size: 18px;
+	display: block;
+
+}
 
 .bottom__contact .phone {
 	align-self: flex-end;
@@ -980,11 +999,6 @@ GET IN TOUCH SECTION
 	background-size: cover;
 }
 
-.contact--content {
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-}
 
 .contact--info {
 	flex: 0 1 50%;
@@ -992,12 +1006,14 @@ GET IN TOUCH SECTION
 	margin-bottom: 2vw;
 	align-items: flex-end;
 	padding: 0 10vw;
+	height: 75vh;
 	background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../media/images/backgrounds/contact-bg.png);
 }
 
 .contact--bg {
 	display: flex;
 	justify-content: space-between;
+	margin-left: 10rem !important;
 }
 
 .contact--info__intro {
@@ -1063,6 +1079,8 @@ GET IN TOUCH SECTION
 
 .contact--content .contact--bg {
 	position: relative;
+	padding-top: 4rem;
+	padding-bottom: 4rem;
 }
 
 .contact--content .contact--bg .contact--footer__mail {
@@ -1071,6 +1089,7 @@ GET IN TOUCH SECTION
 
 .contact--content .contact--bg .contact--footer__mail span {
 	display: block;
+	font-size: 17px;
 }
 
 
@@ -1879,6 +1898,10 @@ GET IN TOUCH SECTION
 	align-content: space-between;
 }
 
+.sub--menu__wrapper li {
+	line-height: .5;
+}
+
 /* 
 .sub--menu__wrapper {
 	align-self: flex-end;
@@ -1902,7 +1925,7 @@ GET IN TOUCH SECTION
 .sub--menu__wrapper .nav--menu__link::before {
 	position: absolute;
 	content: '';
-	height: .07rem;
+	height: 2px;
 	width: 100%;
 	background-color: var(--body-color);
 	bottom: -6px;
@@ -2250,12 +2273,13 @@ GET IN TOUCH SECTION
 }
 
 .legend-text {
-	font-family: 'Courier New', Courier, monospace;
 	font-weight: 600;
+	font-size: 18px;
+	width: 50%;
 }
 
 .job--intro {
-	padding: 2vw 5rem 6vw 0;
+	padding: 2vw 3.7rem 6vw 0;
 }
 
 .job--banner-section,
@@ -2267,7 +2291,8 @@ GET IN TOUCH SECTION
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	padding: 25vh 0;
+	padding-right: 4.2rem;
+	padding-bottom: 10rem
 }
 
 .list-text_section {
@@ -2276,12 +2301,14 @@ GET IN TOUCH SECTION
 
 .list_jobs_title {
 	font-weight: 700;
-	margin-bottom: 5rem;
+	margin-bottom: 3rem;
 	color: var(--black-bold);
+	font-size: 26px
 }
 
 .legend_links .legend_link {
 	transition: all .2s;
+	font-size: 16px;
 }
 
 
@@ -2293,37 +2320,48 @@ GET IN TOUCH SECTION
 .legend_link__active {
 	color: var(--primary);
 	font-weight: bold;
+	font-size: 14px;
 }
 
 .job__detail {
-	border-top: 2px #888 solid;
+	border-top: 1px#c3bfbf solid;
 	padding-block: 2rem;
 }
 
 .job__detail:last-child {
-	border-bottom: 2px #888 solid;
+	border-bottom: 1px#c3bfbf solid;
 }
 
-.job__detail :last-child {
-	color: var(--black-bold);
-	margin-top: 2vh;
+.more_details_view a {
+	color: var(--body-color);
+}
+
+.more_details_view svg {
+	margin-left: 10px;
 }
 
 .jobs_detail_section {
 	width: 100%;
 	flex-basis: 70%;
+	font-size: 14px;
 }
 
 .job_detail__title {
-	font-size: 5.5rem;
+	font-size: 3rem;
 	font-weight: bold;
 	margin-bottom: 5vh;
 	color: var(--black-bold);
 }
 
 .job_detail__description {
-	font-family: monospace;
-	font-weight: 600;
+
+	width: 70%;
+}
+
+.job_detail__description p {
+	color: var(--body-color);
+	font-size: 16px;
+	line-height: 1.3;
 }
 
 .job_time__location {
@@ -2338,6 +2376,12 @@ GET IN TOUCH SECTION
 	align-items: center;
 }
 
+.frequence_icon svg,
+.location_icon svg {
+	width: 25px;
+	margin-right: 10px;
+}
+
 .job_time__location div div img {
 	margin-right: .4rem;
 }
@@ -2349,12 +2393,26 @@ GET IN TOUCH SECTION
 .job_detail__banner {
 	color: var(--ful-white);
 	display: flex;
-	justify-content: space-between;
-	padding: 4vh 20vw 10vh 10vw;
+	justify-content: flex-start;
+	padding-top: 3rem;
+	margin-right: 6rem;
 }
 
 .job_detail__banner div :first-child {
 	font-weight: bold;
+}
+
+.job_detail__banner .job_level_block,
+.job_detail__banner .job_time_block {
+	margin-right: 5rem;
+}
+
+.job_detail__banner .level_title {
+	font-size: 20px;
+}
+
+.job_detail__banner .level_year {
+	font-size: 16px;
 }
 
 .php_job_description {
@@ -2362,12 +2420,12 @@ GET IN TOUCH SECTION
 }
 
 .php_job_description div {
-	margin-bottom: 20vh;
+	margin-bottom: 12vh;
 }
 
 .php_job_description div h2 {
 	font-weight: bold;
-	margin-bottom: 10vh;
+	margin-bottom: 5vh;
 }
 
 .btn-with-arrow {
@@ -2382,23 +2440,23 @@ GET IN TOUCH SECTION
 	margin-left: .4rem;
 }
 
-.tasks_list_section {
-	padding-left: 5vw;
-}
 
 .task_ {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	margin-bottom: 1vh;
+	font-size: 18px;
+	font-style: italic;
 }
 
 .square {
 	display: inline-block;
-	width: 10px;
-	height: 10px;
-	background-color: var(--black-bold);
+	width: 6px;
+	height: 6px;
+	background-color: #3c3c3c;
 	margin-right: 1.5vw;
+	border-radius: 50%;
 }
 
 
@@ -2413,6 +2471,28 @@ GET IN TOUCH SECTION
 
 .stories_links {
 	width: 100%;
+	margin-top: 5rem;
+}
+
+.stories_links a {
+	color: var(--body-color);
+	font-size: 16px;
+}
+
+.stories_links .active {
+	color: var(--primary);
+	position: relative;
+	font-weight: 600;
+}
+
+.stories_links .active::after {
+	content: '';
+	height: 1px;
+	width: 100%;
+	position: absolute;
+	background-color: var(--primary);
+	bottom: -3px;
+	left: 0;
 }
 
 .links_list {
@@ -2420,7 +2500,7 @@ GET IN TOUCH SECTION
 }
 
 .link_list_item {
-	margin-right: 2rem;
+	margin-right: 1.6rem;
 }
 
 .link_item--active {
@@ -2428,22 +2508,14 @@ GET IN TOUCH SECTION
 	position: relative;
 }
 
-.link_item--active::after {
-	content: '';
-	height: 1px;
-	width: 100%;
-	position: absolute;
-	background-color: var(--primary);
-	bottom: 0px;
-	left: 0;
-}
 
 .stories_items_container {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
 	color: var(--black-bold);
-	padding-block: 10vh;
+	padding-block: 2vh;
+	margin-top: 2rem;
 }
 
 .stories_item {
@@ -2454,6 +2526,8 @@ GET IN TOUCH SECTION
 	padding: 3vh 2vw;
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
+	height: max-content;
 }
 
 .stories_item.stories_item-img_bg {
@@ -2483,37 +2557,56 @@ GET IN TOUCH SECTION
 .type_of_job {
 	font-weight: bold;
 	flex-basis: 30%;
+	font-size: 10px;
+
 }
 
 .story_title {
-	flex-basis: 60%;
+
 	font-weight: bold;
-	line-height: 180%;
+	color: var(--black-bold);
+	margin-bottom: 20px;
+	display: inline-block;
+}
+
+.story_details .story_title:hover {
+
+	font-weight: bold;
 	color: var(--black-bold);
 }
 
+
+
 .story_details {
+	margin-top: 7rem;
+}
+
+.post_author {
 	display: flex;
-	flex-basis: 10%;
 	justify-content: space-between;
+	font-size: 14px;
 }
 
 .load_more_btn {
 	display: flex;
 	justify-content: center;
+
 }
 
 .news_details {
 	display: flex;
 	flex-direction: row;
 	color: var(--black-bold) !important;
-	padding-inline: 10rem;
 }
 
 .author_details {
-	border-right: 2px solid #000;
+	border-right: 2px solid #7c7c7c;
 }
 
+.icon-text{
+	font-size: 18px;
+	color: var(--body-color);
+}
 .author_details,
 .date_details {
 	display: flex;
@@ -2522,9 +2615,36 @@ GET IN TOUCH SECTION
 }
 
 .author_title,
-.date_title {
+.date_title, .date_title {
 	font-weight: bold;
+	font-size: 18px;
 }
+
+.author_name, .date_name {
+	font-size: 18px;
+    margin-left: 10px;
+}
+
+.read_more a {
+	color: var(--dark-background);
+}
+
+
+.stories_item-bg_red .story_title,
+.stories_item-bg_red .read_more a,
+.stories_item-img_bg .read_more a,
+.stories_item-img_bg .story_title {
+	color: var(--ful-white);
+}
+
+.stories_item-bg_red .story_title:hover,
+.stories_item-bg_red .read_more a:hover,
+.stories_item-img_bg .read_more a:hover,
+.stories_item-img_bg .story_title:hover {
+	color: var(--ful-white);
+}
+
+
 
 
 /**********************/
@@ -2579,7 +2699,8 @@ GET IN TOUCH SECTION
 
 .text-block--title {
 	font-weight: bold;
-	margin-bottom: 8vh;
+	margin-bottom: 4vh;
+    margin-top: 8vh;
 }
 
 .block--paragraph {
@@ -2591,7 +2712,7 @@ GET IN TOUCH SECTION
 }
 
 .illustration-img--container {
-	width: 70%;
+	width: 80%;
 	display: flex;
 	margin: 0 auto;
 	justify-content: space-between;
@@ -2607,7 +2728,9 @@ GET IN TOUCH SECTION
 }
 
 .illustration-image {
-	padding: 1rem;
+	padding: 1rem .2rem;
+    flex: 0 1 50%;
+
 }
 
 .img-info {
@@ -2629,7 +2752,7 @@ GET IN TOUCH SECTION
 
 .separator--line {
 	width: 100%;
-	border-top: .1px solid #797979;
+	border-top: .1px solid#e1e1e1;
 }
 
 .others-news {
@@ -2647,12 +2770,26 @@ GET IN TOUCH SECTION
 	background-size: cover;
 }
 
+.others_news_author_name .by{
+	font-size: 16px;
+}
+
+.others_news_author_name .auth_name{
+	font-size: 18px;
+	font-weight: 600;
+}
 .other_news_details {
 	gap: 8rem;
 	width: 100%;
 	height: 100%;
 	flex-direction: column;
 	justify-content: space-between;
+}
+
+.other_news_link {
+	font-size: 16px;
+	align-items: center;
+
 }
 
 .other_news_details .others_news_details__title h5 {
@@ -2674,13 +2811,19 @@ GET IN TOUCH SECTION
 }
 
 .others_news_author_picture img {
-	width: 150%;
-	height: 150%;
+	width: 100%;
+    height: 100%;
 }
 
+.others_news_details__title{
+	max-width: 80%;
+}
+
+.story-main-title .section--hero__title{
+	max-width: 90%;
+}
 .others_news_author_name {
 	height: 80%;
-	padding-top: .8rem;
 }
 
 .others_news_author_name,
@@ -2734,8 +2877,8 @@ GET IN TOUCH SECTION
 .application-input {
 	display: flex;
 	flex-direction: row;
-	padding: 3rem 0;
-	border-top: .5px solid #888;
+	padding: 2.7rem 0;
+	border-top: 1px solid var(--contrast);
 }
 
 .application-input .form--input__number {
@@ -2743,36 +2886,43 @@ GET IN TOUCH SECTION
 }
 
 .application-input label {
-	font-weight: bold;
-	color: var(--black-bold, orange) !important;
+	color: #525252 !important;
+	font-size: 19px;
+	font-weight: 500;
 }
 
 .application-input textarea,
 .application-input input {
-	font-size: 18px;
+	font-size: 16px;
 }
 
+.form-input .form--input__number {
+	font-size: 12px;
+	padding-top: 5px;
+}
+
+.full-with_form .form--input__number{
+	margin-right: 14px;
+}
 
 /* File upload section */
 
 
 .upload-files-container {
-	background-color: #f7fff7;
+	background-color: #f1f1f1;
 	width: 100%;
-	padding: 30px 60px;
-	border-radius: 40px;
+	padding: 60px 60px;
+	/* border-radius: 40px; */
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
+	margin-top: 11px;
 }
 
 .drag-file-area {
 	/* border: 2px dashed #7b2cbf; */
 	border-radius: 40px;
-	margin: 10px 0 15px;
-	padding: 30px 50px;
-	width: 350px;
 	text-align: center;
 }
 
@@ -2786,7 +2936,8 @@ GET IN TOUCH SECTION
 }
 
 .drag-file-area label {
-	font-size: 19px;
+	font-size: 14px;
+	display: block;
 }
 
 .drag-file-area label .browse-files-text {
@@ -2834,6 +2985,10 @@ GET IN TOUCH SECTION
 .cannot-upload-message span:last-child {
 	padding-left: 20px;
 	cursor: pointer;
+}
+
+.application--form .last-of-type {
+	border-bottom: 1px solid var(--contrast);
 }
 
 .file-block {
@@ -2946,8 +3101,8 @@ GET IN TOUCH SECTION
 .newsletter_bottom_image {
 	background: linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../media/images/banners/jobbanner.png');
 	width: 100%;
-	height: 100vh;
-	background-position: center 40vh;
+	height: 100%;
+	background-position: top 70vh;
 	background-size: cover;
 	background-repeat: no-repeat;
 }
@@ -2969,18 +3124,19 @@ GET IN TOUCH SECTION
 }
 
 .news_media {
-	padding: 10vh 4vw 6vh 0;
+	padding: 20vh 4vw 6vh 0;
 }
 
 .news-details_author {
 	align-items: center;
-	gap: 1.5rem;
+	gap: 1rem;
 	margin-bottom: 10px;
 }
 
 .author__name {
 	color: var(--ful-white);
 	font-weight: 200;
+	font-size: 14px;
 }
 
 .news__details__title h2 {
@@ -2992,6 +3148,10 @@ GET IN TOUCH SECTION
 .news-details__intro {
 	color: var(--ful-white);
 	max-width: 60%;
+}
+
+.news-details_author .author_profile img {
+	width: 38px;
 }
 
 .related_news_section {
@@ -3014,7 +3174,7 @@ GET IN TOUCH SECTION
 
 .related_news-top_bar {
 	justify-content: space-between;
-	padding-block: 8vh;
+	padding: 4rem 0 1.9rem;
 }
 
 .related_news_top_bar_title {
@@ -3029,14 +3189,23 @@ GET IN TOUCH SECTION
 	flex-direction: row !important;
 }
 
+.related-news-item_title {
+	font-size: 13px;
+	padding-bottom: 1rem;
+}
+
 .related_news_items_list {
 	flex-direction: row;
-	gap: 2vw;
+	gap: 1vw;
 }
 
 .related_news_item-imge,
 .related_news_item-imge img {
 	width: 100%;
+}
+
+.news-details__intro p {
+	font-size: 18px;
 }
 
 .related_news_item_details {
@@ -3047,6 +3216,14 @@ GET IN TOUCH SECTION
 .related_news_item {
 	background: #282828;
 	height: fit-content;
+	flex: 0 1 20%;
+}
+
+.related-news-item_title p {
+	font-size: 14px;
+	font-size: 14px;
+	line-height: 1.5;
+	color: var(--contrast);
 }
 
 .related_news_item * {
@@ -3065,9 +3242,6 @@ GET IN TOUCH SECTION
 	justify-content: space-between;
 }
 
-.media_duration_viewer {
-	width: 50%;
-}
 
 .media-sound_controller {
 	width: 8%;
@@ -3076,7 +3250,12 @@ GET IN TOUCH SECTION
 .media-sound_controller,
 .media_duration_viewer {
 	background: #474848;
-	height: 5px;
+	height: 3px;
+}
+
+.media_timer-text b,
+.media_duration_time {
+	font-size: 16px;
 }
 
 .sound_controller {
@@ -3099,19 +3278,44 @@ GET IN TOUCH SECTION
 	position: absolute;
 	top: 50%;
 	right: 0;
-	width: 25px;
-	height: 25px;
+	width: 18px;
+	height: 18px;
 	transform: translate(0%, -50%);
 	background-color: var(--ful-white);
 	border-radius: 100%;
 }
 
+.news-media_control_section .player_timer {
+	flex: 0 1 75%;
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+}
+
+.news-media_control_section .media_timer-text {
+	margin-right: 2rem;
+	flex: 0 1 auto;
+}
+
+.news-media_control_section .media_duration_time {
+	margin-left: 2rem;
+	flex: 0 1 auto;
+}
+
+.news-media_control_section .media_duration_viewer {
+	flex: 0 1 80%;
+}
 
 /* japan news sections */
 
 
 
 @media screen and (max-width: 767px) {
+
+	h2, .h2 {
+		font-size: 2.2rem;
+	}
 	.nav--toggler-container {
 		height: auto;
 		top: 25px;
@@ -3119,9 +3323,16 @@ GET IN TOUCH SECTION
 		justify-content: flex-end;
 	}
 
+	ul,
+	ol {
+		list-style: none;
+		padding: 0;
+		margin: 0 0 .5rem
+	}
+
 	.full--width__nav {
 		margin-left: 15vw;
-		padding-top: 8rem;
+		flex-wrap: wrap;
 	}
 
 	.navbar {
@@ -3129,7 +3340,7 @@ GET IN TOUCH SECTION
 	}
 
 	.nav--menu__link {
-		font-size: 10vw;
+		font-size: 7.3vw;
 	}
 
 	.nav--links__wrapper .active::before {
@@ -3141,7 +3352,7 @@ GET IN TOUCH SECTION
 	}
 
 	.sub--menu__wrapper li .nav--menu__link {
-		font-size: 6vw;
+		font-size: 3.5vw;
 	}
 
 	.bottom__contact .mail,
@@ -3183,7 +3394,7 @@ GET IN TOUCH SECTION
 	}
 
 	.offset-canva {
-		margin-left: 3rem;
+		margin-left: 2rem;
 	}
 
 	.nav--toggler__bar {
@@ -3615,7 +3826,6 @@ GET IN TOUCH SECTION
 	}
 
 
-	.hero--bottom-content {}
 
 	.team--content {
 		flex-direction: column;
@@ -3715,6 +3925,11 @@ GET IN TOUCH SECTION
 
 	.bottom__contact .social {
 		align-self: flex-start;
+	}
+	
+	.bottom__contact .social .about--hero__social {
+		display: flex;
+		flex-wrap: wrap;
 	}
 
 	.bottom__contact .mail,
@@ -3860,7 +4075,7 @@ GET IN TOUCH SECTION
 	}
 
 	.social-svg__icon {
-		margin-right: 1rem;
+		margin-right: .1rem;
 	}
 
 	.footer-items .footer--social img {
@@ -4009,8 +4224,6 @@ GET IN TOUCH SECTION
 		margin-bottom: 3rem;
 	}
 
-	.service-listing {}
-
 	.services--details .services-list {
 		flex: 0 1 100%;
 	}
@@ -4046,7 +4259,7 @@ GET IN TOUCH SECTION
 
 	@media screen and (max-width: 360px) {
 		.section--hero__title {
-			font-size: 12vw;
+			font-size: 11vw;
 		}
 
 	}
@@ -4077,12 +4290,224 @@ GET IN TOUCH SECTION
 	}
 
 
+	.full-height{
+		height: auto;
+	}
+	.job_detail__banner{
+		flex-direction: column;
+		padding-bottom: 5rem;
+		padding-top: 1rem;
+	}
+
+	/* job-list */
+
+	.legend-text {
+		font-weight: 600;
+		font-size: 18px;
+		width: 100%;
+	}
+
+	.job--intro {
+		padding: 2vw 6vw 6vw 0;
+	}
+
+	.jobs_list__container {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding-right: 4.2rem;
+		padding-block: 5rem;
+	}
+
+	.job_detail__description {
+		width: 100%;
+	}
+
+	.job_time__location {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin-top: 2rem;
+		font-weight: bold;
+		gap: 2rem;
+	}
+
+	.job_time__location div {
+		display: flex;
+		align-items: center;
+		justify-self: end;
+	}
+
+	/* job-list */
+
+	.job_level_block, .job_time_block{
+		margin-bottom: 2rem;
+	}
+
+	.application-intro{
+		width: auto;
+	}
+
+	.application-intro{
+		margin: 10vh auto 15vh;
+		padding: 0 3rem;
+	}
+
+	.form-input .form--input__number {
+		padding-top: 9px;
+		margin-right: 10px;
+	}
+	.drag-file-area{
+		padding: 30px 32px;
+		width: auto;
+		padding: initial;
+	}
+	.upload-files-container {
+		font-size:18px ;
+	}
+
+	.full-with_form{
+		display: block;
+	}
+
+	.php_job_description {
+		padding: 11vh 7vw 2vh 0vw;
+	}
+
+	.task_ {
+		align-items: flex-start;
+	}
+
+	.task_ .square{
+		margin-top: 12px;
+		margin-right: 2.5vw;
+		width: 10px;
+    height: 7px;
+	}
+	
+	.full-with_form .form--input__number{
+		margin-right: 5px;
+	}
+
+	.stories_item{
+		flex: 0 1 100% ;
+	}
+
+	.link_list_item {
+		margin-right: 1.1rem;
+	}
+
+	.stories_links a {
+		font-size: 14px;
+	}
+
+	.stories_item {
+padding: 3vw;
+margin-bottom: 1.3rem;
+	}
+
+	.news_details{
+		flex-direction: column;
+	}
+
+	.author_details {
+		border-right: none;
+		margin-bottom: 1rem;
+	}
+
+	.news--intro_section {
+		flex-direction: column;
+	}
+
+	.news--text-block {
+		width: auto;
+		margin: 0 auto;
+	}
+
+	.news-banner {
+		margin-block: 5vh;
+	}
+
+	.news-share--socials{
+		display: flex;
+		flex-direction:column ;
+
+	}
+
+	.news-share--socials a{
+		margin-bottom: 12px;
+	}
+
+	.illustration-img--container {
+		width: 100%;
+	}
+
+	.img-info {
+		width: 100%;
+		margin: 0 auto;
+		padding-left: 0; 
+		font-size: 10px;
+	}
+	.share-links {
+		width: 100%;
+		margin: 4vh auto;
+	}
+
+	.share--icons-link svg{
+		width: 40px;
+		display: block;
+	}
+
+	.news-share--title {
+		margin-bottom: 1rem;
+	}
+	
+	.others-news {
+		flex-direction: column;
+		width: 100%;
+		margin-block: 3rem;
+	}
+	
+	.others-news-item {
+		width: 100%;
+	}
+	
+	.others_news_author_picture img {
+		width: 35px;
+		height: 100%;
+	}
+	
+	.other_news_link {
+		font-size: 12px;
+	}
+	
+	.other_news_link svg{
+		width: 18px;
+	}
+	
+	.others_news_author_name .auth_name, .others_news_author_name .by {
+		font-size: 13px;
+	}
+
+	.news-share--links {
+		padding-top: 2vh;
+	}
+
+}
+
+.application--form::placeholder, .application--form::-moz-placeholder, .application--form::-webkit-input-placeholder {
+	color: var(--contrast);
 }
 
 .footer-cta p {
 	width: 80%;
 	color: #666666;
 }
+
+
+
+
+
 
 select {
 	-webkit-appearance: none;

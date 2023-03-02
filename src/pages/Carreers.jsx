@@ -3,8 +3,9 @@ import { icons } from '../service/icons'
 import JobBanner from "../assets/media/images/banners/jobbanner.png"
 import { MenuButtonDark } from '../components/MenuButton'
 import MenuNav from '../components/MenuNav'
+import { Link } from 'react-router-dom'
 
-export default function JobList() {
+export default function Carreers() {
     return (
         <div>
             <header>
@@ -16,8 +17,7 @@ export default function JobList() {
                             a part of the journey?
                         </h1>
                         <p className="legend-text">
-                            Lorem, ipsum dolor ipsum dolor <br />
-                            adipisicing adipisicing elit.
+                            Do what you love or discover new challenges in a place where you can take ownership, chase ideas and build the future of digitaliation with us.
                         </p>
                     </div>
                 </div>
@@ -49,10 +49,10 @@ export default function JobList() {
                     <div className="jobs_detail_section">
                         <div className="job__detail">
                             <h1 className="job_detail__title">
-                                User Experience <br /> Designer
+                                Office manager
                             </h1>
                             <div className="job_detail__description">
-                                Lorem ipsum dolor sit amet consectetur <br /> adipisicing elit.
+                                <p>In order to better manage the company, the partners are looking for a new profile. The profile sought is that of an office manager...</p>
                             </div>
                             <div className="job_time__location">
                                 <div className="job_frequence">
@@ -71,20 +71,20 @@ export default function JobList() {
                                         Lomé, TOGO
                                     </div>
                                 </div>
-                                <div className="more_details_link">
+                                <Link to={"/jobs/details"} className="more_details_link">
                                     <div className="more_details_view">
                                         View
                                         <img src={icons.arOblik} alt="" />
                                     </div>
-                                </div>
+                                </Link>
                             </div>
                         </div>
-                        <div className="job__detail">
+                        {/* <div className="job__detail">
                             <h1 className="job_detail__title">
                                 Graphic Designer
                             </h1>
                             <div className="job_detail__description">
-                                Lorem ipsum dolor sit amet consectetur <br /> adipisicing elit.
+                                <p>In order to better manage the company, the partners are looking for a new profile. The profile sought is that of an office manager...</p>
                             </div>
                             <div className="job_time__location">
                                 <div className="job_frequence">
@@ -116,7 +116,7 @@ export default function JobList() {
                                 Digital Analyst
                             </h1>
                             <div className="job_detail__description">
-                                Lorem ipsum dolor sit amet consectetur <br /> adipisicing elit.
+                                <p>In order to better manage the company, the partners are looking for a new profile. The profile sought is that of an office manager...</p>
                             </div>
                             <div className="job_time__location">
                                 <div className="job_frequence">
@@ -148,7 +148,7 @@ export default function JobList() {
                                 Back-end <br /> Developper PHP
                             </h1>
                             <div className="job_detail__description">
-                                Lorem ipsum dolor sit amet consectetur <br /> adipisicing elit.
+                                <p>In order to better manage the company, the partners are looking for a new profile. The profile sought is that of an office manager...</p>
                             </div>
                             <div className="job_time__location">
                                 <div className="job_frequence">
@@ -180,7 +180,7 @@ export default function JobList() {
                                 User Interfce <br /> Designer
                             </h1>
                             <div className="job_detail__description">
-                                Lorem ipsum dolor sit amet consectetur <br /> adipisicing elit.
+                                <p>In order to better manage the company, the partners are looking for a new profile. The profile sought is that of an office manager...</p>
                             </div>
                             <div className="job_time__location">
                                 <div className="job_frequence">
@@ -206,7 +206,7 @@ export default function JobList() {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 

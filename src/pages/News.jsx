@@ -16,7 +16,7 @@ export default function News() {
                     <MenuNav logoImage={icons.lgDark} linkView="darklink" />
                     <div class="offset-canva story-main-title">
                         <h2 class="section--hero__title">
-                            When is the best time <br />
+                            When is the best time
                             of Year to Visit Japan?
                         </h2>
                         <div class="news_details">
@@ -67,7 +67,7 @@ export default function News() {
                                 <div class="to-facebook-icon">
                                     <img src={icons.fbDarkThin} alt="" />
                                 </div>
-                                <div class="to-facebook-text">
+                                <div class="icon-text">
                                     Facebook
                                 </div>
                             </a>
@@ -75,7 +75,7 @@ export default function News() {
                                 <div class="to-whatsapp-icon">
                                     <img src={icons.whDarkThin} alt="" />
                                 </div>
-                                <div class="to-whatsapp-text">
+                                <div class="icon-text">
                                     Whatsapp
                                 </div>
                             </a>
@@ -83,7 +83,7 @@ export default function News() {
                                 <div class="to-telegram-icon">
                                     <img src={icons.tgDarkThin} alt="" />
                                 </div>
-                                <div class="to-telegram-text">
+                                <div class="icon-text">
                                     Telegram
                                 </div>
                             </a>
@@ -94,10 +94,13 @@ export default function News() {
                             The good news for travelers is that there is no single best time of to travel to Japan
                         </h3>
                         <div class="block--paragraph">
-                            Japan is truly a year-round destination, and Japanese culture is remarkable in its profound appreciation of the changing of the seasons. As you’ll see when you visit, each season — and even sub-season! — is celebrated with seasonal foods, and often matsuri (festivals). Because of this, we typically recommend taking advantage of any chance to visit Japan.
+                            <p class="default-paragraph">
+                                Japan is truly a year-round destination, and Japanese culture is remarkable in its profound appreciation of the changing of the seasons. As you’ll see when you visit, each season — and even sub-season! — is celebrated with seasonal foods, and often matsuri (festivals). Because of this, we typically recommend taking advantage of any chance to visit Japan. </p>
                         </div>
                         <div class="block--paragraph">
-                            On the other hand, if your dates are flexible it’s worth thinking about which time of year you might enjoy most. After all, some travelers hate the cold — or the heat and humidity of summer — while others will do whatever it takes to avoid crowds! (When planning a trip to Japan, a key question to ask yourself is: would you rather have better weather, or fewer tourists around?)
+                            <p className="default-paragraph">
+                                On the other hand, if your dates are flexible it’s worth thinking about which time of year you might enjoy most. After all, some travelers hate the cold — or the heat and humidity of summer — while others will do whatever it takes to avoid crowds! (When planning a trip to Japan, a key question to ask yourself is: would you rather have better weather, or fewer tourists around?)
+                            </p>
                         </div>
                         <div class="block--paragraph">
                             Because there is so much to consider, we’ve put together this comprehensive guide on the best time to travel to Japan, including information on the seasons, weather, national holidays to look out for, and more.
@@ -112,17 +115,23 @@ export default function News() {
                 </div>
 
                 <div class="news--text-block">
-                    <h2 class="text-block--title">
+                    <h4 class="text-block--title">
                         Japanese Seasons 101: The Basics
-                    </h2>
+                    </h4>
                     <div class="block--paragraph">
-                        Looking for a succinct summary before you dive into the details?
+                        <p className="default-paragraph">
+                            Looking for a succinct summary before you dive into the details?
+                        </p>
                     </div>
                     <div class="block--paragraph">
-                        The best time to visit Japan is generally considered to be between March and May, or October and November. However, it depends on your interests and what you’re planning to do during your trip. While many travelers prefer to avoid the heat and humidity of summer, or cold of winter, you might be an exception if you’re interested in summer matsuri (festivals) or winter onsen (hot springs), skiing, and snowboarding.
+                        <p className="default-paragraph">
+                            The best time to visit Japan is generally considered to be between March and May, or October and November. However, it depends on your interests and what you’re planning to do during your trip. While many travelers prefer to avoid the heat and humidity of summer, or cold of winter, you might be an exception if you’re interested in summer matsuri (festivals) or winter onsen (hot springs), skiing, and snowboarding.
+                        </p>
                     </div>
                     <div class="block--paragraph">
-                        We delve into much more detail below, but to start here is a brief introduction to Japan’s seasons.
+                        <p class="default-paragraph">
+                            We delve into much more detail below, but to start here is a brief introduction to Japan’s seasons.
+                        </p>
                     </div>
                 </div>
                 <div class="news--text-block">
@@ -130,15 +139,21 @@ export default function News() {
                         Summary of Japan’s Seasons
                     </h4>
                     <div class="block--paragraph">
-                        Spring in Japan is famous for the cherry blossom season, and if you’re lucky — and don’t mind the crowds — you may experience hanami (cherry-blossom viewing) in all its glory. This romantic time of year is popular for honeymoons in Japan.
+                        <p class="default-paragraph">
+                            Spring in Japan is famous for the cherry blossom season, and if you’re lucky — and don’t mind the crowds — you may experience hanami (cherry-blossom viewing) in all its glory. This romantic time of year is popular for honeymoons in Japan.
+                        </p>
                     </div>
                     <div class="block--paragraph">
-                        Summer is arguably the most festive time of year, with colorful matsuri (festivals) throughout the country, the chance to hike in the mountains, and lovely coastal areas where you can enjoy the sea.
-                        Fall in Japan is another magical (and highly popular) time of year, with brilliant autumn colors and crisp, pleasant temperatures.
-                        Winter in Japan offers amazing seafood, incredible onsen (hot springs) experiences, not to mention some of the best powder in the world for skiing and snowboarding.
+                        <p class="default-paragraph">
+                            Summer is arguably the most festive time of year, with colorful matsuri (festivals) throughout the country, the chance to hike in the mountains, and lovely coastal areas where you can enjoy the sea.
+                            Fall in Japan is another magical (and highly popular) time of year, with brilliant autumn colors and crisp, pleasant temperatures.
+                            Winter in Japan offers amazing seafood, incredible onsen (hot springs) experiences, not to mention some of the best powder in the world for skiing and snowboarding.
+                        </p>
                     </div>
                     <div class="block--paragraph">
-                        And if you don’t have time to read the full article, but are looking for a sense of which month would be best for you, here is a brief overview to help you decide when to visit.
+                        <p class="default-paragraph">
+                            And if you don’t have time to read the full article, but are looking for a sense of which month would be best for you, here is a brief overview to help you decide when to visit.
+                        </p>
                     </div>
                 </div>
 
@@ -157,14 +172,18 @@ export default function News() {
                 </div>
 
                 <div class="news--text-block">
-                    <h2 class="text-block--title">
+                    <h4 class="text-block--title">
                         Spring in Japan
-                    </h2>
+                    </h4>
                     <div class="block--paragraph">
-                        Spring in Japan lasts from about mid-March to May, depending on the location. The weather in spring is notoriously fickle, with temperatures ranging from approximately 40 to 65 °F (4 to 18 °C). On some days you may still want your winter coat, while on other days you may not even need a sweater.
+                        <p class="default-paragraph">
+                            Spring in Japan lasts from about mid-March to May, depending on the location. The weather in spring is notoriously fickle, with temperatures ranging from approximately 40 to 65 °F (4 to 18 °C). On some days you may still want your winter coat, while on other days you may not even need a sweater.
+                        </p>
                     </div>
                     <div class="block--paragraph">
-                        Without a shadow of a doubt, we receive far more inquiries for travel to Japan around cherry blossom season than for any other time of year. In fact, it is such a popular time to visit that we are often forced to stop even considering new inquiries months and months in advance.
+                        <p class="default-paragraph">
+                            Without a shadow of a doubt, we receive far more inquiries for travel to Japan around cherry blossom season than for any other time of year. In fact, it is such a popular time to visit that we are often forced to stop even considering new inquiries months and months in advance.
+                        </p>
                     </div>
                     <div class="block--paragraph">
                         While the beauty of the cherry blossoms in bloom is undeniably alluring, whether or not flower viewing in Japan is worth the potential downsides is not quite as clear!
@@ -173,7 +192,7 @@ export default function News() {
 
                 <div class="share-links">
                     <div class="news-share--title">
-                        Share the article
+                        Share the post
                     </div>
                     <div class="share--icons-link">
                         <a class="social-svg__icon" href="">
@@ -203,7 +222,7 @@ export default function News() {
                         <div class="other_news_details d-flex">
                             <div class="others_news_details__title">
                                 <h5>
-                                    Without a shadow <br />
+                                    Without a shadow
                                     of a doubt, we receive
                                 </h5>
                             </div>
@@ -213,15 +232,15 @@ export default function News() {
                                         <img src={icons.prIcon} alt="author profile" />
                                     </div>
                                     <div class="others_news_author_name">
-                                        by
-                                        <h6>
-                                            John Doe
-                                        </h6>
+                                        <span class="by">By</span>
+                                        <span class="auth_name">John Doe</span>
                                     </div>
                                 </div>
                                 <a href='#' class="other_news_link d-flex">
                                     <span>Read more</span>
-                                    <img src={icons.arLight} alt="" />
+                                    <svg width="29" height="15" viewBox="0 0 29 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M21.8853 1L27.4312 7.5M27.4312 7.5L21.8853 14M27.4312 7.5H0.981659" stroke="white" fill='white' />
+                                    </svg>
                                 </a>
                             </div>
                         </div>
@@ -233,7 +252,7 @@ export default function News() {
                         <div class="other_news_details d-flex">
                             <div class="others_news_details__title">
                                 <h5>
-                                    Without a shadow <br />
+                                    Without a shadow
                                     of a doubt, we receive
                                 </h5>
                             </div>
@@ -243,10 +262,9 @@ export default function News() {
                                         <img src={icons.prIcon} alt="author profile" />
                                     </div>
                                     <div class="others_news_author_name">
-                                        by
-                                        <h6>
-                                            John Doe
-                                        </h6>
+                                        <svg width="29" height="15" viewBox="0 0 29 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M21.8853 1L27.4312 7.5M27.4312 7.5L21.8853 14M27.4312 7.5H0.981659" stroke="white" fill='white' />
+                                        </svg>
                                     </div>
                                 </div>
                                 <a href='#' class="other_news_link d-flex">
