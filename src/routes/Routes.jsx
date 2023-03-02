@@ -40,7 +40,7 @@ export default function ClientRoutes() {
         <Route path="/news" element={<News />} />
       </Routes>
       {
-        location.pathname !== "/get-in-touch" ||
+        location.pathname !== "/get-in-touch" &&
           location.pathname !== "/subscribe" ?
           <Footer /> :
           null
