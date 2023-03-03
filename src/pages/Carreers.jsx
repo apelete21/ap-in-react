@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { icons } from '../service/icons'
 import JobBanner from "../assets/media/images/banners/jobbanner.png"
 import { MenuButtonDark } from '../components/MenuButton'
 import MenuNav from '../components/MenuNav'
 import { Link } from 'react-router-dom'
+import jobdata from "../service/jobdata"
+import { ClientAppContext } from '../Contexts/ClientAppContext'
 
 export default function Carreers() {
+
+    const { SelectingJob } = useContext(ClientAppContext)
+
     return (
         <div>
             <header>
@@ -47,166 +52,43 @@ export default function Carreers() {
                         </ul>
                     </div>
                     <div className="jobs_detail_section">
-                        <div className="job__detail">
-                            <h1 className="job_detail__title">
-                                Office manager
-                            </h1>
-                            <div className="job_detail__description">
-                                <p>In order to better manage the company, the partners are looking for a new profile. The profile sought is that of an office manager...</p>
-                            </div>
-                            <div className="job_time__location">
-                                <div className="job_frequence">
-                                    <div className="frequence_icon">
-                                        <img src={icons.bnTime} alt="" />
+                        {jobdata?.map((element, i) => {
+                            return (
+                                <div className="job__detail" key={i}>
+                                    <h1 className="job_detail__title">
+                                        {element.title}
+                                    </h1>
+                                    <div className="job_detail__description">
+                                        <p>In order to better manage the company, the partners are looking for a new profile. The profile sought is that of an {element.title}...</p>
                                     </div>
-                                    <div className="frequence">
-                                        Full Time
-                                    </div>
-                                </div>
-                                <div className="job_location">
-                                    <div className="location_icon">
-                                        <img src={icons.glocation} alt="" />
-                                    </div>
-                                    <div className="location">
-                                        Lomé, TOGO
-                                    </div>
-                                </div>
-                                <Link to={"/jobs/details"} className="more_details_link">
-                                    <div className="more_details_view">
-                                        View
-                                        <img src={icons.arOblik} alt="" />
-                                    </div>
-                                </Link>
-                            </div>
-                        </div>
-                        {/* <div className="job__detail">
-                            <h1 className="job_detail__title">
-                                Graphic Designer
-                            </h1>
-                            <div className="job_detail__description">
-                                <p>In order to better manage the company, the partners are looking for a new profile. The profile sought is that of an office manager...</p>
-                            </div>
-                            <div className="job_time__location">
-                                <div className="job_frequence">
-                                    <div className="frequence_icon">
-                                        <img src={icons.bnTime} alt="" />
-                                    </div>
-                                    <div className="frequence">
-                                        Full Time
+                                    <div className="job_time__location">
+                                        <div className="job_frequence">
+                                            <div className="frequence_icon">
+                                                <img src={icons.bnTime} alt="" />
+                                            </div>
+                                            <div className="frequence">
+                                                {element.time}
+                                            </div>
+                                        </div>
+                                        <div className="job_location">
+                                            <div className="location_icon">
+                                                <img src={icons.glocation} alt="" />
+                                            </div>
+                                            <div className="location">
+                                                {element.workPlace}
+                                            </div>
+                                        </div>
+                                        <Link to={"/jobs/details"} className="more_details_link" onClick={() => SelectingJob(element)}>
+                                            <div className="more_details_view">
+                                                View
+                                                <img src={icons.arOblik} alt="" />
+                                            </div>
+                                        </Link>
                                     </div>
                                 </div>
-                                <div className="job_location">
-                                    <div className="location_icon">
-                                        <img src={icons.glocation} alt="" />
-                                    </div>
-                                    <div className="location">
-                                        Lomé, TOGO
-                                    </div>
-                                </div>
-                                <div className="more_details_link">
-                                    <div className="more_details_view">
-                                        View
-                                        <img src={icons.arOblik} alt="" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="job__detail">
-                            <h1 className="job_detail__title">
-                                Digital Analyst
-                            </h1>
-                            <div className="job_detail__description">
-                                <p>In order to better manage the company, the partners are looking for a new profile. The profile sought is that of an office manager...</p>
-                            </div>
-                            <div className="job_time__location">
-                                <div className="job_frequence">
-                                    <div className="frequence_icon">
-                                        <img src={icons.bnTime} alt="" />
-                                    </div>
-                                    <div className="frequence">
-                                        Full Time
-                                    </div>
-                                </div>
-                                <div className="job_location">
-                                    <div className="location_icon">
-                                        <img src={icons.glocation} alt="" />
-                                    </div>
-                                    <div className="location">
-                                        Lomé, TOGO
-                                    </div>
-                                </div>
-                                <div className="more_details_link">
-                                    <div className="more_details_view">
-                                        View
-                                        <img src={icons.arOblik} alt="" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="job__detail">
-                            <h1 className="job_detail__title">
-                                Back-end <br /> Developper PHP
-                            </h1>
-                            <div className="job_detail__description">
-                                <p>In order to better manage the company, the partners are looking for a new profile. The profile sought is that of an office manager...</p>
-                            </div>
-                            <div className="job_time__location">
-                                <div className="job_frequence">
-                                    <div className="frequence_icon">
-                                        <img src={icons.bnTime} alt="" />
-                                    </div>
-                                    <div className="frequence">
-                                        Full Time
-                                    </div>
-                                </div>
-                                <div className="job_location">
-                                    <div className="location_icon">
-                                        <img src={icons.glocation} alt="" />
-                                    </div>
-                                    <div className="location">
-                                        Lomé, TOGO
-                                    </div>
-                                </div>
-                                <div className="more_details_link">
-                                    <div className="more_details_view">
-                                        View
-                                        <img src={icons.arOblik} alt="" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="job__detail">
-                            <h1 className="job_detail__title">
-                                User Interfce <br /> Designer
-                            </h1>
-                            <div className="job_detail__description">
-                                <p>In order to better manage the company, the partners are looking for a new profile. The profile sought is that of an office manager...</p>
-                            </div>
-                            <div className="job_time__location">
-                                <div className="job_frequence">
-                                    <div className="frequence_icon">
-                                        <img src={icons.bnTime} alt="" />
-                                    </div>
-                                    <div className="frequence">
-                                        Full Time
-                                    </div>
-                                </div>
-                                <div className="job_location">
-                                    <div className="location_icon">
-                                        <img src={icons.glocation} alt="" />
-                                    </div>
-                                    <div className="location">
-                                        Lomé, TOGO
-                                    </div>
-                                </div>
-                                <div className="more_details_link">
-                                    <div className="more_details_view">
-                                        View
-                                        <img src={icons.arOblik} alt="" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div> */}
+                            )
+                        })
+                        }
                     </div>
                 </div>
 

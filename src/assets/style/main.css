@@ -13,6 +13,11 @@
 
 }
 
+#root {
+	width: 100%;
+	height: 100vh;
+}
+
 *,
 ::after,
 ::before {
@@ -172,7 +177,7 @@ h4 {
 
 .h4 {
 	font-size: 2.2rem;
-	font-weight:600
+	font-weight: 600
 }
 
 h5,
@@ -968,9 +973,9 @@ ABOUT US HERO SECTION
 	color: #686868;
 }
 
-.bottom__contact .mail,
-.bottom__contact .office,
-.bottom__contact .phone {
+.bottom__contact .mail a,
+.bottom__contact .office a,
+.bottom__contact .phone a {
 	color: var(--ful-white);
 	font-size: 18px;
 	display: block;
@@ -995,18 +1000,16 @@ ABOUT US HERO SECTION
 GET IN TOUCH SECTION
 ==============================*/
 .contact {
-	/* background-image: url(../media/images/Contact.png);*/
 	background-size: cover;
+	height: 100vh;
 }
 
 
 .contact--info {
 	flex: 0 1 50%;
 	display: flex;
-	margin-bottom: 2vw;
 	align-items: flex-end;
 	padding: 0 10vw;
-	height: 75vh;
 	background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../media/images/backgrounds/contact-bg.png);
 }
 
@@ -1051,7 +1054,11 @@ GET IN TOUCH SECTION
 	line-height: 1.4;
 }
 
-.contact--content .contact--bg {}
+.contact--content{
+	display: grid;
+	grid-template-rows: repeat(2, 50vh);
+	height: 100%;
+}
 
 .contact--bg .contact--details .social span,
 .contact--bg .contact--details .phone span,
@@ -2292,7 +2299,7 @@ GET IN TOUCH SECTION
 	flex-direction: row;
 	justify-content: space-between;
 	padding-right: 4.2rem;
-	padding-bottom: 10rem
+	padding-block: 10rem;
 }
 
 .list-text_section {
@@ -2451,12 +2458,12 @@ GET IN TOUCH SECTION
 }
 
 .square {
-	display: inline-block;
+	/* display: inline-block; */
 	width: 6px;
 	height: 6px;
 	background-color: #3c3c3c;
 	margin-right: 1.5vw;
-	border-radius: 50%;
+	border-radius: 100%;
 }
 
 
@@ -2603,10 +2610,11 @@ GET IN TOUCH SECTION
 	border-right: 2px solid #7c7c7c;
 }
 
-.icon-text{
+.icon-text {
 	font-size: 18px;
 	color: var(--body-color);
 }
+
 .author_details,
 .date_details {
 	display: flex;
@@ -2615,14 +2623,16 @@ GET IN TOUCH SECTION
 }
 
 .author_title,
-.date_title, .date_title {
+.date_title,
+.date_title {
 	font-weight: bold;
 	font-size: 18px;
 }
 
-.author_name, .date_name {
+.author_name,
+.date_name {
 	font-size: 18px;
-    margin-left: 10px;
+	margin-left: 10px;
 }
 
 .read_more a {
@@ -2700,7 +2710,7 @@ GET IN TOUCH SECTION
 .text-block--title {
 	font-weight: bold;
 	margin-bottom: 4vh;
-    margin-top: 8vh;
+	margin-top: 8vh;
 }
 
 .block--paragraph {
@@ -2729,7 +2739,7 @@ GET IN TOUCH SECTION
 
 .illustration-image {
 	padding: 1rem .2rem;
-    flex: 0 1 50%;
+	flex: 0 1 50%;
 
 }
 
@@ -2770,14 +2780,15 @@ GET IN TOUCH SECTION
 	background-size: cover;
 }
 
-.others_news_author_name .by{
+.others_news_author_name .by {
 	font-size: 16px;
 }
 
-.others_news_author_name .auth_name{
+.others_news_author_name .auth_name {
 	font-size: 18px;
 	font-weight: 600;
 }
+
 .other_news_details {
 	gap: 8rem;
 	width: 100%;
@@ -2812,16 +2823,17 @@ GET IN TOUCH SECTION
 
 .others_news_author_picture img {
 	width: 100%;
-    height: 100%;
+	height: 100%;
 }
 
-.others_news_details__title{
+.others_news_details__title {
 	max-width: 80%;
 }
 
-.story-main-title .section--hero__title{
+.story-main-title .section--hero__title {
 	max-width: 90%;
 }
+
 .others_news_author_name {
 	height: 80%;
 }
@@ -2901,7 +2913,7 @@ GET IN TOUCH SECTION
 	padding-top: 5px;
 }
 
-.full-with_form .form--input__number{
+.full-with_form .form--input__number {
 	margin-right: 14px;
 }
 
@@ -3099,7 +3111,7 @@ GET IN TOUCH SECTION
 }
 
 .newsletter_bottom_image {
-	background: linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../media/images/banners/jobbanner.png');
+	background: var(--bgStyle);
 	width: 100%;
 	height: 100%;
 	background-position: top 70vh;
@@ -3313,9 +3325,11 @@ GET IN TOUCH SECTION
 
 @media screen and (max-width: 767px) {
 
-	h2, .h2 {
+	h2,
+	.h2 {
 		font-size: 2.2rem;
 	}
+
 	.nav--toggler-container {
 		height: auto;
 		top: 25px;
@@ -3390,7 +3404,7 @@ GET IN TOUCH SECTION
 	}
 
 	.main-navigation {
-		height: 60vh;
+		height: unset;
 	}
 
 	.offset-canva {
@@ -3406,9 +3420,10 @@ GET IN TOUCH SECTION
 	}
 
 	.section--hero__title {
-		font-size: 12vw;
-		margin-bottom: 3rem;
-		overflow: hidden;
+		font-weight: 800;
+		color: var(--black-bold);
+		font-size: 11vw;
+		padding: 10rem 0 2rem;
 	}
 
 	.main-title {
@@ -3607,13 +3622,13 @@ GET IN TOUCH SECTION
 	}
 
 	.fact--content .fact--element {
-		width: 50%;
-		padding-right: 7vw
+		width: 100%;
+		padding-right: 0vw;
 	}
 
 	.facts .fact--content {
 		padding: 10vw 8vw;
-		flex-direction: row;
+		flex-direction: column;
 	}
 
 	.fact--content .fact--element p {
@@ -3675,6 +3690,10 @@ GET IN TOUCH SECTION
 		line-height: 1.2;
 	}
 
+	.section--wrapper .features--box .features--list {
+		margin-left: 0%;
+	}
+
 	.features--list .feature--item .text--icon {
 		margin-bottom: 1rem;
 	}
@@ -3715,6 +3734,10 @@ GET IN TOUCH SECTION
 		color: var(--ful-white);
 		font-size: 4.2vw;
 		line-height: 1.5;
+	}
+
+	.home--page__features {
+		margin-left: 0rem !important;
 	}
 
 	.get--start__section .section-wrapper {
@@ -3778,6 +3801,10 @@ GET IN TOUCH SECTION
 
 	.about--us__intro {
 		padding: 6rem 5vw 2rem 0;
+	}
+
+	.other-about-section>div {
+		width: unset;
 	}
 
 	.about--intro .content {
@@ -3861,8 +3888,8 @@ GET IN TOUCH SECTION
 	}
 
 	.get-quote__hero {
-		height: 45vh;
-		padding-right: 2rem;
+		height: unset;
+		padding-right: 0rem;
 	}
 
 	.get--quote__header .section--hero__title {
@@ -3926,7 +3953,7 @@ GET IN TOUCH SECTION
 	.bottom__contact .social {
 		align-self: flex-start;
 	}
-	
+
 	.bottom__contact .social .about--hero__social {
 		display: flex;
 		flex-wrap: wrap;
@@ -4226,6 +4253,7 @@ GET IN TOUCH SECTION
 
 	.services--details .services-list {
 		flex: 0 1 100%;
+		padding-left: 0;
 	}
 
 	.services--details .description--title h3 {
@@ -4237,6 +4265,11 @@ GET IN TOUCH SECTION
 		font-size: 4.3vw;
 		color: var(--contrast);
 	}
+
+	.service-listing {
+    grid-template-columns: repeat(1, 100%);
+    row-gap: 4rem;
+}
 
 	.service-listing__bottom {
 		margin-bottom: 5rem;
@@ -4290,10 +4323,11 @@ GET IN TOUCH SECTION
 	}
 
 
-	.full-height{
+	.full-height {
 		height: auto;
 	}
-	.job_detail__banner{
+
+	.job_detail__banner {
 		flex-direction: column;
 		padding-bottom: 5rem;
 		padding-top: 1rem;
@@ -4308,7 +4342,7 @@ GET IN TOUCH SECTION
 	}
 
 	.job--intro {
-		padding: 2vw 6vw 6vw 0;
+		padding: 30vw 6vw 6vw 0;
 	}
 
 	.jobs_list__container {
@@ -4338,17 +4372,23 @@ GET IN TOUCH SECTION
 		justify-self: end;
 	}
 
+	.other-about-section {
+		/* justify-content: space-between; */
+		flex-direction: column;
+	}
+
 	/* job-list */
 
-	.job_level_block, .job_time_block{
+	.job_level_block,
+	.job_time_block {
 		margin-bottom: 2rem;
 	}
 
-	.application-intro{
+	.application-intro {
 		width: auto;
 	}
 
-	.application-intro{
+	.application-intro {
 		margin: 10vh auto 15vh;
 		padding: 0 3rem;
 	}
@@ -4357,16 +4397,18 @@ GET IN TOUCH SECTION
 		padding-top: 9px;
 		margin-right: 10px;
 	}
-	.drag-file-area{
+
+	.drag-file-area {
 		padding: 30px 32px;
 		width: auto;
 		padding: initial;
 	}
+
 	.upload-files-container {
-		font-size:18px ;
+		font-size: 18px;
 	}
 
-	.full-with_form{
+	.full-with_form {
 		display: block;
 	}
 
@@ -4378,19 +4420,19 @@ GET IN TOUCH SECTION
 		align-items: flex-start;
 	}
 
-	.task_ .square{
+	.task_ .square {
 		margin-top: 12px;
 		margin-right: 2.5vw;
-		width: 10px;
-    height: 7px;
+		width: 7px;
+		height: 7px;
 	}
-	
-	.full-with_form .form--input__number{
+
+	.full-with_form .form--input__number {
 		margin-right: 5px;
 	}
 
-	.stories_item{
-		flex: 0 1 100% ;
+	.stories_item {
+		flex: 0 1 100%;
 	}
 
 	.link_list_item {
@@ -4402,11 +4444,11 @@ GET IN TOUCH SECTION
 	}
 
 	.stories_item {
-padding: 3vw;
-margin-bottom: 1.3rem;
+		padding: 3vw;
+		margin-bottom: 1.3rem;
 	}
 
-	.news_details{
+	.news_details {
 		flex-direction: column;
 	}
 
@@ -4428,13 +4470,13 @@ margin-bottom: 1.3rem;
 		margin-block: 5vh;
 	}
 
-	.news-share--socials{
+	.news-share--socials {
 		display: flex;
-		flex-direction:column ;
+		flex-direction: column;
 
 	}
 
-	.news-share--socials a{
+	.news-share--socials a {
 		margin-bottom: 12px;
 	}
 
@@ -4445,15 +4487,16 @@ margin-bottom: 1.3rem;
 	.img-info {
 		width: 100%;
 		margin: 0 auto;
-		padding-left: 0; 
+		padding-left: 0;
 		font-size: 10px;
 	}
+
 	.share-links {
 		width: 100%;
 		margin: 4vh auto;
 	}
 
-	.share--icons-link svg{
+	.share--icons-link svg {
 		width: 40px;
 		display: block;
 	}
@@ -4461,31 +4504,32 @@ margin-bottom: 1.3rem;
 	.news-share--title {
 		margin-bottom: 1rem;
 	}
-	
+
 	.others-news {
 		flex-direction: column;
 		width: 100%;
 		margin-block: 3rem;
 	}
-	
+
 	.others-news-item {
 		width: 100%;
 	}
-	
+
 	.others_news_author_picture img {
 		width: 35px;
 		height: 100%;
 	}
-	
+
 	.other_news_link {
 		font-size: 12px;
 	}
-	
-	.other_news_link svg{
+
+	.other_news_link svg {
 		width: 18px;
 	}
-	
-	.others_news_author_name .auth_name, .others_news_author_name .by {
+
+	.others_news_author_name .auth_name,
+	.others_news_author_name .by {
 		font-size: 13px;
 	}
 
@@ -4495,7 +4539,9 @@ margin-bottom: 1.3rem;
 
 }
 
-.application--form::placeholder, .application--form::-moz-placeholder, .application--form::-webkit-input-placeholder {
+.application--form::placeholder,
+.application--form::-moz-placeholder,
+.application--form::-webkit-input-placeholder {
 	color: var(--contrast);
 }
 

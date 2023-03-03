@@ -9,7 +9,7 @@ export default function GetInTouch() {
             <section className="contact--wrapper">
                 <header>
 
-                    <MenuNav logoImage={icons.lgDark} linkView={true} />
+                    <MenuNav logoImage={icons.lgLight} linkView={true} />
 
                     <MenuButtonLight />
 

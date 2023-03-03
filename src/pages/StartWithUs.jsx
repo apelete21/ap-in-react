@@ -40,7 +40,7 @@ export default function StartWithUs() {
                                 <label for="">What are you interest in</label>
                                 <div class="select-wrapper">
                                     <select name="service" id="format">
-                                        <option selected disabled>Choose*</option>
+                                        <option selectes disabled>Choose*</option>
                                         <option value="Process improvment">Process improvement</option>
                                         <option value="SEO">SEO</option>
                                         <option value="Hosting solution">Hosting solution</option>
@@ -123,7 +123,7 @@ export default function StartWithUs() {
                         </div>
 
                         <div class="submit--btn__box">
-                            <button class="btn light-btn" type="submit" name="form_submission">REQUEST A QUOTE</button>
+                            <button class="btn light-btn" name="form_submission">REQUEST A QUOTE</button>
                         </div>
 
                     </form>

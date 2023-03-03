@@ -1,9 +1,11 @@
-import React, { createContext } from 'react'
+import React, { createContext, useState } from 'react'
 import Loader from '../service/loader';
 
 export const ClientAppContext = createContext()
 
 export const ClientAppContextProvider = ({ children }) => {
+
+    let [jobSelectedId, setJobSelectedId] = useState("default")
 
     function openNav() {
         Loader()
@@ -19,11 +21,17 @@ export const ClientAppContextProvider = ({ children }) => {
         }, 400);
     }
 
+    const SelectingJob = (id) => {
+        setJobSelectedId(id)
+    }
+
     return (
         <ClientAppContext.Provider
             value={{
                 openNav,
-                closeNav
+                closeNav,
+                jobSelectedId,
+                SelectingJob
             }}
         >
             {children}

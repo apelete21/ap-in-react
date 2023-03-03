@@ -2,17 +2,21 @@ import React from 'react'
 import { MenuButtonLight } from '../components/MenuButton'
 import MenuNav from '../components/MenuNav'
 import { icons } from '../service/icons'
+import { Link } from 'react-router-dom'
+import JobBanner from "../assets/media/images/banners/jobbanner.png"
 
 export default function Newsletter() {
 
     const backToPrevious = (e) => {
         e.preventDefault()
-        history.back()
+        window.history.back()
     }
 
     return (
-        <div class='newsletter_bottom_image vh-100'>
-            <section class="contact--wrapper">
+        <div className='newsletter_bottom_image vh-100' style={{
+            "--bgStyle": `linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${JobBanner})`
+        }}>
+            <section className="contact--wrapper">
                 <header>
 
                     <MenuNav logoImage={icons.lgLight} linkView={true} />
@@ -21,26 +25,26 @@ export default function Newsletter() {
                     
                 </header>
 
-                <div class="newsletter_wrapper bg-dark">
+                <div className="newsletter_wrapper bg-dark">
 
-                    <div class="offset-canva">
-                        <div class="newsletter_back-btn_container">
-                            <a href={"back to previous"} onClick={backToPrevious} class="newsletter-back_btn d-flex">
+                    <div className="offset-canva">
+                        <div className="newsletter_back-btn_container">
+                            <Link href={"back to previous"} onClick={backToPrevious} className="newsletter-back_btn d-flex">
                                 <img src={icons.arGray} alt="" />
                                 <span>Go back</span>
-                            </a>
+                            </Link>
                         </div>
-                        <div class="newsletter_page_title">
+                        <div className="newsletter_page_title">
                             <h1>
                                 Stay tuned of our latest news and actualities
                             </h1>
                         </div>
-                        <div class="newsletter_form__container">
-                            <form action="" class="newsletter_form d-flex">
-                                <div class="newsletter-input_container">
-                                    <input type="email" class="newsletter_form_input" placeholder="Enter your email address" required />
+                        <div className="newsletter_form__container">
+                            <form action="" className="newsletter_form d-flex">
+                                <div className="newsletter-input_container">
+                                    <input type="email" className="newsletter_form_input" placeholder="Enter your email address" required />
                                 </div>
-                                <div class="newsletter_submit_container">
+                                <div className="newsletter_submit_container">
                                     <button type="submit">
                                         <img src={icons.alGray} alt="" />
                                     </button>
