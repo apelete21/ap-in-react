@@ -9,7 +9,7 @@ export default function NavLink({ href, children, className, target }) {
 
     return (
         <>
-            <Link className={className} to={href} onClick={() => GotoLink()} target={target} rel="noopener noreferrer">
+            <Link className={className} to={href} onClick={() => GotoLink()} target={target} rel="noreferrer">
                 {children}
             </Link>
         </>

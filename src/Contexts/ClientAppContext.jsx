@@ -1,4 +1,5 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom';
 import Loader from '../service/loader';
 
 export const ClientAppContext = createContext()
@@ -6,6 +7,7 @@ export const ClientAppContext = createContext()
 export const ClientAppContextProvider = ({ children }) => {
 
     let [jobSelectedId, setJobSelectedId] = useState("default")
+    const { pathname } = useLocation()
 
     function openNav() {
         Loader()
@@ -24,6 +26,11 @@ export const ClientAppContextProvider = ({ children }) => {
     const SelectingJob = (id) => {
         setJobSelectedId(id)
     }
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [pathname])
+
 
     return (
         <ClientAppContext.Provider
