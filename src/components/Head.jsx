@@ -33,7 +33,6 @@ export default function Head() {
 
       <title>
         {
-          pathname === '/' ? "AP’IN | Appeal of innovation" :
           pathname === '/get-in-touch' ? "Get in touch with us | AP’IN" :
           pathname === '/start-with-us' ? "Start with us | AP’IN" :
           pathname === '/what-we-do' ? "What we do here | AP’IN" :
