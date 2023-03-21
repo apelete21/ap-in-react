@@ -1,23 +1,22 @@
-import { Route, Routes, useLocation } from 'react-router-dom'
-import Home from '../pages/Home'
-import Head from '../components/Head'
-import Menu from '../components/Menu'
-import Footer from '../components/Footer'
-import GetInTouch from '../pages/GetInTouch'
-import StartWithUs from '../pages/StartWithUs'
-import WhatWeDo from '../pages/WhatWeDo'
-import WhoWeAre from '../pages/WhoWeAre'
-import Stories from '../pages/Stories'
-import JobDetails from '../pages/JobDetails'
-import Newsletter from '../pages/Newsletter'
-import News from '../pages/News'
-import ApplyToJob from '../pages/ApplyToJob'
-import Carreers from '../pages/Carreers'
-import { ClientAppContextProvider } from '../Contexts/ClientAppContext'
+import { Route, Routes, useLocation } from "react-router-dom";
+import Home from "../pages/Home";
+import Head from "../components/Head";
+import Menu from "../components/Menu";
+import Footer from "../components/Footer";
+import GetInTouch from "../pages/GetInTouch";
+import StartWithUs from "../pages/StartWithUs";
+import WhatWeDo from "../pages/WhatWeDo";
+import WhoWeAre from "../pages/WhoWeAre";
+import Stories from "../pages/Stories";
+import JobDetails from "../pages/JobDetails";
+import Newsletter from "../pages/Newsletter";
+import News from "../pages/News";
+import ApplyToJob from "../pages/ApplyToJob";
+import Carreers from "../pages/Carreers";
+import { ClientAppContextProvider } from "../Contexts/ClientAppContext";
 
-export default function ClientRoutes() {
-
-  const location = useLocation()
+export default function AppRoutes() {
+  const location = useLocation();
 
   return (
     <ClientAppContextProvider>
@@ -38,12 +37,10 @@ export default function ClientRoutes() {
         <Route path="/subscribe" element={<Newsletter />} />
         <Route path="/news" element={<News />} />
       </Routes>
-      {
-        location.pathname !== "/get-in-touch" &&
-          location.pathname !== "/subscribe" ?
-          <Footer /> :
-          null
-      }
+      {location.pathname !== "/get-in-touch" ||
+      location.pathname !== "/subscribe" ? (
+        <Footer />
+      ) : null}
     </ClientAppContextProvider>
-  )
+  );
 }

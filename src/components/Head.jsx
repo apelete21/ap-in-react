@@ -1,8 +1,12 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
+import { useLocation } from 'react-router-dom'
 import { icons } from '../service/icons'
 
 export default function Head() {
+
+  const {pathname} = useLocation()
+
   return (
     <Helmet>
       <meta charset="UTF-8" />
@@ -27,7 +31,20 @@ export default function Head() {
         rel="stylesheet" />
       <link rel="canonical" href="https://appealofinnovation.com" />
 
-      <title>AP’IN | Appeal of innovation</title>
+      <title>
+        {
+          pathname === '/' ? "AP’IN | Appeal of innovation" :
+          pathname === '/get-in-touch' ? "Get in touch with us | AP’IN" :
+          pathname === '/start-with-us' ? "Start with us | AP’IN" :
+          pathname === '/what-we-do' ? "What we do here | AP’IN" :
+          pathname === '/who-we-are' ? "Who we are | AP’IN" :
+          pathname === '/stories' ? "Ours stories | AP’IN" :
+          pathname === '/jobs' ? "Join the Team | AP’IN" :
+          pathname === '/jobs/apply' ? "Apply to this job | AP’IN" :
+          pathname === '/subscribe' ? "Subscribe to our newsletter | AP’IN" :
+          pathname === '/news' ? "Our news | AP’IN" : "AP’IN | Appeal of innovation"
+        }
+      </title>
     </Helmet>
   )
 }
