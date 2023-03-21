@@ -982,6 +982,10 @@ ABOUT US HERO SECTION
 
 }
 
+.color-body {
+	color: var(--body-color) !important;
+}
+
 .bottom__contact .phone {
 	align-self: flex-end;
 }
