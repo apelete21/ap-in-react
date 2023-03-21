@@ -37,7 +37,7 @@ export default function AppRoutes() {
         <Route path="/subscribe" element={<Newsletter />} />
         <Route path="/news" element={<News />} />
       </Routes>
-      {location.pathname !== "/get-in-touch" ||
+      {location.pathname !== "/get-in-touch" &&
       location.pathname !== "/subscribe" ? (
         <Footer />
       ) : null}
