@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import "./modal.css";
 
-const Confirm = () => {
+const Confirm = ({ handleExit }) => {
   //   useEffect(() => {
   //     setTimeout(() => {
   //       window.history.back();
@@ -33,10 +33,15 @@ const Confirm = () => {
               <h4 className="modal-title w-100">Awesome!</h4>
             </div>
             <div className="modal-body">
-              <p className="text-center">Your request has been sent successfully</p>
+              <p className="text-center">
+                Your request has been sent successfully
+              </p>
             </div>
             <div className="modal-footer">
-              <button className="btn btn-success btn-block" dataDismiss="modal">
+              <button
+                className="btn btn-success btn-block"
+                onClick={handleExit}
+              >
                 OK
               </button>
             </div>

@@ -20,6 +20,7 @@ import GrayArrowRight from "../assets/media/images/icons/gray-arrow-right.svg"
 import FacebookDarkThin from "../assets/media/images/icons/facebook-thin.svg"
 import WhatsappDarkThin from "../assets/media/images/icons/whatsapp-thin.svg"
 import TelegramDarkThin from "../assets/media/images/icons/telegram-thin.svg"
+import loader from "../assets/media/images/loader/loader.gif"
 
 // Team imgs importation
 import feikandine from "../assets/media/images/team/feikandine.jpg"
@@ -55,7 +56,8 @@ export const icons = {
     arOblik: ArrowOblic,
     arGray: GrayArrowLeft,
     alGray: GrayArrowRight,
-    prIcon: ProfileIcon
+    prIcon: ProfileIcon,
+    loader
 }
 
 export const teams = {
