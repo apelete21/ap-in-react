@@ -1,11 +1,64 @@
-import React from "react";
+import React, { useRef, useState } from "react";
+import QuoteRequest from "../api/requests/quote";
+import Confirm from "../components/confirmModal/Confirm";
 import { MenuButtonDark } from "../components/MenuButton";
 import MenuNav from "../components/MenuNav";
 import { icons } from "../service/icons";
 
 export default function StartWithUs() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState();
+  const [success, setSuccess] = useState(false);
+
+  const fullname = useRef("");
+  const email = useRef("");
+  const location = useRef("");
+  const company_name = useRef("");
+  const phone_number = useRef("");
+  const service = useRef("");
+  const description = useRef("");
+  const discover = useRef("");
+  const agreement = useRef("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const data = {
+      fullname: fullname.current.value,
+      location: location.current.value,
+      email: email.current.value,
+      company_name: company_name.current.value,
+      phone_number: phone_number.current.value,
+      description: description.current.value,
+      service: service.current.value,
+      discover: discover.current.value,
+    };
+
+    console.log(data);
+
+    setIsLoading(true);
+    try {
+      const response = await QuoteRequest(data);
+      if (response.ok) {
+        setIsLoading(false);
+        setSuccess(true);
+      } else {
+        window.alert(response?.message ?? response?.error);
+      }
+      setIsLoading(false);
+    } catch (error) {
+      setError(error);
+    }
+    setIsLoading(false);
+  };
+
+  function exitModal() {
+    setSuccess(false);
+  }
+
   return (
     <>
+      {success && <Confirm handleExit={exitModal} />}
       <header className="get--quote__header">
         <MenuNav logoImage={icons.lgDark} linkView={"darklink"} />
 
@@ -38,7 +91,7 @@ export default function StartWithUs() {
               <div className="input-group">
                 <label htmlFor="">What are you interest in</label>
                 <div className="select-wrapper">
-                  <select name="service" id="format">
+                  <select name="service" id="format" ref={service}>
                     <option defaultValue>Choose*</option>
                     <option value="Process improvment">
                       Process improvement
@@ -60,7 +113,7 @@ export default function StartWithUs() {
               <div className="input-group">
                 <label htmlFor="">How did you find out about us?</label>
                 <div className="select-wrapper">
-                  <select name="service" id="format">
+                  <select name="service" id="format" ref={discover}>
                     <option defaultValue>Choose*</option>
                     <option value="Process improvment">
                       Process improvement
@@ -81,7 +134,13 @@ export default function StartWithUs() {
               <span className="form--input__number">03</span>
               <div className="input-group">
                 <label htmlFor="">What is your name</label>
-                <input type="text" name="name" id="" placeholder="John Do" />
+                <input
+                  type="text"
+                  name="name"
+                  id=""
+                  placeholder="John Do"
+                  ref={fullname}
+                />
               </div>
             </div>
 
@@ -94,6 +153,7 @@ export default function StartWithUs() {
                   name="email"
                   id=""
                   placeholder="john@doe.com"
+                  ref={email}
                 />
               </div>
             </div>
@@ -102,7 +162,27 @@ export default function StartWithUs() {
               <span className="form--input__number">05</span>
               <div className="input-group">
                 <label htmlFor="">Where are you locate in?</label>
-                <input type="text" name="city" id="" placeholder="Your city" />
+                <input
+                  type="text"
+                  name="city"
+                  id=""
+                  placeholder="Your city"
+                  ref={location}
+                />
+              </div>
+            </div>
+
+            <div className="form-input">
+              <span className="form--input__number">05</span>
+              <div className="input-group">
+                <label htmlFor="">Give us your number!</label>
+                <input
+                  type="number"
+                  name="city"
+                  id=""
+                  placeholder="+00228 00 00 00 00"
+                  ref={phone_number}
+                />
               </div>
             </div>
 
@@ -115,6 +195,7 @@ export default function StartWithUs() {
                   name="company_name"
                   id=""
                   placeholder="John Do Corp"
+                  ref={company_name}
                 />
               </div>
             </div>
@@ -123,7 +204,11 @@ export default function StartWithUs() {
               <span className="form--input__number">07</span>
               <div className="input-group">
                 <label htmlFor="">Tell us about your idea or company</label>
-                <textarea name="message" defaultValue={"..."}></textarea>
+                <textarea
+                  name="message"
+                  defaultValue={"..."}
+                  ref={description}
+                />
               </div>
             </div>
 
@@ -135,14 +220,18 @@ export default function StartWithUs() {
                 value="true"
               />
               <label htmlFor="">
-                {" "}
-                I agree to receive occasional newsletters containing news and
-                advice about digital tools and tech.
+                {
+                  "I agree to receive occasional newsletters containing news and advice about digital tools and tech. "
+                }
               </label>
             </div>
 
             <div className="submit--btn__box">
-              <button className="btn light-btn" name="form_submission">
+              <button
+                className="btn light-btn"
+                name="form_submission"
+                onClick={handleSubmit}
+              >
                 REQUEST A QUOTE
               </button>
             </div>
