@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import newsRequest from "../api/requests/newsPost";
 import QuoteRequest from "../api/requests/quote";
 import Confirm from "../components/confirmModal/Confirm";
 import { MenuButtonDark } from "../components/MenuButton";
@@ -9,6 +10,7 @@ export default function StartWithUs() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
   const [success, setSuccess] = useState(false);
+  const [agreeValue, setAgreeValue] = useState(false)
 
   const fullname = useRef("");
   const email = useRef("");
@@ -18,9 +20,9 @@ export default function StartWithUs() {
   const service = useRef("");
   const description = useRef("");
   const discover = useRef("");
-  const agreement = useRef("");
 
   const handleSubmit = async (e) => {
+
     e.preventDefault();
 
     const data = {
@@ -39,6 +41,9 @@ export default function StartWithUs() {
     setIsLoading(true);
     try {
       const response = await QuoteRequest(data);
+      if(agreeValue) {
+        await newsRequest(email.current?.value);
+      }
       if (response.ok) {
         setIsLoading(false);
         setSuccess(true);
@@ -54,6 +59,11 @@ export default function StartWithUs() {
 
   function exitModal() {
     setSuccess(false);
+  }
+
+  const changeAgreeValue = (e) => {
+    e.preventDefault()
+    setAgreeValue(!agreeValue)
   }
 
   return (
@@ -217,7 +227,7 @@ export default function StartWithUs() {
                 className="news--consent__checkbox"
                 type="checkbox"
                 name="email_consent"
-                value="true"
+                value={changeAgreeValue}
               />
               <label htmlFor="">
                 {
