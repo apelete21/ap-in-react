@@ -6,7 +6,7 @@ export const ClientAppContext = createContext()
 
 export const ClientAppContextProvider = ({ children }) => {
 
-    let [jobSelectedId, setJobSelectedId] = useState("default")
+    let [jobSelected, setJobSelected] = useState({})
     const { pathname } = useLocation()
 
     function openNav() {
@@ -23,8 +23,8 @@ export const ClientAppContextProvider = ({ children }) => {
         }, 400);
     }
 
-    const SelectingJob = (id) => {
-        setJobSelectedId(id)
+    const SelectingJob = (element) => {
+        setJobSelected(element)
     }
 
     useEffect(() => {
@@ -37,7 +37,7 @@ export const ClientAppContextProvider = ({ children }) => {
             value={{
                 openNav,
                 closeNav,
-                jobSelectedId,
+                jobSelected,
                 SelectingJob
             }}
         >
