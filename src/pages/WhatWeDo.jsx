@@ -7,10 +7,11 @@ import TabletImg from "../assets/media/images/services/tablet.png"
 import ProductGif from "../assets/media/images/services/products.gif"
 import MenuNav from '../components/MenuNav'
 import { MenuButtonDark } from '../components/MenuButton'
+import Motion from '../components/Motion/Motion'
 
 export default function WhatWeDo() {
     return (
-        <>
+        <Motion>
             <header>
                 <MenuNav logoImage={icons.lgDark} linkView={"darklink"} />
                 <div class="fluid-wrapper services-hero">
@@ -256,6 +257,6 @@ export default function WhatWeDo() {
                     </div>
                 </div>
             </section>
-        </>
+        </Motion>
     )
 }

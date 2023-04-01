@@ -5,10 +5,11 @@ import HomeIntro from "../assets/media/images/home-intro.png"
 import FactIllustration from "../assets/media/images/home/facts-illustration.png"
 import MenuNav from '../components/MenuNav'
 import { MenuButtonDark } from '../components/MenuButton'
+import Motion from "../components/Motion/Motion"
 
 export default function Home() {
     return (
-        <>
+        <Motion>
             {/* <!--===========================
               START OF  HOME HERO SECTION
        ===========================--> */}
@@ -393,6 +394,6 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-        </>
+        </Motion>
     )
 }

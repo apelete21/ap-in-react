@@ -14,33 +14,36 @@ import News from "../pages/News";
 import ApplyToJob from "../pages/ApplyToJob";
 import Carreers from "../pages/Carreers";
 import { ClientAppContextProvider } from "../Contexts/ClientAppContext";
+import { AnimatePresence } from "framer-motion";
 
 export default function AppRoutes() {
   const location = useLocation();
 
   return (
-    <ClientAppContextProvider>
-      <>
-        <Head />
-        <Menu />
-      </>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/get-in-touch" element={<GetInTouch />} />
-        <Route path="/start-with-us" element={<StartWithUs />} />
-        <Route path="/what-we-do" element={<WhatWeDo />} />
-        <Route path="/who-we-are" element={<WhoWeAre />} />
-        <Route path="/stories" element={<Stories />} />
-        <Route path="/jobs/:title" element={<JobDetails />} />
-        <Route path="/jobs" element={<Carreers />} />
-        <Route path="/jobs/apply" element={<ApplyToJob />} />
-        <Route path="/subscribe" element={<Newsletter />} />
-        <Route path="/news" element={<News />} />
-      </Routes>
-      {location.pathname !== "/get-in-touch" &&
-      location.pathname !== "/subscribe" ? (
-        <Footer />
-      ) : null}
-    </ClientAppContextProvider>
+    <AnimatePresence mode="wait">
+      <ClientAppContextProvider>
+        <>
+          <Head />
+          <Menu />
+        </>
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<Home />} />
+          <Route path="/get-in-touch" element={<GetInTouch />} />
+          <Route path="/start-with-us" element={<StartWithUs />} />
+          <Route path="/what-we-do" element={<WhatWeDo />} />
+          <Route path="/who-we-are" element={<WhoWeAre />} />
+          <Route path="/stories" element={<Stories />} />
+          <Route path="/jobs/:title" element={<JobDetails />} />
+          <Route path="/jobs" element={<Carreers />} />
+          <Route path="/jobs/apply" element={<ApplyToJob />} />
+          <Route path="/subscribe" element={<Newsletter />} />
+          <Route path="/news" element={<News />} />
+        </Routes>
+        {location.pathname !== "/get-in-touch" &&
+        location.pathname !== "/subscribe" ? (
+          <Footer />
+        ) : null}
+      </ClientAppContextProvider>
+    </AnimatePresence>
   );
 }

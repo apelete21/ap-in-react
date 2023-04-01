@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import JobBanner from "../assets/media/images/banners/jobbanner.png";
 import newsRequest from "../api/requests/newsPost";
 import Confirm from "../components/confirmModal/Confirm";
+import Motion from "../components/Motion/Motion";
 
 export default function Newsletter() {
   const email = useRef("");
@@ -42,7 +43,7 @@ export default function Newsletter() {
   }
 
   return (
-    <>
+    <Motion>
       <div
         className="newsletter_bottom_image vh-100"
         style={{
@@ -104,6 +105,6 @@ export default function Newsletter() {
         </section>
       </div>
       {success && <Confirm handleExit={exitModal} />}
-    </>
+    </Motion>
   );
 }

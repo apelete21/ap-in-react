@@ -5,6 +5,7 @@ import Confirm from "../components/confirmModal/Confirm";
 import { MenuButtonDark } from "../components/MenuButton";
 import MenuNav from "../components/MenuNav";
 import { icons } from "../service/icons";
+import Motion from "../components/Motion/Motion";
 
 export default function StartWithUs() {
   const [isLoading, setIsLoading] = useState(false);
@@ -67,7 +68,7 @@ export default function StartWithUs() {
   }
 
   return (
-    <>
+    <Motion>
       {success && <Confirm handleExit={exitModal} />}
       <header className="get--quote__header">
         <MenuNav logoImage={icons.lgDark} linkView={"darklink"} />
@@ -303,6 +304,6 @@ export default function StartWithUs() {
           </div>
         </div>
       </div>
-    </>
+    </Motion>
   );
 }

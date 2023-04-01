@@ -5,6 +5,7 @@ import { MenuButtonDark } from "../components/MenuButton";
 import MenuNav from "../components/MenuNav";
 import JobCard from "../components/job/JobCard";
 import { getAllJobs } from "../api/requests/jobsRequests";
+import Motion from "../components/Motion/Motion";
 
 export default function Carreers() {
   const [jobs, setJobs] = useState([]);
@@ -19,11 +20,11 @@ export default function Carreers() {
         setError(response?.message);
       }
     };
-    getJobs()
+    getJobs();
   }, []);
 
   return (
-    <div>
+    <Motion>
       <header>
         <div className="fluid-wrapper main-navigation bg_white">
           <MenuNav logoImage={icons.lgDark} linkView="darklink" />
@@ -62,17 +63,12 @@ export default function Carreers() {
           </div>
           <div className="jobs_detail_section">
             {jobs?.map((element, i) => {
-              return (
-                <JobCard
-                  element={element}
-                  key={i}
-                />
-              );
+              return <JobCard element={element} key={i} />;
             })}
             {error ?? error?.message}
           </div>
         </div>
       </section>
-    </div>
+    </Motion>
   );
 }

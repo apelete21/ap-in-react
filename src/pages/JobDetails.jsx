@@ -5,11 +5,12 @@ import { MenuButtonDark } from "../components/MenuButton";
 import MenuNav from "../components/MenuNav";
 import { icons } from "../service/icons";
 import HTMLReactParser from "html-react-parser";
+import Motion from "../components/Motion/Motion";
 
 export default function JobDetails() {
   const { title } = useParams();
   const [job, setJob] = useState([]);
-  const [details, setDetails] = useState("")
+  const [details, setDetails] = useState("");
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -17,7 +18,7 @@ export default function JobDetails() {
       const response = await getOneJob(title);
       if (response.ok) {
         setJob(response?.data);
-        setDetails(response.data?.details)
+        setDetails(response.data?.details);
       } else {
         setError(response?.message);
       }
@@ -26,7 +27,7 @@ export default function JobDetails() {
   }, [title]);
 
   return (
-    <>
+    <Motion>
       <header>
         <div className="fluid-wrapper main-navigation bg_primary">
           <MenuNav logoImage={icons.lgLight} linkView="lightlink" />
@@ -90,6 +91,6 @@ export default function JobDetails() {
           </div>
         </div>
       </section>
-    </>
+    </Motion>
   );
 }
