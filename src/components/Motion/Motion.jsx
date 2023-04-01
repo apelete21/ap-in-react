@@ -12,7 +12,6 @@ const Motion = ({ className, children }) => {
       variants={{
         initialState: {
           opacity: 1,
-          // height: window.innerHeight,
           clipPath: "polygon(50% 0, 50% 0, 50% 100%, 50% 100%)",
         },
         animateState: {
