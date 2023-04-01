@@ -4,10 +4,12 @@ import { getOneJob } from "../api/requests/jobsRequests";
 import { MenuButtonDark } from "../components/MenuButton";
 import MenuNav from "../components/MenuNav";
 import { icons } from "../service/icons";
+import HTMLReactParser from "html-react-parser";
 
 export default function JobDetails() {
   const { title } = useParams();
   const [job, setJob] = useState([]);
+  const [details, setDetails] = useState("")
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -15,6 +17,7 @@ export default function JobDetails() {
       const response = await getOneJob(title);
       if (response.ok) {
         setJob(response?.data);
+        setDetails(response.data?.details)
       } else {
         setError(response?.message);
       }
@@ -61,6 +64,7 @@ export default function JobDetails() {
       <section className="php-back-intro offset-canva">
         <div className="php_job_description">
           {error ?? error?.message}
+          <> {HTMLReactParser(details)} </>
           <div className="job_tasks_section">
             <h2 className="task_title">Submission Guideline:</h2>
             <div className="tasks_list_section">
