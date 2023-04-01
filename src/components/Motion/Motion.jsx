@@ -1,7 +1,7 @@
-import React from 'react'
-import {motion} from "framer-motion"
+import React from "react";
+import { motion } from "framer-motion";
 
-const Motion = ({className, children}) => {
+const Motion = ({ className, children }) => {
   return (
     <motion.div
       className={className}
@@ -11,8 +11,9 @@ const Motion = ({className, children}) => {
       transition={{ duration: 0.75 }}
       variants={{
         initialState: {
-          opacity: 0,
-          clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+          opacity: 1,
+          // height: window.innerHeight,
+          clipPath: "polygon(50% 0, 50% 0, 50% 100%, 50% 100%)",
         },
         animateState: {
           opacity: 1,
@@ -26,6 +27,6 @@ const Motion = ({className, children}) => {
       {children}
     </motion.div>
   );
-}
+};
 
-export default Motion
+export default Motion;
