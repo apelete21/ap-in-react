@@ -11,7 +11,7 @@ const Motion = ({ className, children }) => {
       transition={{ duration: 0.75 }}
       variants={{
         initialState: {
-          opacity: 1,
+          opacity: 0,
           clipPath: "polygon(0 0, 0 0, 0 100%, 0 100%)",
         },
         animateState: {
