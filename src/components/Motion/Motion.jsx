@@ -12,14 +12,14 @@ const Motion = ({ className, children }) => {
       variants={{
         initialState: {
           opacity: 1,
-          clipPath: "polygon(0 0, 100% 0%, 100% 0, 0 0)",
+          clipPath: "polygon(0 0, 0 0, 0 100%, 0 100%)",
         },
         animateState: {
           opacity: 1,
           clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
         },
         exitState: {
-          clipPath: "polygon(0 0, 100% 0%, 100% 0, 0 0)",
+          clipPath: "polygon(0 0, 0 0, 0 100%, 0 100%)",
         },
       }}
     >
