@@ -129,13 +129,10 @@ export default function StartWithUs() {
                     <option value="Process improvment">
                       Process improvement
                     </option>
-                    <option value="SEO">SEO</option>
-                    <option value="Hosting solution">Hosting solution</option>
-                    <option value="E-commerce">E-commerce</option>
-                    <option value="Graphic design">Graphic design</option>
-                    <option value="Branding and packaging">
-                      Branding and packaging
-                    </option>
+                    <option value="Linkedin">Linkedin</option>
+                    <option value="FaceBook">FaceBook</option>
+                    <option value="Research">Research</option>
+                    <option value="Collegues">Collegues</option>
                   </select>
                 </div>
               </div>
