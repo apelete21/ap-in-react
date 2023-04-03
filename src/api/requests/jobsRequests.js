@@ -28,6 +28,5 @@ export const getOneJob = async (title) => {
   });
 
   const data = await response.json();
-  console.log(data);
   return { data, ok: response.ok };
 };
