@@ -34,7 +34,7 @@ const Confirm = ({ handleExit }) => {
             </div>
             <div className="modal-body">
               <p className="text-center">
-                Your request has been sent successfully
+                Your request has been saved successfully
               </p>
             </div>
             <div className="modal-footer">
