@@ -1,10 +1,12 @@
-import React, { forwardRef, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { MenuButtonDark } from "../components/MenuButton";
 import MenuNav from "../components/MenuNav";
 import { icons } from "../service/icons";
 import Motion from "../components/Motion/Motion";
 import Confirm from "../components/confirmModal/Confirm";
 import { jobApplication } from "../api/requests/applications";
+import { useParams } from "react-router-dom";
+import { getOneJob } from "../api/requests/jobsRequests";
 
 export default function ApplyToJob() {
   const [url, setUrl] = React.useState("");
@@ -15,6 +17,21 @@ export default function ApplyToJob() {
   const [profileerror, setProfileerror] = useState("");
   const [motivationerror, setMotivationerror] = useState("");
   const [fileerror, setFileerror] = useState("");
+
+  const { title } = useParams();
+  const [job, setJob] = useState([]);
+
+  useEffect(() => {
+    const getJob = async () => {
+      const response = await getOneJob(title);
+      if (response.ok) {
+        setJob(response?.data);
+      } else {
+        setError("Please reload the page!");
+      }
+    };
+    getJob();
+  }, [title]);
 
   const fullname = useRef("");
   const email = useRef("");
@@ -30,32 +47,32 @@ export default function ApplyToJob() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!fullname.current?.value || fullname.current?.value == "") {
+    if (!fullname.current?.value || fullname.current?.value === "") {
       return setNameerror("invalid format");
     } else {
       setNameerror("");
     }
-    if (!email.current?.value || email.current?.value == "") {
+    if (!email.current?.value || email.current?.value === "") {
       return setEmailerror("invalid format");
     } else {
       setEmailerror("");
     }
-    if (!phone_number.current?.value || phone_number.current?.value == "") {
+    if (!phone_number.current?.value || phone_number.current?.value === "") {
       return setPhoneerror("invalid format");
     } else {
       setPhoneerror("");
     }
-    if (!location.current?.value || location.current?.value == "") {
+    if (!location.current?.value || location.current?.value === "") {
       return setLocationerror("invalid format");
     } else {
       setLocationerror("");
     }
-    if (!profile.current?.value || profile.current?.value == "") {
+    if (!profile.current?.value || profile.current?.value === "") {
       return setProfileerror("invalid format");
     } else {
       setProfileerror("");
     }
-    if (!motivation.current?.value || motivation.current?.value == "") {
+    if (!motivation.current?.value || motivation.current?.value === "") {
       return setMotivationerror("invalid format");
     } else {
       setMotivationerror("");
@@ -66,16 +83,20 @@ export default function ApplyToJob() {
       setFileerror("");
     }
 
-    const formData = new FormData();
-    formData.append("fullname", fullname.current?.value);
-    formData.append("email", email.current?.value);
-    formData.append("phone_number", phone_number.current?.value);
-    formData.append("location", location.current?.value);
-    formData.append("profile", profile.current?.value);
-    formData.append("motivation", motivation.current?.value);
-    formData.append("file", hiddenFileInput.current.files[0]);
-
-    const response = await jobApplication(formData);
+    const data = {
+      fullname: fullname.current?.value,
+      email: email.current?.value,
+      phone_number: phone_number.current?.value,
+      location: location.current?.value,
+      profile: profile.current?.value,
+      motivation: motivation.current?.value,
+      jobId: job._id,
+      cv: hiddenFileInput.current?.files[0],
+    };
+    const response = await jobApplication(data);
+    if (!response?.ok) {
+      window.alert(response.data.message);
+    }
     console.log(response);
   };
 
@@ -128,21 +149,23 @@ export default function ApplyToJob() {
           <div class="full-height fluid-wrapper main-navigation job-application__bg">
             <MenuNav logoImage={icons.lgDark} linkView="lightlink" />
             <div class="offset-canva job-main-title">
-              <h1 class="section--hero__title php_job">Application Form</h1>
+              <h1 class="section--hero__title php_job">
+                Apply for : {job?.title}
+              </h1>
 
               <div class="job_detail__banner">
                 <div class="job_level_block">
                   <div class="level_title">Seniority Level</div>
-                  <div class="level_year">Entry Level</div>
+                  <div class="level_year">{job?.level}</div>
                 </div>
                 <div class="job_time_block">
                   <div class="level_title">Employment type</div>
-                  <div class="level_year">Full-time</div>
+                  <div class="level_year">{job?.time}</div>
                 </div>
 
                 <div class="job_validity_block">
                   <div class="level_title">Validity</div>
-                  <div class="level_year">Jan 22 2022</div>
+                  <div class="level_year">{job?.validity}</div>
                 </div>
               </div>
             </div>
@@ -242,6 +265,8 @@ export default function ApplyToJob() {
                         className="hidden-input-file"
                         ref={hiddenFileInput}
                         onChange={handleFile}
+                        accept="*.pdf"
+                        required
                       />
                     </div>
                     <span className="file-name-upload">-{url}-</span>

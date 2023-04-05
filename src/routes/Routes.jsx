@@ -35,7 +35,7 @@ export default function AppRoutes() {
           <Route path="/stories" element={<Stories />} />
           <Route path="/jobs/:title" element={<JobDetails />} />
           <Route path="/jobs" element={<Carreers />} />
-          <Route path="/jobs/apply" element={<ApplyToJob />} />
+          <Route path="/jobs/:title/apply" element={<ApplyToJob />} />
           <Route path="/subscribe" element={<Newsletter />} />
           <Route path="/news" element={<News />} />
         </Routes>
