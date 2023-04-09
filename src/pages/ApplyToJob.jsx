@@ -26,6 +26,7 @@ export default function ApplyToJob() {
       const response = await getOneJob(title);
       if (response.ok) {
         setJob(response?.data);
+        console.log(response);
       } else {
         setError("Please reload the page!");
       }
@@ -83,17 +84,17 @@ export default function ApplyToJob() {
       setFileerror("");
     }
 
-    const data = {
-      fullname: fullname.current?.value,
-      email: email.current?.value,
-      phone_number: phone_number.current?.value,
-      location: location.current?.value,
-      profile: profile.current?.value,
-      motivation: motivation.current?.value,
-      jobId: job._id,
-      cv: hiddenFileInput.current?.files[0],
-    };
-    const response = await jobApplication(data);
+    let bodyContent = new FormData();
+    bodyContent.append("fullname", fullname.current.value);
+    bodyContent.append("email", email.current.value);
+    bodyContent.append("phone_number", phone_number.current.value);
+    bodyContent.append("location", location.current.value);
+    bodyContent.append("profile", profile.current.value);
+    bodyContent.append("motivation", motivation.current.value);
+    bodyContent.append("jobId", job._id);
+    bodyContent.append("file", hiddenFileInput.current.files[0]);
+
+    const response = await jobApplication(bodyContent);
     if (!response?.ok) {
       window.alert(response.data.message);
     }
