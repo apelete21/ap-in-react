@@ -97,8 +97,9 @@ export default function ApplyToJob() {
     const response = await jobApplication(bodyContent);
     if (!response?.ok) {
       window.alert(response.data.message);
+    } else {
+      setSuccess(true);
     }
-    console.log(response);
   };
 
   function exitModal() {
