@@ -9,6 +9,7 @@ import Motion from "../components/Motion/Motion";
 
 export default function Carreers() {
   const [jobs, setJobs] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState();
 
   useEffect(() => {
@@ -17,11 +18,12 @@ export default function Carreers() {
       if (response.ok) {
         setJobs(response?.data);
       } else {
-        setError(response?.message);
+        setError(response?.data.message);
       }
+      setIsLoading(false);
     };
-    getJobs();
-  }, []);
+    if (isLoading) getJobs();
+  }, [jobs, isLoading]);
 
   return (
     <Motion>
@@ -53,7 +55,7 @@ export default function Carreers() {
 
         <div className="jobs_list__container">
           <div className="list-text_section">
-            <h4 className="list_jobs_title">LIST OF JOBS</h4>
+            {/* <h4 className="list_jobs_title">LIST OF JOBS</h4> */}
             {/* <ul className="legend_links">
               <li className="legend_link__active">All</li>
               <li className="legend_link">Web development</li>
@@ -61,12 +63,25 @@ export default function Carreers() {
               <li className="legend_link">Graphic Design</li>
             </ul> */}
           </div>
-          <div className="jobs_detail_section">
-            {jobs?.map((element, i) => {
-              return <JobCard element={element} key={i} />;
-            })}
-            {error ?? error?.message}
-          </div>
+          {!isLoading ? (
+            <div className="jobs_detail_section">
+              {jobs?.map((element, i) => {
+                return <JobCard element={element} key={i} />;
+              })}
+              {error ?? error?.message}
+            </div>
+          ) : (
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "100%",
+              }}
+            >
+              <h1>Loading</h1>
+            </div>
+          )}
         </div>
       </section>
     </Motion>

@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { MenuButtonLight } from "../components/MenuButton";
 import MenuNav from "../components/MenuNav";
 import { icons } from "../service/icons";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import JobBanner from "../assets/media/images/banners/jobbanner.png";
 import newsRequest from "../api/requests/newsPost";
 import Confirm from "../components/confirmModal/Confirm";
@@ -16,20 +16,24 @@ export default function Newsletter() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
-    try {
-      const response = await newsRequest(email.current?.value);
-      if (response.ok) {
+    if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email.current.value)) {
+      setIsLoading(true);
+      try {
+        const response = await newsRequest(email.current?.value);
+        if (response.ok) {
+          setIsLoading(false);
+          setSuccess(true);
+        } else {
+          window.alert(response.message);
+        }
         setIsLoading(false);
-        setSuccess(true);
-      } else {
-        window.alert(response.message);
+      } catch (error) {
+        setError(error);
       }
       setIsLoading(false);
-    } catch (error) {
-      setError(error);
+    } else {
+      alert("Invalid content !");
     }
-    setIsLoading(false);
   };
 
   const backToPrevious = (e) => {
@@ -62,6 +66,7 @@ export default function Newsletter() {
                 <div className="newsletter_back-btn_container">
                   <Link
                     href={"back to previous"}
+                    title="back to previous"
                     onClick={backToPrevious}
                     className="newsletter-back_btn d-flex"
                   >
