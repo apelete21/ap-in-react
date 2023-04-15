@@ -65,7 +65,7 @@ export default function Menu() {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="nav--menu__link" href="/news">
+                  <NavLink className="nav--menu__link" href="/stories">
                     Newsroom
                   </NavLink>
                 </li>

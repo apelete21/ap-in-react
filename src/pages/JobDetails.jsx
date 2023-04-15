@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { getOneJob } from "../api/requests/jobsRequests";
 import { MenuButtonDark } from "../components/MenuButton";
@@ -62,7 +62,7 @@ export default function JobDetails() {
                 alignItems: "center",
                 justifyContent: "center",
                 width: "100%",
-                color: 'white !important'
+                color: "white !important",
               }}
             >
               <h1>Loading</h1>
@@ -83,29 +83,13 @@ export default function JobDetails() {
         <div className="php_job_description">
           {error ?? error?.message}
           <> {HTMLReactParser(details)} </>
-          <div className="job_tasks_section">
-            <h2 className="task_title">Submission Guideline:</h2>
-            <div className="tasks_list_section">
-              <p className="p-18">
-                We invite you to send your application (with subject line: NoV
-                N°100/2023 by march, 2023 at the latest by e-mail to the
-                following address:
-                <a href="mailto:hello@appealofinnovation.com">
-                  hello@appealofinnovation.com
-                </a>
-                ,{" "}
-                <a href="mailto:appealofinnovation@gmail.com">
-                  appealofinnovation@gmail.com
-                </a>{" "}
-                . The application file in this mandatory format must include a
-                cover letter and a CV in French or English with 3 references to
-                contact, all in one document (in WORD or PDF file). The
-                application must be named by the applicant's name. Female
-                applicants are strongly encouraged to apply. Only short-listed
-                candidates will be contacted.
-              </p>
-            </div>
-          </div>
+          <Link
+            class="btn outline-red-btn"
+            to={`/careers/${title}/apply`}
+            title="Apply for this job"
+          >
+            <span>Apply for this job</span>
+          </Link>
         </div>
       </section>
     </Motion>

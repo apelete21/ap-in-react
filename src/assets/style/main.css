@@ -417,7 +417,7 @@ a:focus {
 }
 
 .default-btn:hover {
-  transform: scale(1.1);
+  background: #222;
   color: var(--ful-white);
 }
 
