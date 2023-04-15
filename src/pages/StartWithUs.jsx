@@ -37,8 +37,6 @@ export default function StartWithUs() {
       discover: discover.current.value,
     };
 
-    console.log(data);
-
     setIsLoading(true);
     try {
       const response = await QuoteRequest(data);

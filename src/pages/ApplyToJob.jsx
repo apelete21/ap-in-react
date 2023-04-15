@@ -26,7 +26,6 @@ export default function ApplyToJob() {
       const response = await getOneJob(title);
       if (response.ok) {
         setJob(response?.data);
-        console.log(response);
       } else {
         setError("Please reload the page!");
       }
@@ -132,7 +131,6 @@ export default function ApplyToJob() {
   const handleFile = (event) => {
     const fileUploaded = event.target.files[0];
     setUrl(event.target.files[0].name);
-    console.log(fileUploaded);
   };
 
   const style = {

@@ -16,7 +16,6 @@ const QuoteRequest = async (data) => {
   });
 
   let result = await response.json();
-  console.log(result);
   return { ...result, ok: response.ok };
 };
 

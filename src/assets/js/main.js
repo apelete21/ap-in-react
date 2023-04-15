@@ -94,7 +94,6 @@ document.querySelectorAll('a').forEach((element) => {
     setTimeout(function () {
       window.location.href = element.getAttribute('href')
     }, 1000)
-    console.log('clicked !')
   })
 })
 */

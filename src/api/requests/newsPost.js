@@ -17,7 +17,6 @@ async function newsRequest(email) {
   });
 
   let data = await response.json();
-  console.log(data);
   return { ok: response.ok, ...data };
 }
 
