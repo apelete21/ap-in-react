@@ -11,7 +11,7 @@ export default function StartWithUs() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
   const [success, setSuccess] = useState(false);
-  const [agreeValue, setAgreeValue] = useState(false)
+  const [agreeValue, setAgreeValue] = useState(false);
 
   const fullname = useRef("");
   const email = useRef("");
@@ -23,7 +23,6 @@ export default function StartWithUs() {
   const discover = useRef("");
 
   const handleSubmit = async (e) => {
-
     e.preventDefault();
 
     const data = {
@@ -40,18 +39,21 @@ export default function StartWithUs() {
     setIsLoading(true);
     try {
       const response = await QuoteRequest(data);
-      if(agreeValue) {
+      if (agreeValue) {
         await newsRequest(email.current?.value);
       }
       if (response.ok) {
         setIsLoading(false);
         setSuccess(true);
+        document.forms[0].reset();
       } else {
         window.alert(response?.message ?? response?.error);
+        document.forms[0].reset();
       }
       setIsLoading(false);
     } catch (error) {
       setError(error);
+      document.forms[0].reset();
     }
     setIsLoading(false);
   };
@@ -60,10 +62,9 @@ export default function StartWithUs() {
     setSuccess(false);
   }
 
-  const changeAgreeValue = (e) => {
-    e.preventDefault()
-    setAgreeValue(!agreeValue)
-  }
+  const changeAgreeValue = () => {
+    setAgreeValue(!agreeValue);
+  };
 
   return (
     <>
@@ -228,7 +229,8 @@ export default function StartWithUs() {
                   className="news--consent__checkbox"
                   type="checkbox"
                   name="email_consent"
-                  value={changeAgreeValue}
+                  value={agreeValue}
+                  onClick={changeAgreeValue}
                 />
                 <label htmlFor="">
                   {
@@ -243,7 +245,7 @@ export default function StartWithUs() {
                   name="form_submission"
                   onClick={handleSubmit}
                 >
-                  REQUEST A QUOTE
+                  {isLoading ? "SENDING QUOTE..." : "REQUEST A QUOTE"}
                 </button>
               </div>
             </form>
