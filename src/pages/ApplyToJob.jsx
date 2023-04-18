@@ -182,7 +182,7 @@ export default function ApplyToJob() {
                 <MenuNav logoImage={icons.lgDark} linkView="lightlink" />
                 <div class="offset-canva job-main-title">
                   <h1 class="section--hero__title php_job">
-                    Apply for : {job?.title}
+                    {job?.title}
                   </h1>
 
                   <div class="job_detail__banner">
