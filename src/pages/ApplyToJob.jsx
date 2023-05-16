@@ -339,10 +339,10 @@ export default function ApplyToJob() {
                 <div class="submit--btn__box">
                   <button
                     class="btn default-btn"
-                    // type="submit"
+                    type="submit"
                     name="form_submission"
                   >
-                    REQUEST A QUOTE
+                    SUBMIT THE REQUEST
                   </button>
                 </div>
               </form>
