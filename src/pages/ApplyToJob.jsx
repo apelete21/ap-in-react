@@ -7,6 +7,7 @@ import Confirm from "../components/confirmModal/Confirm";
 import { jobApplication } from "../api/requests/applications";
 import { useParams } from "react-router-dom";
 import { getOneJob } from "../api/requests/jobsRequests";
+import { createPortal } from "react-dom";
 
 export default function ApplyToJob() {
   const { title } = useParams();
@@ -143,11 +144,13 @@ export default function ApplyToJob() {
 
   return (
     <>
-      {success && (
-        <>
-          <Confirm handleExit={exitModal} />
-        </>
-      )}
+      {success &&
+        createPortal(
+          <>
+            <Confirm handleExit={exitModal} />
+          </>,
+          document.body
+        )}
       {isLoading === true ? (
         <div
           style={{
@@ -181,9 +184,7 @@ export default function ApplyToJob() {
               <div class="full-height fluid-wrapper main-navigation job-application__bg">
                 <MenuNav logoImage={icons.lgDark} linkView="lightlink" />
                 <div class="offset-canva job-main-title">
-                  <h1 class="section--hero__title php_job">
-                    {job?.title}
-                  </h1>
+                  <h1 class="section--hero__title php_job">{job?.title}</h1>
 
                   <div class="job_detail__banner">
                     <div class="job_level_block">

@@ -54,7 +54,20 @@ export default function JobDetails() {
                 </div>
               </div>
             </div>
-          ) : (
+          ) : error !== "" ? (
+            <div
+              style={{
+                display: "flex",
+                paddingTop: "20vh",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "100%",
+                color: "white !important",
+              }}
+            >
+              <p>{error}</p>
+            </div>
+          ): (
             <div
               style={{
                 display: "flex",

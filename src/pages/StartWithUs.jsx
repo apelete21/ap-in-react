@@ -6,6 +6,7 @@ import { MenuButtonDark } from "../components/MenuButton";
 import MenuNav from "../components/MenuNav";
 import { icons } from "../service/icons";
 import Motion from "../components/Motion/Motion";
+import { createPortal } from "react-dom";
 
 export default function StartWithUs() {
   const [isLoading, setIsLoading] = useState(false);
@@ -68,11 +69,13 @@ export default function StartWithUs() {
 
   return (
     <>
-      {success && (
-        <>
-          <Confirm handleExit={exitModal} />
-        </>
-      )}
+      {success &&
+        createPortal(
+          <>
+            <Confirm handleExit={exitModal} />
+          </>,
+          document.body
+        )}
       <Motion>
         <header className="get--quote__header">
           <MenuNav logoImage={icons.lgDark} linkView={"darklink"} />
