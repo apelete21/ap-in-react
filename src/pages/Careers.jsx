@@ -7,7 +7,7 @@ import JobCard from "../components/job/JobCard";
 import { getAllJobs } from "../api/requests/jobsRequests";
 import Motion from "../components/Motion/Motion";
 
-export default function Carreers() {
+export default function Careers() {
   const [jobs, setJobs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState();

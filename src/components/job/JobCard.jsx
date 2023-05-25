@@ -7,14 +7,14 @@ function JobCard({ element }) {
     <div className="job__detail">
       <h2 className="job_detail__title">{element?.title}</h2>
       <div className="job_detail__description">
-        <p>{element?.lowParagraph}</p>
+        <p>{element?.description}</p>
       </div>
       <div className="job_time__location">
         <div className="job_frequence">
           <div className="frequence_icon">
             <img src={icons.bnTime} alt="" />
           </div>
-          <div className="frequence">{element?.time}</div>
+          <div className="frequence">{element?.worktime}</div>
         </div>
         <div className="job_location">
           <div className="location_icon">

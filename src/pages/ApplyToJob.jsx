@@ -8,6 +8,7 @@ import { jobApplication } from "../api/requests/applications";
 import { useParams } from "react-router-dom";
 import { getOneJob } from "../api/requests/jobsRequests";
 import { createPortal } from "react-dom";
+import moment from "moment";
 
 export default function ApplyToJob() {
   const { title } = useParams();
@@ -193,12 +194,14 @@ export default function ApplyToJob() {
                     </div>
                     <div class="job_time_block">
                       <div class="level_title">Employment type</div>
-                      <div class="level_year">{job?.time}</div>
+                      <div class="level_year">{job?.worktime}</div>
                     </div>
 
                     <div class="job_validity_block">
                       <div class="level_title">Validity</div>
-                      <div class="level_year">{job?.validity}</div>
+                      <div class="level_year">
+                        {moment(job?.validity).format("ll")}
+                      </div>
                     </div>
                   </div>
                 </div>

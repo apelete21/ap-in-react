@@ -6,10 +6,11 @@ import MenuNav from "../components/MenuNav";
 import { icons } from "../service/icons";
 import HTMLReactParser from "html-react-parser";
 import Motion from "../components/Motion/Motion";
+import moment from "moment";
 
 export default function JobDetails() {
   const { title } = useParams();
-  const [job, setJob] = useState([]);
+  const [job, setJob] = useState({});
   const [details, setDetails] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
@@ -45,12 +46,12 @@ export default function JobDetails() {
                 </div>
                 <div className="job_time_block">
                   <div className="time_title">Employment type</div>
-                  <div className="job_time">{job?.time}</div>
+                  <div className="job_time">{job?.worktime}</div>
                 </div>
 
                 <div className="job_validity_block">
                   <div className="val_title">Validity</div>
-                  <div className="val_year">{job?.validity}</div>
+                  <div className="val_year">{moment(job?.validity).format('ll')}</div>
                 </div>
               </div>
             </div>
@@ -67,7 +68,7 @@ export default function JobDetails() {
             >
               <p>{error}</p>
             </div>
-          ): (
+          ) : (
             <div
               style={{
                 display: "flex",

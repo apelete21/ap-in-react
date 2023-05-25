@@ -12,7 +12,7 @@ import JobDetails from "../pages/JobDetails";
 import Newsletter from "../pages/Newsletter";
 import News from "../pages/News";
 import ApplyToJob from "../pages/ApplyToJob";
-import Carreers from "../pages/Carreers";
+import Careers from "../pages/Careers";
 import { ClientAppContextProvider } from "../Contexts/ClientAppContext";
 import { AnimatePresence } from "framer-motion";
 
@@ -34,7 +34,7 @@ export default function AppRoutes() {
           <Route path="/who-we-are" element={<WhoWeAre />} />
           <Route path="/stories" element={<Stories />} />
           <Route path="/careers/:title" element={<JobDetails />} />
-          <Route path="/careers" element={<Carreers />} />
+          <Route path="/careers" element={<Careers />} />
           <Route path="/careers/:title/apply" element={<ApplyToJob />} />
           <Route path="/subscribe" element={<Newsletter />} />
           <Route path="/news" element={<News />} />
