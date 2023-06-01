@@ -51,7 +51,7 @@ export default function JobDetails() {
 
                 <div className="job_validity_block">
                   <div className="val_title">Validity</div>
-                  <div className="val_year">{moment(job?.validity).format('ll')}</div>
+                  <div className="val_year">{moment(job?.validity).format('LL')}</div>
                 </div>
               </div>
             </div>
