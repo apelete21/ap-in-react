@@ -6,6 +6,6 @@ import { baseUrl } from "../api/url";
  * @returns {null}
  */
 export async function visitController({ page, token }) {
-  const res = await fetch(`${baseUrl}/visits?page=${page}&token=${token}`);
+  const res = await fetch(`${baseUrl}/visits?page=${page}&token=${token??token}`);
   return await res.json()
 }

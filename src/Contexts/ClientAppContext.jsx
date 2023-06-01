@@ -34,7 +34,7 @@ export const ClientAppContextProvider = ({ children }) => {
   useEffect(() => {
     const visits = async () => {
       const token = localStorage.getItem("appToken");
-      const { newToken } = await visitController({ page: "appToken", token });
+      const { newToken } = await visitController({ page: "app", token });
       if (newToken) return localStorage.setItem("appToken", newToken);
     };
     visits()
