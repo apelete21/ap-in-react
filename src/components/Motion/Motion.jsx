@@ -8,18 +8,16 @@ const Motion = ({ className, children }) => {
       initial="initialState"
       animate="animateState"
       exit="exitState"
-      transition={{ duration: 0.75 }}
+      transition={{ duration: 0.5 }}
       variants={{
         initialState: {
           opacity: 0,
-          clipPath: "polygon(0 0, 0 0, 0 100%, 0 100%)",
         },
         animateState: {
           opacity: 1,
-          clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
         },
         exitState: {
-          clipPath: "polygon(0 0, 0 0, 0 100%, 0 100%)",
+          opacity: 1,
         },
       }}
     >

@@ -1,7 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Loader from "../service/loader";
-import { visitController } from "../service/visits";
 
 export const ClientAppContext = createContext();
 
@@ -30,15 +29,6 @@ export const ClientAppContextProvider = ({ children }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
-
-  useEffect(() => {
-    const visits = async () => {
-      const token = localStorage.getItem("appToken");
-      const { newToken } = await visitController({ page: "app", token });
-      if (newToken) return localStorage.setItem("appToken", newToken);
-    };
-    visits()
-  }, []);
 
   return (
     <ClientAppContext.Provider
