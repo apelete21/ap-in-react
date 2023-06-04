@@ -1,36 +1,22 @@
 import React from "react";
 import { icons } from "../service/icons";
 import Motion from "../components/Motion/Motion";
+import { MenuButtonDark } from "../components/MenuButton";
+import MenuNav from "../components/MenuNav";
 
 export default function Stories() {
   return (
     <Motion>
       <header>
         <div class="fluid-wrapper bg_white">
-          <div class="navbar">
-            <div class="logo">
-              <a class="logo logo_fixed logo--white" href="index.php">
-                <img src={icons.lgDark} alt="" />
-              </a>
-            </div>
+          <MenuNav logoImage={icons.lgDark} linkView={"darklink"} />
 
-            <div class="get--start">
-              <a class="btn default-outline" href="start-with-us.php">
-                start with us
-              </a>
-            </div>
-          </div>
+          <MenuButtonDark />
           <div class="offset-canva story-main-title">
             <h1 class="section--hero__title">
               This is <br />
               where we tell stories
             </h1>
-          </div>
-        </div>
-        <div class="nav--toggler-container">
-          <div class="nav--toggler" onclick="openNav()">
-            <span class="nav--toggler__bar"></span>
-            <span class="nav--toggler__bar"></span>
           </div>
         </div>
       </header>

@@ -21,17 +21,17 @@ import { useState } from "react";
 export default function AppRoutes() {
   const location = useLocation();
 
- const [firstLoad, setFirstLoad] = useState(true);
- const visits = async () => {
-   const token = localStorage.getItem("appToken");
-   const { newToken } = await visitController({ page: "app", token });
-   if (newToken) return localStorage.setItem("appToken", newToken);
-   setFirstLoad(false);
- };
+  const [firstLoad, setFirstLoad] = useState(true);
+  const visits = async () => {
+    setFirstLoad(false);
+    const token = localStorage.getItem("appToken");
+    const { newToken } = visitController({ page: "app", token });
+    if (newToken) return localStorage.setItem("appToken", newToken);
+  };
 
- if (firstLoad) {
-   visits();
- }
+  if (firstLoad) {
+    visits();
+  }
 
   return (
     <AnimatePresence mode="wait">
