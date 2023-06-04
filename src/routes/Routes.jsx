@@ -16,22 +16,22 @@ import Careers from "../pages/Careers";
 import { ClientAppContextProvider } from "../Contexts/ClientAppContext";
 import { AnimatePresence } from "framer-motion";
 import { visitController } from "../service/visits";
-import { useState } from "react";
+
+(async () => {
+  // setFirstLoad(false);
+  const token = localStorage.getItem("appToken");
+  const { newToken } = await visitController({ page: "app", token });
+  if (newToken) return localStorage.setItem("appToken", newToken);
+})();
 
 export default function AppRoutes() {
   const location = useLocation();
 
-  const [firstLoad, setFirstLoad] = useState(true);
-  const visits = async () => {
-    setFirstLoad(false);
-    const token = localStorage.getItem("appToken");
-    const { newToken } = visitController({ page: "app", token });
-    if (newToken) return localStorage.setItem("appToken", newToken);
-  };
+  // const [firstLoad, setFirstLoad] = useState(true);
 
-  if (firstLoad) {
-    visits();
-  }
+  // if (firstLoad) {
+  //   visits();
+  // }
 
   return (
     <AnimatePresence mode="wait">
