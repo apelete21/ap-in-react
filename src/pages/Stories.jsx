@@ -3,6 +3,13 @@ import { icons } from "../service/icons";
 import Motion from "../components/Motion/Motion";
 import { MenuButtonDark } from "../components/MenuButton";
 import MenuNav from "../components/MenuNav";
+import { visitController } from "../service/visits";
+
+(async () => {
+  const token = localStorage.getItem("blogToken");
+  const { newToken } = await visitController({ page: "blog", token });
+  if (newToken) return localStorage.setItem("blogToken", newToken);
+})();
 
 export default function Stories() {
   return (

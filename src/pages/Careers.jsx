@@ -6,6 +6,13 @@ import MenuNav from "../components/MenuNav";
 import JobCard from "../components/job/JobCard";
 import { getAllJobs } from "../api/requests/jobsRequests";
 import Motion from "../components/Motion/Motion";
+import { visitController } from "../service/visits";
+
+(async () => {
+  const token = localStorage.getItem("jobToken");
+  const { newToken } = await visitController({ page: "job", token });
+  if (newToken) return localStorage.setItem("jobToken", newToken);
+})();
 
 export default function Careers() {
   const [jobs, setJobs] = useState([]);
