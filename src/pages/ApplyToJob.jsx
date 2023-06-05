@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import { getOneJob } from "../api/requests/jobsRequests";
 import { createPortal } from "react-dom";
 import moment from "moment";
+import { Helmet } from "react-helmet";
 
 export default function ApplyToJob() {
   const { title } = useParams();
@@ -145,6 +146,10 @@ export default function ApplyToJob() {
 
   return (
     <>
+      <Helmet>
+        <title>Apply to this job | AP’IN</title>
+      </Helmet>
+
       {success &&
         createPortal(
           <>

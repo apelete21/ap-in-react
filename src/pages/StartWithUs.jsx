@@ -7,6 +7,7 @@ import MenuNav from "../components/MenuNav";
 import { icons } from "../service/icons";
 import Motion from "../components/Motion/Motion";
 import { createPortal } from "react-dom";
+import { Helmet } from "react-helmet";
 
 export default function StartWithUs() {
   const [isLoading, setIsLoading] = useState(false);
@@ -69,6 +70,9 @@ export default function StartWithUs() {
 
   return (
     <>
+      <Helmet>
+        <title>Start with us | AP’IN</title>
+      </Helmet>
       {success &&
         createPortal(
           <>

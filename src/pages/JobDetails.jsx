@@ -7,6 +7,7 @@ import { icons } from "../service/icons";
 import HTMLReactParser from "html-react-parser";
 import Motion from "../components/Motion/Motion";
 import moment from "moment";
+import { Helmet } from "react-helmet";
 
 export default function JobDetails() {
   const { title } = useParams();
@@ -30,6 +31,10 @@ export default function JobDetails() {
   }, [title, isLoading]);
 
   return (
+    <>
+    <Helmet>
+      <title>{title} - Informations</title>
+    </Helmet>
     <Motion>
       <header>
         <div className="fluid-wrapper main-navigation bg_primary">
@@ -107,5 +112,6 @@ export default function JobDetails() {
         </div>
       </section>
     </Motion>
+    </>
   );
 }

@@ -7,6 +7,7 @@ import JobBanner from "../assets/media/images/banners/jobbanner.png";
 import newsRequest from "../api/requests/newsPost";
 import Confirm from "../components/confirmModal/Confirm";
 import Motion from "../components/Motion/Motion";
+import { Helmet } from "react-helmet";
 
 export default function Newsletter() {
   const email = useRef("");
@@ -47,6 +48,9 @@ export default function Newsletter() {
 
   return (
     <>
+      <Helmet>
+        <title>Subscribe to our newsletter | AP’IN</title>
+      </Helmet>
       <Motion>
         <div
           className="newsletter_bottom_image vh-100"
