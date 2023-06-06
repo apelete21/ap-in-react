@@ -7,6 +7,7 @@ import MenuNav from '../components/MenuNav'
 import { MenuButtonDark } from '../components/MenuButton'
 import Motion from "../components/Motion/Motion"
 import { Helmet } from 'react-helmet'
+import { Link } from 'react-router-dom'
 
 export default function Home() {
     return (
@@ -447,9 +448,8 @@ export default function Home() {
                   Building brands. Creating product. Transform business.
                 </h1>
 
-                <a className="btn outline-red-btn " href="start-with-us.php">
-                  {" "}
-                  learn more{" "}
+                <Link className="btn outline-red-btn " to="/start-with-us">
+                  learn more
                   <span>
                     <svg
                       width="29"
@@ -465,7 +465,7 @@ export default function Home() {
                       />
                     </svg>
                   </span>{" "}
-                </a>
+                </Link>
               </div>
             </div>
           </section>
