@@ -2440,6 +2440,7 @@ GET IN TOUCH SECTION
 
 .link_list_item {
   margin-right: 1.6rem;
+  font-size: 16px;
 }
 
 .link_item--active {
@@ -2465,7 +2466,6 @@ GET IN TOUCH SECTION
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: max-content;
 }
 
 .stories_item.stories_item-img_bg {
@@ -2483,7 +2483,7 @@ GET IN TOUCH SECTION
   color: #fff !important;
 }
 
-.stories_item-img_bg h6.story_title {
+.stories_item-img_bg a.story_title {
   color: white;
 }
 
@@ -2498,10 +2498,12 @@ GET IN TOUCH SECTION
 }
 
 .story_title {
+  font-size: 1.6rem;
   font-weight: bold;
   color: var(--black-bold);
-  margin-bottom: 20px;
-  display: inline-block;
+  line-height: 140%;
+  height: fit-content;
+  margin-block: auto;
 }
 
 .story_details .story_title:hover {
@@ -2510,7 +2512,9 @@ GET IN TOUCH SECTION
 }
 
 .story_details {
-  margin-top: 7rem;
+      display: flex;
+    justify-content: space-between;
+    font-size: 14px;
 }
 
 .post_author {
@@ -2520,6 +2524,7 @@ GET IN TOUCH SECTION
 }
 
 .load_more_btn {
+  margin-top: 5rem;
   display: flex;
   justify-content: center;
 }
