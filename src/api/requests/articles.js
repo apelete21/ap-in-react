@@ -1,5 +1,7 @@
 import { baseUrl } from "../url";
 
+export const imgUrl = `${baseUrl}/picture`
+
 export const articleReq = async (title) => {
     let headersList = {
     Accept: "*/*",

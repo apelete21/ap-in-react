@@ -27,7 +27,7 @@ useEffect(()=>{
         seterror(true)
       }
     })()
-}, [])
+}, [posts])
 
   return (
     <>

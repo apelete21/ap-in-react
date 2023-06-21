@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MenuNav from "../components/MenuNav";
 import { MenuButtonDark } from "../components/MenuButton";
 import { icons } from "../service/icons";
@@ -9,29 +9,58 @@ import OthersImg1 from "../assets/media/images/news/others_news_bg1.png";
 import OthersImg2 from "../assets/media/images/news/others_news_bg2.png";
 import Motion from "../components/Motion/Motion";
 import { Helmet } from "react-helmet";
+import HTMLReactParser from "html-react-parser";
+import { useParams } from "react-router-dom";
+import { articleReq, imgUrl } from "../api/requests/articles";
+import moment from "moment";
 
 export default function News() {
-  return (
+  const params = useParams();
+  const { title } = useParams();
+  const [post, setPost] = useState({});
+  const [error, seterror] = useState();
+  const [isLoading, setisLoading] = useState(true);
+
+  console.log(params, post)
+
+  useEffect(() => {
+    (async () => {
+      setTimeout(async () => {
+        if (isLoading) {
+          const { data, ok } = await articleReq(title);
+          if (ok) {
+            setPost(data.article);
+          } else {
+            seterror(true);
+          }
+        }
+      }, 500);
+      setisLoading(false)
+    })();
+  }, [title, post]);
+
+  if (!isLoading){ return (
     <>
       <Helmet>
-        <title>Our news | AP’IN</title>
+        <title>{`${title}`} | News</title>
       </Helmet>
       <Motion>
         <header>
           <div class="fluid-wrapper bg_white">
             <MenuNav logoImage={icons.lgDark} linkView="darklink" />
             <div class="offset-canva story-main-title">
-              <h2 class="section--hero__title">
-                When is the best time of Year to Visit Japan?
-              </h2>
+              <h2 class="section--hero__title">{title}</h2>
               <div class="news_details">
                 <div class="author_details">
                   <div class="author_title">Author:</div>
-                  <div class="author_name">Neil Gibson</div>
+                  <div class="author_name">{post?.author}</div>
                 </div>
                 <div class="date_details">
                   <div class="date_title">Date:</div>
-                  <div class="date_name">November 2022</div>
+                  <div class="date_name">
+                    {" "}
+                    {moment(post?.createdAt).format("ll")}{" "}
+                  </div>
                 </div>
               </div>
             </div>
@@ -44,7 +73,7 @@ export default function News() {
         ===========================--> */}
 
         <section class="news-banner">
-          <img src={NewsBanner} alt="" />
+          <img src={`${imgUrl}/${post?.bannerImg}`} alt="" />
         </section>
 
         {/* <!--===========================
@@ -76,42 +105,10 @@ export default function News() {
                 </a>
               </div>
             </div>
-            <div class="news--text-block">
-              <h3 class="text-block--title">
-                The good news for travelers is that there is no single best time
-                of to travel to Japan
-              </h3>
-              <div class="block--paragraph">
-                <p class="default-paragraph">
-                  Japan is truly a year-round destination, and Japanese culture
-                  is remarkable in its profound appreciation of the changing of
-                  the seasons. As you’ll see when you visit, each season — and
-                  even sub-season! — is celebrated with seasonal foods, and
-                  often matsuri (festivals). Because of this, we typically
-                  recommend taking advantage of any chance to visit Japan.{" "}
-                </p>
-              </div>
-              <div class="block--paragraph">
-                <p className="default-paragraph">
-                  On the other hand, if your dates are flexible it’s worth
-                  thinking about which time of year you might enjoy most. After
-                  all, some travelers hate the cold — or the heat and humidity
-                  of summer — while others will do whatever it takes to avoid
-                  crowds! (When planning a trip to Japan, a key question to ask
-                  yourself is: would you rather have better weather, or fewer
-                  tourists around?)
-                </p>
-              </div>
-              <div class="block--paragraph">
-                Because there is so much to consider, we’ve put together this
-                comprehensive guide on the best time to travel to Japan,
-                including information on the seasons, weather, national holidays
-                to look out for, and more.
-              </div>
-            </div>
+            {HTMLReactParser(`${post?.details}`)}
           </div>
 
-          <div class="illustration-img">
+          {/* <div class="illustration-img">
             <div class="illustration-img--container">
               <img src={NewsImg1} alt="" />
             </div>
@@ -210,7 +207,7 @@ export default function News() {
               alluring, whether or not flower viewing in Japan is worth the
               potential downsides is not quite as clear!
             </div>
-          </div>
+          </div> */}
 
           <div class="share-links">
             <div class="news-share--title">Share the post</div>
@@ -318,5 +315,16 @@ export default function News() {
         </section>
       </Motion>
     </>
-  );
+  )}else {
+    return (
+      <>
+        <Helmet>
+          <title>Not Found</title>
+        </Helmet>
+        <div>
+          Not found!
+        </div>
+      </>
+    )
+  }
 }

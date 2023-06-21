@@ -40,11 +40,11 @@ export default function AppRoutes() {
           <Route path="/what-we-do" element={<WhatWeDo />} />
           <Route path="/who-we-are" element={<WhoWeAre />} />
           <Route path="/stories" element={<Stories />} />
+          <Route path="/stories/:title" element={<News />} />
           <Route path="/careers/:title" element={<JobDetails />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/careers/:title/apply" element={<ApplyToJob />} />
           <Route path="/subscribe" element={<Newsletter />} />
-          <Route path="/news" element={<News />} />
         </Routes>
         {location.pathname !== "/get-in-touch" &&
         location.pathname !== "/subscribe" ? (
