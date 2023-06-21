@@ -13,8 +13,8 @@ import moment from "moment";
 
 export default function News() {
   const { title } = useParams();
-  const [post, setPost] = useState({});
-  const [error, seterror] = useState();
+  const [post, setPost] = useState(null);
+  const [error, seterror] = useState(false);
   const [isLoading, setisLoading] = useState(true);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ export default function News() {
     })();
   }, [title, post]);
 
-  if (!isLoading) {
+  if (!isLoading && post !== null) {
     return (
       <>
         <Helmet>
@@ -315,18 +315,24 @@ export default function News() {
     return (
       <>
         <Helmet>
-          <title>{"Loading"}</title>
+          <title>{`${error ? "Not found!" : "Loading"}`}</title>
         </Helmet>
+        <header>
+          <div class="fluid-wrapper bg_white">
+            <MenuNav logoImage={icons.lgDark} linkView="darklink" />
+          </div>
+          <MenuButtonDark />
+        </header>
         <div
           style={{
-            width: "100vw",
+            width: "100%",
             height: "100vh",
             display: "grid",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
-          <span>{error?"Not found!": "Loading"}</span>
+          <span>{error ? "Not found!" : "Loading"}</span>
         </div>
       </>
     );
