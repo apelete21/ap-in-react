@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { icons } from "../service/icons";
 import Motion from "../components/Motion/Motion";
 import { MenuButtonDark } from "../components/MenuButton";
 import MenuNav from "../components/MenuNav";
 import { visitController } from "../service/visits";
 import { Helmet } from "react-helmet";
+import { articleReq } from "../api/requests/articles";
+import { ArticleCard } from "../components/article/articleCard";
 
 (async () => {
   const token = localStorage.getItem("blogToken");
@@ -13,6 +15,20 @@ import { Helmet } from "react-helmet";
 })();
 
 export default function Stories() {
+  const [posts, setPosts] = useState([])
+  const [error, seterror] = useState("")
+
+useEffect(()=>{
+    (async () => {
+      const {data, ok} = await articleReq("")
+      if (ok) {
+        setPosts(data)
+      } else {
+        seterror(true)
+      }
+    })()
+}, [])
+
   return (
     <>
       <Helmet>
@@ -52,18 +68,14 @@ export default function Stories() {
           </div>
 
           <div className="stories_items_container">
-            <div className="stories_item">
-              <div className="type_of_job">Digital Marketing</div>
-              <a href="#" className="story_title">
-                What's the best <br /> performance fee structure <br /> for
-                hedge funds?
-              </a>
-              <div className="story_details">
-                <div className="story_date">Avr, 12 2022</div>
-                <div className="story_author">By John Doe</div>
-              </div>
-            </div>
-            <div className="stories_item stories_item-img_bg">
+            {posts?.map((e, i)=>{
+              return (
+                <>
+                  <ArticleCard element={e} />
+                </>
+              )
+            })}
+            {/* <div className="stories_item stories_item-img_bg">
               <div className="type_of_job">Digital Marketing</div>
               <a href="#" className="story_title">
                 What's the best <br /> performance fee structure <br /> for
@@ -117,7 +129,7 @@ export default function Stories() {
                 <div className="story_date">Avr, 12 2022</div>
                 <div className="story_author">By John Doe</div>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="load_more_btn">
             <a className="btn default-outline" href="">
