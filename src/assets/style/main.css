@@ -2657,14 +2657,14 @@ GET IN TOUCH SECTION
 }
 
 .illustration-img--container {
-  width: 80%;
   display: flex;
-  margin: 0 auto;
-  justify-content: space-between;
 }
 
 .illustration-img--container img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .news--text-block {
@@ -2678,9 +2678,7 @@ GET IN TOUCH SECTION
 }
 
 .img-info {
-  width: 80%;
   margin: 0 auto;
-  padding-left: 1rem;
   font-size: 10px;
 }
 
