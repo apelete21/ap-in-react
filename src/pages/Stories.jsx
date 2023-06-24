@@ -15,19 +15,40 @@ import { ArticleCard } from "../components/article/articleCard";
 })();
 
 export default function Stories() {
-  const [posts, setPosts] = useState([])
-  const [error, seterror] = useState("")
+  const [posts, setPosts] = useState([]);
+  const [error, seterror] = useState("");
 
-useEffect(()=>{
+  const [itemActive, setItemActive] = useState("");
+
+  const itemType = (value) => {
+    if (value !== "ALL") {
+      return value?.toLowerCase()?.trim()?.replace(" ", "-");
+    } else {
+      return "";
+    }
+  };
+
+const filterFunction = (e) => {
+  if (itemActive === "all" || itemActive === "") {
+    return e;
+  } else if (e?.category?.startsWith(itemActive)) return e;
+};
+
+  const setActiveItem = (e) => {
+    e.preventDefault();
+    setItemActive(itemType(e?.target?.innerText));
+  };
+
+  useEffect(() => {
     (async () => {
-      const {data, ok} = await articleReq("")
+      const { data, ok } = await articleReq("");
       if (ok) {
-        setPosts(data)
+        setPosts(data);
       } else {
-        seterror(true)
+        seterror(true);
       }
-    })()
-}, [posts])
+    })();
+  }, []);
 
   return (
     <>
@@ -60,85 +81,65 @@ useEffect(()=>{
         <section className="story--intro mb-lg offset-canva">
           <div className="stories_links">
             <ul className="links_list">
-              <li className="link_list_item link_item--active"> ALL </li>
-              <li className="link_list_item"> PODCAST </li>
-              <li className="link_list_item"> BLOG </li>
-              <li className="link_list_item"> PRESS RELEASE </li>
+              <li
+                className={`link_list_item ${
+                  (itemActive === "all" || itemActive === "") &&
+                  "link_item--active"
+                }`}
+                onClick={setActiveItem}
+              >
+                ALL
+              </li>
+              <li
+                className={`link_list_item ${
+                  itemActive === "podcast" && "link_item--active"
+                }`}
+                onClick={setActiveItem}
+              >
+                PODCAST
+              </li>
+              <li
+                className={`link_list_item ${
+                  itemActive === "blog" && "link_item--active"
+                }`}
+                onClick={setActiveItem}
+              >
+                BLOG
+              </li>
+              <li
+                className={`link_list_item ${
+                  itemActive === "press-release" && "link_item--active"
+                }`}
+                onClick={setActiveItem}
+              >
+                PRESS RELEASE
+              </li>
             </ul>
           </div>
 
           <div className="stories_items_container">
-            {posts?.map((e, i)=>{
-              return (
-                <>
-                  <ArticleCard element={e} />
-                </>
-              )
-            })}
-            {/* <div className="stories_item stories_item-img_bg">
-              <div className="type_of_job">Digital Marketing</div>
-              <a href="#" className="story_title">
-                What's the best <br /> performance fee structure <br /> for
-                hedge funds?
-              </a>
-              <div className="story_details">
-                <div className="story_date">Avr, 12 2022</div>
-                <div className="story_author">By John Doe</div>
-              </div>
-            </div>
-            <div className="stories_item">
-              <div className="type_of_job">Digital Marketing</div>
-              <a href="#" className="story_title">
-                What's the best <br /> performance fee structure <br /> for
-                hedge funds?
-              </a>
-              <div className="story_details">
-                <div className="story_date">Avr, 12 2022</div>
-                <div className="story_author">By John Doe</div>
-              </div>
-            </div>
-            <div className="stories_item stories_item-bg_red">
-              <div className="type_of_job">Digital Marketing</div>
-              <a href="#" className="story_title">
-                What's the best <br /> performance fee structure <br /> for
-                hedge funds?
-              </a>
-              <div className="story_details">
-                <div className="story_date">Avr, 12 2022</div>
-                <div className="story_author">By John Doe</div>
-              </div>
-            </div>
-            <div className="stories_item">
-              <div className="type_of_job">Digital Marketing</div>
-              <a href="#" className="story_title">
-                What's the best <br /> performance fee structure <br /> for
-                hedge funds?
-              </a>
-              <div className="story_details">
-                <div className="story_date">Avr, 12 2022</div>
-                <div className="story_author">By John Doe</div>
-              </div>
-            </div>
-            <div className="stories_item">
-              <div className="type_of_job">Digital Marketing</div>
-              <a href="#" className="story_title">
-                What's the best <br /> performance fee structure <br /> for
-                hedge funds?
-              </a>
-              <div className="story_details">
-                <div className="story_date">Avr, 12 2022</div>
-                <div className="story_author">By John Doe</div>
-              </div>
-            </div> */}
+            {posts?.filter(filterFunction).length !== 0 ? (
+              posts?.filter(filterFunction)?.map((e, i) => {
+                return (
+                  <>
+                    <ArticleCard element={e} key={i} />
+                  </>
+                );
+              })
+            ) : (
+              <p>No posts for this category !</p>
+            )}
           </div>
-          <div className="load_more_btn">
-            <a className="btn default-outline" href="">
-              Load more...
-              <span>
-                <img src="" alt="" />
-              </span>
-            </a>
-          </div>
+          {posts?.filter(filterFunction).length !== 0 && (
+            <div className="load_more_btn">
+              <a className="btn default-outline" href="">
+                Load more...
+                <span>
+                  <img src="" alt="" />
+                </span>
+              </a>
+            </div>
+          )}
         </section>
       </Motion>
     </>

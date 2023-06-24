@@ -1,15 +1,32 @@
 import moment from "moment/moment";
 import { Link } from "react-router-dom";
-
-const style = {
-  color: "black"
-}
+import { imgUrl } from "../../api/requests/articles";
 
 export function ArticleCard({ element }) {
+  let style = {};
+  if (!element?.category?.startsWith("podcast")) {
+    style = { 
+      color: "white",
+      backgroundImage: `linear-gradient(to top, #0005, #0005),
+    url(${imgUrl}/${element?.bannerImg})`,
+    };
+  } else {
+    style = {
+      color: "white",
+      backgroundColor: "var(--primary)",
+    };
+  }
+
   return (
     <>
-      <Link to={`/stories/${element?.title}`} className="stories_item" style={style}>
-        <div className="type_of_job">{element?.category}</div>
+      <Link
+        to={`/stories/${element?.title}`}
+        className="stories_item"
+        style={style}
+      >
+        <div className="type_of_job">
+          {element?.category?.replace("-", " ").toUpperCase()}
+        </div>
         <div className="story_title">{element?.title}</div>
         <div className="story_details">
           <div className="story_date">

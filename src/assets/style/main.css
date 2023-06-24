@@ -2441,6 +2441,7 @@ GET IN TOUCH SECTION
 .link_list_item {
   margin-right: 1.6rem;
   font-size: 16px;
+  cursor: pointer;
 }
 
 .link_item--active {
@@ -2451,7 +2452,7 @@ GET IN TOUCH SECTION
 .stories_items_container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  gap: 1rem;
   color: var(--black-bold);
   padding-block: 2vh;
   margin-top: 2rem;
@@ -2460,12 +2461,24 @@ GET IN TOUCH SECTION
 .stories_item {
   height: 60vh;
   flex-basis: 33%;
-  background-color: var(--contrast);
+  mix-blend-mode: exclusion;
+  background-color: var(--primary);
+  background-size: cover;
+  background-position: center;
   margin-bottom: 0.5rem;
   padding: 3vh 2vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+}
+
+.stories_item:hover {
+  opacity: 0.8;
 }
 
 .stories_item.stories_item-img_bg {
@@ -2500,7 +2513,6 @@ GET IN TOUCH SECTION
 .story_title {
   font-size: 1.6rem;
   font-weight: bold;
-  color: var(--black-bold);
   line-height: 140%;
   height: fit-content;
   margin-block: auto;
