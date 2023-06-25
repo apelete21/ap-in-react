@@ -2452,7 +2452,7 @@ GET IN TOUCH SECTION
 .stories_items_container {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1%;
   color: var(--black-bold);
   padding-block: 2vh;
   margin-top: 2rem;
@@ -2460,7 +2460,7 @@ GET IN TOUCH SECTION
 
 .stories_item {
   height: 60vh;
-  flex-basis: 33%;
+  flex-basis: 32%;
   mix-blend-mode: exclusion;
   background-color: var(--primary);
   background-size: cover;
