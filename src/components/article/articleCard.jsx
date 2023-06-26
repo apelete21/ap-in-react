@@ -20,7 +20,7 @@ export function ArticleCard({ element }) {
   return (
     <>
       <Link
-        to={`/stories/${element?.title}`}
+        to={`/stories/${element?.title}?c=${element?.category}`}
         className="stories_item"
         style={style}
       >

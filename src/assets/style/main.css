@@ -2524,9 +2524,9 @@ GET IN TOUCH SECTION
 }
 
 .story_details {
-      display: flex;
-    justify-content: space-between;
-    font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
 }
 
 .post_author {
@@ -3037,6 +3037,7 @@ GET IN TOUCH SECTION
   color: var(--ful-white);
   font-weight: 200;
   font-size: 14px;
+  text-transform: capitalize;
 }
 
 .news__details__title h2 {
@@ -3056,7 +3057,7 @@ GET IN TOUCH SECTION
 
 .related_news_section {
   margin-right: 4vw;
-  margin-bottom: 4vh;
+  padding-bottom: 4vh;
 }
 
 .media_links_section {
@@ -3101,6 +3102,9 @@ GET IN TOUCH SECTION
 .related_news_item-imge,
 .related_news_item-imge img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .news-details__intro p {
@@ -3131,11 +3135,12 @@ GET IN TOUCH SECTION
 
 .news-media_control_section * {
   color: var(--ful-white);
+  cursor: pointer;
 }
 
 .news-media_control_section {
   flex-direction: row;
-  padding-block: 5vh;
+  padding-top: 6vh;
   margin-right: 4vw;
   align-items: center;
   justify-content: space-between;
@@ -3164,7 +3169,7 @@ GET IN TOUCH SECTION
 }
 
 .duration_line-bg {
-  width: 65%;
+  width: 0%;
   display: block;
   background-color: var(--ful-white);
   height: 100%;

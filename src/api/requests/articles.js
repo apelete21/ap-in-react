@@ -1,6 +1,7 @@
 import { baseUrl } from "../url";
 
 export const imgUrl = `${baseUrl}/picture`
+export const audioUrl = `${baseUrl}/audio`
 
 export const articleReq = async (title) => {
     let headersList = {

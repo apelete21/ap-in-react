@@ -3,7 +3,6 @@ import { baseUrl } from "../url";
 const QuoteRequest = async (data) => {
   let headersList = {
     Accept: "*/*",
-    "User-Agent": "Thunder Client (https://www.thunderclient.com)",
     "Content-Type": "application/json",
   };
 

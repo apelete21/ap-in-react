@@ -16,6 +16,7 @@ import Careers from "../pages/Careers";
 import { ClientAppContextProvider } from "../Contexts/ClientAppContext";
 import { AnimatePresence } from "framer-motion";
 import { visitController } from "../service/visits";
+import { useQuery } from "../components/query";
 
 (async () => {
   const token = localStorage.getItem("appToken");
@@ -25,6 +26,8 @@ import { visitController } from "../service/visits";
 
 export default function AppRoutes() {
   const location = useLocation();
+
+  const query = useQuery()
 
   return (
     <AnimatePresence mode="wait">
@@ -48,7 +51,7 @@ export default function AppRoutes() {
         </Routes>
         {location.pathname !== "/get-in-touch" &&
         location.pathname !== "/subscribe" ? (
-          <Footer />
+          !query?.get("c") && <Footer />
         ) : null}
       </ClientAppContextProvider>
     </AnimatePresence>

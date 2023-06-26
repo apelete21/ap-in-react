@@ -10,6 +10,8 @@ import LogoLight from "../assets/media/images/logo/logo-light.png"
 import LogoDark from "../assets/media/images/logo/logo-dark.png"
 import LogoIcon from "../assets/media/images/logo-icon.png"
 import PlayDark from "../assets/media/images/icons/play.svg"
+import PlayWhite from "../assets/media/images/icons/play-white.svg"
+import Pause from "../assets/media/images/icons/pause.svg"
 import ArrowRightLight from "../assets/media/images/icons/white-right-arrow.svg"
 import MailArrow from "../assets/media/images/icons/mail-arrow.svg"
 import BusinessTime from "../assets/media/images/icons/business-time.svg"
@@ -49,6 +51,7 @@ export const icons = {
     lgDark: LogoDark,
     lgIcon: LogoIcon,
     playDark: PlayDark,
+    playWhite: PlayWhite,
     arLight: ArrowRightLight,
     mailAr: MailArrow,
     bnTime: BusinessTime,
@@ -57,7 +60,8 @@ export const icons = {
     arGray: GrayArrowLeft,
     alGray: GrayArrowRight,
     prIcon: ProfileIcon,
-    loader
+    loader,
+    pause: Pause
 }
 
 export const teams = {
