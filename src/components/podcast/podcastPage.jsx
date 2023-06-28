@@ -11,8 +11,10 @@ import { useState } from "react";
 export default function PodCastPage({ props }) {
   const seekDuration = useRef();
   const audioFileRef = useRef();
+  const volumeRef = useRef();
   const [control, setControl] = useState(true);
   const [duration, setDuration] = useState("00:00");
+  const [volumStyle, setVolumStyle] = useState(100);
   const [time, setTime] = useState("00:00");
   const [timePlayed, setTimePlayed] = useState();
 
@@ -20,7 +22,7 @@ export default function PodCastPage({ props }) {
     const num = value ? value?.toString()?.split(".")[0] : null;
     const min = Math.floor(num / 60);
     const secs = num % 60;
-    if (min === NaN && secs === NaN) {
+    if (isNaN(min) && isNaN(secs)) {
       return `00:00`;
     } else return `${min}:${secs}`;
   }
@@ -50,6 +52,17 @@ export default function PodCastPage({ props }) {
     audioFileRef.current.currentTime = Math.floor(
       (divProgress / 100) * timeDuration
     );
+  };
+
+  const volumeModifier = (e) => {
+    let width = volumeRef.current.clientWidth;
+    const offset = e.nativeEvent.offsetX;
+
+    const progress = Math.floor((offset / width) * 100);
+    setVolumStyle(progress);
+    audioFileRef.current.volume = progress / 100;
+
+    console.log({ progress, volume: progress / 100 });
   };
 
   return (
@@ -185,8 +198,15 @@ export default function PodCastPage({ props }) {
             </div>
           </div>
 
-          <div class="media-sound_controller">
-            <span class="sound_controller"></span>
+          <div
+            class="media-sound_controller"
+            ref={volumeRef}
+            onClick={volumeModifier}
+          >
+            <span
+              class="sound_controller"
+              style={{ width: `${volumStyle}%` }}
+            />
           </div>
         </div>
 
@@ -207,7 +227,11 @@ export default function PodCastPage({ props }) {
             <div class="related_news_items_list d-flex">
               <a href="#blocked" class="related_news_item">
                 <div class="related_news_item-imge">
-                  <img src={icons.prIcon} alt="" class="w-100" />
+                  <img
+                    src="https://images.pexels.com/photos/35537/child-children-girl-happy.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    alt=""
+                    class="w-100"
+                  />
                 </div>
                 <div class="related_news_item_details">
                   <div class="related-news-item_title">
@@ -222,7 +246,7 @@ export default function PodCastPage({ props }) {
               <a href="#blocked" class="related_news_item">
                 <div class="related_news_item-imge">
                   <img
-                    src="./assets/media/images/news/related-item-2.png"
+                    src="https://images.pexels.com/photos/35537/child-children-girl-happy.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                     alt=""
                   />
                 </div>
@@ -239,7 +263,7 @@ export default function PodCastPage({ props }) {
               <a href="#blocked" class="related_news_item">
                 <div class="related_news_item-imge">
                   <img
-                    src="./assets/media/images/news/related-item-3.png"
+                    src="https://images.pexels.com/photos/35537/child-children-girl-happy.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                     alt=""
                   />
                 </div>
@@ -256,7 +280,7 @@ export default function PodCastPage({ props }) {
               <a href="#blocked" class="related_news_item">
                 <div class="related_news_item-imge">
                   <img
-                    src="./assets/media/images/news/related-item-4.png"
+                    src="https://images.pexels.com/photos/35537/child-children-girl-happy.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                     alt=""
                   />
                 </div>
@@ -273,7 +297,7 @@ export default function PodCastPage({ props }) {
               <a href="#blocked" class="related_news_item">
                 <div class="related_news_item-imge">
                   <img
-                    src="./assets/media/images/news/related-item-5.png"
+                    src="https://images.pexels.com/photos/35537/child-children-girl-happy.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                     alt=""
                   />
                 </div>
