@@ -85,7 +85,10 @@ export default function Newsletter() {
                   <form
                     action=""
                     className="newsletter_form d-flex"
-                    onSubmit={(e) => e.preventDefault()}
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      handleSubmit();
+                    }}
                   >
                     <div className="newsletter-input_container">
                       <input
@@ -98,7 +101,7 @@ export default function Newsletter() {
                     </div>
                     <div
                       className="newsletter_submit_container"
-                      onClick={handleSubmit}
+                      // onClick={}
                     >
                       <button type="submit">
                         <img
