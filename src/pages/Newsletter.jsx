@@ -35,6 +35,7 @@ export default function Newsletter() {
     } else {
       alert("Invalid content !");
     }
+    document?.forms[0].reset()
   };
 
   const backToPrevious = (e) => {
@@ -85,10 +86,7 @@ export default function Newsletter() {
                   <form
                     action=""
                     className="newsletter_form d-flex"
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      handleSubmit();
-                    }}
+                    onSubmit={handleSubmit}
                   >
                     <div className="newsletter-input_container">
                       <input
@@ -101,7 +99,7 @@ export default function Newsletter() {
                     </div>
                     <div
                       className="newsletter_submit_container"
-                      // onClick={}
+                    // onClick={}
                     >
                       <button type="submit">
                         <img
