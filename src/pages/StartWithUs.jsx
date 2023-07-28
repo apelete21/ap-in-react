@@ -197,8 +197,9 @@ export default function StartWithUs() {
                     type="number"
                     name="city"
                     id=""
-                    placeholder="+00228 00 00 00 00"
+                    placeholder="+228 00 00 00 00"
                     ref={phone_number}
+
                   />
                 </div>
               </div>
@@ -225,7 +226,7 @@ export default function StartWithUs() {
                   <label htmlFor="">Tell us about your idea or company</label>
                   <textarea
                     name="message"
-                    defaultValue={"..."}
+                    placeholder="Tell us more..."
                     ref={description}
                   />
                 </div>
@@ -247,13 +248,13 @@ export default function StartWithUs() {
               </div>
 
               <div className="submit--btn__box">
-                <button
+                {!isLoading ? <button
                   className="btn light-btn"
                   name="form_submission"
                   onClick={handleSubmit}
                 >
-                  {isLoading ? "SENDING QUOTE..." : "REQUEST A QUOTE"}
-                </button>
+                  REQUEST A QUOTE
+                </button> : "SENDING QUOTE..."}
               </div>
             </form>
           </div>
