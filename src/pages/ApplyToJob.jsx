@@ -324,7 +324,7 @@ export default function ApplyToJob() {
                     <span style={style}> {profileerror} </span>
                     <textarea
                       name="profile"
-                      defaultValue={"..."}
+                      placeholder={"..."}
                       ref={profile}
                     ></textarea>
                   </div>
@@ -340,7 +340,7 @@ export default function ApplyToJob() {
                     <textarea
                       name="motivation"
                       ref={motivation}
-                      defaultValue={"..."}
+                      placeholder={"..."}
                     ></textarea>
                   </div>
                 </div>
