@@ -51,7 +51,7 @@ export default function AppRoutes() {
         </Routes>
         {location.pathname !== "/get-in-touch" &&
         location.pathname !== "/subscribe" ? (
-          !query?.get("c") && <Footer />
+          query?.get("c") && <Footer />
         ) : null}
       </ClientAppContextProvider>
     </AnimatePresence>
