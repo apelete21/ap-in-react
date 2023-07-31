@@ -277,7 +277,7 @@ a:focus {
 
 .section--hero__title.php_job {
   color: var(--ful-white);
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 /* ===========================
