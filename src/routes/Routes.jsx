@@ -17,6 +17,7 @@ import { ClientAppContextProvider } from "../Contexts/ClientAppContext";
 import { AnimatePresence } from "framer-motion";
 import { visitController } from "../service/visits";
 import { useQuery } from "../components/query";
+import ErrorPage from "../pages/404";
 
 (async () => {
   const token = localStorage.getItem("appToken");
@@ -48,11 +49,12 @@ export default function AppRoutes() {
           <Route path="/careers" element={<Careers />} />
           <Route path="/careers/:title/apply" element={<ApplyToJob />} />
           <Route path="/subscribe" element={<Newsletter />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
-        {location.pathname !== "/get-in-touch" &&
-        location.pathname !== "/subscribe" ? (
-          !query?.get("c") && <Footer />
-        ) : null}
+        {location.pathname === "/get-in-touch" ? null :
+          location.pathname === "/subscribe" ?  null : 
+            query?.get("c") === "podcast" ? null  
+              : <Footer /> }
       </ClientAppContextProvider>
     </AnimatePresence>
   );
