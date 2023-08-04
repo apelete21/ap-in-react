@@ -16,6 +16,8 @@ export default function ApplyToJob() {
   const { title } = useParams();
   const [job, setJob] = useState({});
 
+  const [sending, setSending] = useState(false)
+
   const [url, setUrl] = useState("");
   const [nameerror, setNameerror] = useState("");
   const [emailerror, setEmailerror] = useState("");
@@ -42,15 +44,16 @@ export default function ApplyToJob() {
     (async () => {
       const response = await getOneJob(title);
       if (response.ok) {
-        setJob(response?.data);
+        setJob(response.data);
       } else {
         // console.log(response.data.message);
         setError(true);
       }
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 500)
     })()
-    setTimeout(()=>{
-      setIsLoading(false);
-    }, 500)
+
   }, [title, isLoading]);
 
   const handleSubmit = async (e) => {
@@ -101,6 +104,7 @@ export default function ApplyToJob() {
     bodyContent.append("jobId", job._id);
     bodyContent.append("file", hiddenFileInput.current.files[0]);
 
+    setSending(true);
     const response = await jobApplication(bodyContent);
     if (!response?.ok) {
       window.alert(response.data.message);
@@ -109,6 +113,7 @@ export default function ApplyToJob() {
       setSuccess(true);
       document.forms[0].reset();
     }
+    setSending(false)
   };
 
   function exitModal() {
@@ -160,178 +165,184 @@ export default function ApplyToJob() {
           document.body
         )}
       {!isLoading ? (
-          <>
-            <header>
-              <div class="full-height fluid-wrapper main-navigation job-application__bg">
-                <MenuNav logoImage={icons.lgDark} linkView="lightlink" />
-                <div class="offset-canva job-main-title">
-                  <h1 class="section--hero__title php_job">{job?.title}</h1>
+        <Motion>
+          <header>
+            <div class="full-height fluid-wrapper main-navigation job-application__bg">
+              <MenuNav logoImage={icons.lgDark} linkView="lightlink" />
+              <div class="offset-canva job-main-title">
+                <h1 class="section--hero__title php_job">{job?.title}</h1>
 
-                  <div class="job_detail__banner">
-                    <div class="job_level_block">
-                      <div class="level_title">Seniority Level</div>
-                      <div class="level_year">{job?.level}</div>
-                    </div>
-                    <div class="job_time_block">
-                      <div class="level_title">Employment type</div>
-                      <div class="level_year">{job?.worktime}</div>
-                    </div>
+                <div class="job_detail__banner">
+                  <div class="job_level_block">
+                    <div class="level_title">Seniority Level</div>
+                    <div class="level_year">{job?.level}</div>
+                  </div>
+                  <div class="job_time_block">
+                    <div class="level_title">Employment type</div>
+                    <div class="level_year">{job?.worktime}</div>
+                  </div>
 
-                    <div class="job_validity_block">
-                      <div class="level_title">Validity</div>
-                      <div class="level_year">
-                        {moment(job?.validity).format("ll")}
-                      </div>
+                  <div class="job_validity_block">
+                    <div class="level_title">Validity</div>
+                    <div class="level_year">
+                      {moment(job?.validity).format("ll")}
                     </div>
                   </div>
                 </div>
               </div>
-              <MenuButtonDark />
-            </header>
-            <section class="application-intro offset-canva">
-              <div class="form">
-                <form class="application--form" onSubmit={handleSubmit}>
-                  <div class="form-input application-input">
-                    <span class="form--input__number">01</span>
-                    <div class="input-group">
-                      <label for="">Your full name *</label>
-                      <span style={style}> {nameerror} </span>
-                      <input
-                        type="text"
-                        id=""
-                        ref={fullname}
-                        placeholder="John Do"
-                      />
-                    </div>
+            </div>
+            <MenuButtonDark />
+          </header>
+          <section class="application-intro offset-canva">
+            <div class="form">
+              <form class="application--form" onSubmit={handleSubmit}>
+                <div class="form-input application-input">
+                  <span class="form--input__number">01</span>
+                  <div class="input-group">
+                    <label for="">Your full name *</label>
+                    <span style={style}> {nameerror} </span>
+                    <input
+                      type="text"
+                      id=""
+                      ref={fullname}
+                      placeholder="John Do"
+                    />
                   </div>
+                </div>
 
-                  <div class="form-input application-input">
-                    <span class="form--input__number">02</span>
-                    <div class="input-group">
-                      <label for="">What's your email? *</label>
-                      <span style={style}> {emailerror} </span>
-                      <input
-                        type="email"
-                        id=""
-                        ref={email}
-                        placeholder="john@doe.com"
-                      />
-                    </div>
+                <div class="form-input application-input">
+                  <span class="form--input__number">02</span>
+                  <div class="input-group">
+                    <label for="">What's your email? *</label>
+                    <span style={style}> {emailerror} </span>
+                    <input
+                      type="email"
+                      id=""
+                      ref={email}
+                      placeholder="john@doe.com"
+                    />
                   </div>
+                </div>
 
-                  <div class="form-input application-input">
-                    <span class="form--input__number">03</span>
-                    <div class="input-group">
-                      <label for="">What is your phone number? *</label>
-                      <span style={style}> {phoneerror} </span>
-                      <input
-                        type="tel"
-                        min={90000000}
-                        id=""
-                        ref={phone_number}
-                        placeholder="+228 90000000"
-                      />
-                    </div>
+                <div class="form-input application-input">
+                  <span class="form--input__number">03</span>
+                  <div class="input-group">
+                    <label for="">What is your phone number? *</label>
+                    <span style={style}> {phoneerror} </span>
+                    <input
+                      type="tel"
+                      min={90000000}
+                      id=""
+                      ref={phone_number}
+                      placeholder="+228 90000000"
+                    />
                   </div>
+                </div>
 
-                  <div class="form-input application-input">
-                    <span class="form--input__number">04</span>
-                    <div class="input-group">
-                      <label for="">What is your location? *</label>
-                      <span style={style}> {locationerror} </span>
-                      <input
-                        type="address"
-                        id=""
-                        placeholder="Lomé"
-                        ref={location}
-                      />
-                    </div>
+                <div class="form-input application-input">
+                  <span class="form--input__number">04</span>
+                  <div class="input-group">
+                    <label for="">What is your location? *</label>
+                    <span style={style}> {locationerror} </span>
+                    <input
+                      type="address"
+                      id=""
+                      placeholder="Lomé"
+                      ref={location}
+                    />
                   </div>
+                </div>
 
-                  <div class="full-with_form form-input application-input">
-                    <span style={style}> {fileerror} </span>
-                    <div class="input-group">
-                      <div class="title">
-                        <span class="form--input__number">05</span>
-                        <label htmlFor="">Upload your CV *</label>
+                <div class="full-with_form form-input application-input">
+                  <span style={style}> {fileerror} </span>
+                  <div class="input-group">
+                    <div class="title">
+                      <span class="form--input__number">05</span>
+                      <label htmlFor="">Upload your CV *</label>
+                    </div>
+                    <div
+                      class={
+                        dragActive
+                          ? "upload-files-container update-opacity"
+                          : "upload-files-container"
+                      }
+                      onClick={handleFileBtnClick}
+                      onDragEnter={handleDrag}
+                      onDragLeave={handleDrag}
+                      onDragOver={handleDrag}
+                      onDrop={handleDrop}
+                    >
+                      <div class="drag-file-area">
+                        <span class="material-icons-outlined upload-icon">
+                          {" "}
+                          file_upload{" "}
+                        </span>
+                        <h3 class="dynamic-message">
+                          Drag & drop any file here or browse file from device
+                        </h3>
+                        <input
+                          type="file"
+                          className="hidden-input-file"
+                          ref={hiddenFileInput}
+                          onChange={handleFile}
+                          accept="*.pdf"
+                          required
+                        />
                       </div>
-                      <div
-                        class={
-                          dragActive
-                            ? "upload-files-container update-opacity"
-                            : "upload-files-container"
-                        }
-                        onClick={handleFileBtnClick}
-                        onDragEnter={handleDrag}
-                        onDragLeave={handleDrag}
-                        onDragOver={handleDrag}
-                        onDrop={handleDrop}
-                      >
-                        <div class="drag-file-area">
-                          <span class="material-icons-outlined upload-icon">
-                            {" "}
-                            file_upload{" "}
-                          </span>
-                          <h3 class="dynamic-message">
-                            Drag & drop any file here or browse file from device
-                          </h3>
-                          <input
-                            type="file"
-                            className="hidden-input-file"
-                            ref={hiddenFileInput}
-                            onChange={handleFile}
-                            accept="*.pdf"
-                            required
-                          />
-                        </div>
-                        <span className="file-name-upload">-{url}-</span>
-                      </div>
+                      <span className="file-name-upload">-{url}-</span>
                     </div>
                   </div>
+                </div>
 
-                  <div class="form-input application-input">
-                    <span class="form--input__number">06</span>
-                    <div class="input-group">
-                      <label for="">
-                        Tell us more about your profil and your uniqueness? *
-                      </label>
-                      <span style={style}> {profileerror} </span>
-                      <textarea
-                        name="profile"
-                        placeholder={"..."}
-                        ref={profile}
-                      ></textarea>
-                    </div>
+                <div class="form-input application-input">
+                  <span class="form--input__number">06</span>
+                  <div class="input-group">
+                    <label for="">
+                      Tell us more about your profil and your uniqueness? *
+                    </label>
+                    <span style={style}> {profileerror} </span>
+                    <textarea
+                      name="profile"
+                      placeholder={"..."}
+                      ref={profile}
+                    ></textarea>
                   </div>
+                </div>
 
-                  <div class="form-input application-input last-of-type">
-                    <span class="form--input__number">07</span>
-                    <div class="input-group">
-                      <label for="">
-                        What drives you for this position in this company? *
-                      </label>
-                      <span style={style}> {motivationerror} </span>
-                      <textarea
-                        name="motivation"
-                        ref={motivation}
-                        placeholder={"..."}
-                      ></textarea>
-                    </div>
+                <div class="form-input application-input last-of-type">
+                  <span class="form--input__number">07</span>
+                  <div class="input-group">
+                    <label for="">
+                      What drives you for this position in this company? *
+                    </label>
+                    <span style={style}> {motivationerror} </span>
+                    <textarea
+                      name="motivation"
+                      ref={motivation}
+                      placeholder={"..."}
+                    ></textarea>
                   </div>
+                </div>
 
-                  <div class="submit--btn__box">
+                <div class="submit--btn__box">
+                  {sending ? (
+                    <>
+                      <LoadingComp />
+                    </>
+                  ) : (
                     <button
                       class="btn default-btn"
                       type="submit"
                       name="form_submission"
                     >
                       SUBMIT THE REQUEST
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </section>
-          </>
+                    </button> 
+                  )}
+                </div>
+              </form>
+            </div>
+          </section>
+        </Motion>
       ) : (
         <div
           style={{

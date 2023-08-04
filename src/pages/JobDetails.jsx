@@ -14,7 +14,7 @@ export default function JobDetails() {
   const { title } = useParams();
   const [job, setJob] = useState({});
   const [details, setDetails] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export default function JobDetails() {
         setJob(response?.data);
         setDetails(response.data?.details);
       } else {
-        setError(response?.message);
+        setError(true);
       }
       setIsLoading(false);
     };
