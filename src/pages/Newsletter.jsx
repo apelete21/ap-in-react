@@ -31,10 +31,10 @@ export default function Newsletter() {
       } catch (error) {
         setError(error);
       }
-      setIsLoading(false);
     } else {
       alert("Invalid content !");
     }
+    setIsLoading(false);
     document?.forms[0].reset()
   };
 
