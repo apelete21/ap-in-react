@@ -8,12 +8,13 @@ import HTMLReactParser from "html-react-parser";
 import Motion from "../components/Motion/Motion";
 import moment from "moment";
 import { Helmet } from "react-helmet";
+import { LoadingComp } from "../components/loader";
 
 export default function JobDetails() {
   const { title } = useParams();
   const [job, setJob] = useState({});
   const [details, setDetails] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -23,95 +24,98 @@ export default function JobDetails() {
         setJob(response?.data);
         setDetails(response.data?.details);
       } else {
-        setError(response?.message);
+        setError(true);
       }
       setIsLoading(false);
     };
     if (isLoading) getJob();
   }, [title, isLoading]);
+  if (!isLoading) {
+    return (
+      <>
+        <Helmet>
+          <title>{title} - Informations</title>
+        </Helmet>
+        <Motion>
+          <header>
+            <div className="fluid-wrapper main-navigation bg_primary">
+              <MenuNav logoImage={icons.lgLight} linkView="lightlink" />
+              <MenuButtonDark />
+              {!isLoading ? (
+                <div className="offset-canva job-main-title">
+                  <h2 className="section--hero__title php_job">{job?.title}</h2>
 
-  return (
-    <>
-    <Helmet>
-      <title>{title} - Informations</title>
-    </Helmet>
-    <Motion>
-      <header>
-        <div className="fluid-wrapper main-navigation bg_primary">
-          <MenuNav logoImage={icons.lgLight} linkView="lightlink" />
-          <MenuButtonDark />
-          {!isLoading ? (
-            <div className="offset-canva job-main-title">
-              <h2 className="section--hero__title php_job">{job?.title}</h2>
+                  <div className="job_detail__banner">
+                    <div className="job_level_block">
+                      <div className="level_title">Seniority Level</div>
+                      <div className="level_year">{job?.level}</div>
+                    </div>
+                    <div className="job_time_block">
+                      <div className="time_title">Employment type</div>
+                      <div className="job_time">{job?.worktime}</div>
+                    </div>
 
-              <div className="job_detail__banner">
-                <div className="job_level_block">
-                  <div className="level_title">Seniority Level</div>
-                  <div className="level_year">{job?.level}</div>
+                    <div className="job_validity_block">
+                      <div className="val_title">Validity</div>
+                      <div className="val_year">{moment(job?.validity).format('LL')}</div>
+                    </div>
+                  </div>
                 </div>
-                <div className="job_time_block">
-                  <div className="time_title">Employment type</div>
-                  <div className="job_time">{job?.worktime}</div>
+              ) : (
+                <div
+                  style={{
+                    display: "flex",
+                    paddingTop: "20vh",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: "100%",
+                    color: "white !important",
+                  }}
+                >
+                  <p>{error}</p>
                 </div>
+              )}
+            </div>
+          </header>
 
-                <div className="job_validity_block">
-                  <div className="val_title">Validity</div>
-                  <div className="val_year">{moment(job?.validity).format('LL')}</div>
-                </div>
-              </div>
-            </div>
-          ) : error !== "" ? (
-            <div
-              style={{
-                display: "flex",
-                paddingTop: "20vh",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "100%",
-                color: "white !important",
-              }}
-            >
-              <p>{error}</p>
-            </div>
-          ) : (
-            <div
-              style={{
-                display: "flex",
-                paddingTop: "20vh",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "100%",
-                color: "white !important",
-              }}
-            >
-              <h1>Loading</h1>
-            </div>
-          )}
-        </div>
-      </header>
-
-      {/* <!--===========================
+          {/* <!--===========================
                 END OF HOME HERO SECTION
         ===========================--> */}
 
-      {/* <!--===========================
+          {/* <!--===========================
                START OF content SECTION
         ===========================--> */}
 
-      <section className="php-back-intro offset-canva">
-        <div className="php_job_description">
-          {error ?? error?.message}
-          <> {HTMLReactParser(details)} </>
-          <Link
-            class="btn outline-red-btn"
-            to={`/careers/${title}/apply`}
-            title="Apply for this job"
-          >
-            <span>Apply for this job</span>
-          </Link>
-        </div>
-      </section>
-    </Motion>
-    </>
-  );
+          <section className="php-back-intro offset-canva">
+            <div className="php_job_description">
+              {error ?? error?.message}
+              <> {HTMLReactParser(details)} </>
+              <Link
+                class="btn outline-red-btn"
+                to={`/careers/${title}/apply`}
+                title="Apply for this job"
+              >
+                <span>Apply for this job</span>
+              </Link>
+            </div>
+          </section>
+        </Motion>
+      </>
+    );
+  }
+  else {
+    return (<div
+      style={{
+        display: "flex",
+        // paddingTop: "20vh",
+        alignItems: "center",
+        justifyContent: "center",
+        width: "100%",
+        height: "100vh",
+        color: "white !important",
+      }}
+    >
+      <LoadingComp scale={.5} />
+    </div>)
+  }
 }

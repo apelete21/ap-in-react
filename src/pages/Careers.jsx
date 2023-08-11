@@ -8,6 +8,7 @@ import { getAllJobs } from "../api/requests/jobsRequests";
 import Motion from "../components/Motion/Motion";
 import { visitController } from "../service/visits";
 import { Helmet } from "react-helmet";
+import { LoadingComp } from "../components/loader";
 
 (async () => {
   const token = localStorage.getItem("jobToken");
@@ -95,7 +96,7 @@ export default function Careers() {
                   width: "100%",
                 }}
               >
-                <h1>Loading</h1>
+                <LoadingComp scale={.5} />
               </div>
             )}
           </div>

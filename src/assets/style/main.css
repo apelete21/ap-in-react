@@ -2976,6 +2976,10 @@ GET IN TOUCH SECTION
   height: 71px;
 }
 
+.newsletter-request-list {
+  position: relative;
+}
+
 .newsletter_submit_container,
 .newsletter_submit_container button {
   background: none;

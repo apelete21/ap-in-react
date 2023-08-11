@@ -10,10 +10,13 @@ import { getOneJob } from "../api/requests/jobsRequests";
 import { createPortal } from "react-dom";
 import moment from "moment";
 import { Helmet } from "react-helmet";
+import { LoadingComp } from "../components/loader";
 
 export default function ApplyToJob() {
   const { title } = useParams();
   const [job, setJob] = useState({});
+
+  const [sending, setSending] = useState(false)
 
   const [url, setUrl] = useState("");
   const [nameerror, setNameerror] = useState("");
@@ -38,17 +41,19 @@ export default function ApplyToJob() {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    const getJob = async () => {
+    (async () => {
       const response = await getOneJob(title);
       if (response.ok) {
-        setJob(response?.data);
+        setJob(response.data);
       } else {
-        console.log(response.data.message);
+        // console.log(response.data.message);
         setError(true);
       }
-    };
-    if (isLoading) getJob();
-    setIsLoading(false);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 500)
+    })()
+
   }, [title, isLoading]);
 
   const handleSubmit = async (e) => {
@@ -99,6 +104,7 @@ export default function ApplyToJob() {
     bodyContent.append("jobId", job._id);
     bodyContent.append("file", hiddenFileInput.current.files[0]);
 
+    setSending(true);
     const response = await jobApplication(bodyContent);
     if (!response?.ok) {
       window.alert(response.data.message);
@@ -107,6 +113,7 @@ export default function ApplyToJob() {
       setSuccess(true);
       document.forms[0].reset();
     }
+    setSending(false)
   };
 
   function exitModal() {
@@ -157,63 +164,35 @@ export default function ApplyToJob() {
           </>,
           document.body
         )}
-      {isLoading === true ? (
-        <div
-          style={{
-            display: "flex",
-            paddingTop: "20vh",
-            alignItems: "center",
-            justifyContent: "center",
-            width: "100%",
-            color: "white !important",
-          }}
-        >
-          <h1>{icons.loader}</h1>
-        </div>
-      ) : (
+      {!isLoading ? (
         <Motion>
-          {error ? (
-            <div
-              style={{
-                display: "flex",
-                paddingTop: "20vh",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "100%",
-                color: "white !important",
-              }}
-            >
-              <h1> {error} </h1>
-            </div>
-          ) : (
-            <header>
-              <div class="full-height fluid-wrapper main-navigation job-application__bg">
-                <MenuNav logoImage={icons.lgDark} linkView="lightlink" />
-                <div class="offset-canva job-main-title">
-                  <h1 class="section--hero__title php_job">{job?.title}</h1>
+          <header>
+            <div class="full-height fluid-wrapper main-navigation job-application__bg">
+              <MenuNav logoImage={icons.lgDark} linkView="lightlink" />
+              <div class="offset-canva job-main-title">
+                <h1 class="section--hero__title php_job">{job?.title}</h1>
 
-                  <div class="job_detail__banner">
-                    <div class="job_level_block">
-                      <div class="level_title">Seniority Level</div>
-                      <div class="level_year">{job?.level}</div>
-                    </div>
-                    <div class="job_time_block">
-                      <div class="level_title">Employment type</div>
-                      <div class="level_year">{job?.worktime}</div>
-                    </div>
+                <div class="job_detail__banner">
+                  <div class="job_level_block">
+                    <div class="level_title">Seniority Level</div>
+                    <div class="level_year">{job?.level}</div>
+                  </div>
+                  <div class="job_time_block">
+                    <div class="level_title">Employment type</div>
+                    <div class="level_year">{job?.worktime}</div>
+                  </div>
 
-                    <div class="job_validity_block">
-                      <div class="level_title">Validity</div>
-                      <div class="level_year">
-                        {moment(job?.validity).format("ll")}
-                      </div>
+                  <div class="job_validity_block">
+                    <div class="level_title">Validity</div>
+                    <div class="level_year">
+                      {moment(job?.validity).format("ll")}
                     </div>
                   </div>
                 </div>
               </div>
-              <MenuButtonDark />
-            </header>
-          )}
+            </div>
+            <MenuButtonDark />
+          </header>
           <section class="application-intro offset-canva">
             <div class="form">
               <form class="application--form" onSubmit={handleSubmit}>
@@ -346,18 +325,39 @@ export default function ApplyToJob() {
                 </div>
 
                 <div class="submit--btn__box">
-                  <button
-                    class="btn default-btn"
-                    type="submit"
-                    name="form_submission"
-                  >
-                    SUBMIT THE REQUEST
-                  </button>
+                  {sending ? (
+                    <>
+                      <LoadingComp />
+                    </>
+                  ) : (
+                    <button
+                      class="btn default-btn"
+                      type="submit"
+                      name="form_submission"
+                    >
+                      SUBMIT THE REQUEST
+                    </button> 
+                  )}
                 </div>
               </form>
             </div>
           </section>
         </Motion>
+      ) : (
+        <div
+          style={{
+            display: "flex",
+            // paddingTop: "20vh",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "100%",
+            height: "100vh",
+            color: "white !important",
+          }}
+        >
+          <LoadingComp />
+        </div >
+
       )}
     </>
   );

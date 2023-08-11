@@ -8,6 +8,7 @@ import { articleReq } from "../api/requests/articles";
 import { useQuery } from "../components/query";
 import ArticlePage from "../components/article/articlePage";
 import PodCastPage from "../components/podcast/podcastPage";
+import { LoadingComp } from "../components/loader";
 
 export default function News() {
   const { title } = useParams();
@@ -33,7 +34,8 @@ export default function News() {
   }, [title, post]);
 
   if (!isLoading && post !== null) {
-    if (query.get("c") !== "podcast") {
+    // query.get("c") !== "podcast"
+    if (post?.category !== "podcast") {
       return (
         <>
           <ArticlePage props={post} />
@@ -65,7 +67,7 @@ export default function News() {
             alignItems: "center",
           }}
         >
-          <b>{error ? "Not found!" : "Loading"}</b>
+          <b>{error ? "Not found!" : <LoadingComp scale={0.5} />}</b>
         </div>
       </>
     );
