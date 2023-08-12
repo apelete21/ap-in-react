@@ -10,6 +10,12 @@ import moment from "moment";
 import { Helmet } from "react-helmet";
 import { LoadingComp } from "../components/loader";
 
+(async () => {
+  const token = localStorage.getItem("jobdToken");
+  const { newToken } = await visitController({ page: "job", token });
+  if (newToken) return localStorage.setItem("jobdToken", newToken);
+})();
+
 export default function JobDetails() {
   const { title } = useParams();
   const [job, setJob] = useState({});
