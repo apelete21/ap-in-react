@@ -25,7 +25,7 @@ export default function ArticlePage({props}) {
               <div class="news_details">
                 <div class="author_details">
                   <div class="author_title">Author:</div>
-                  <div class="author_name">{props?.author}</div>
+                  <div class="author_name">{props?.author?.fullName}</div>
                 </div>
                 <div class="date_details">
                   <div class="date_title">Date:</div>

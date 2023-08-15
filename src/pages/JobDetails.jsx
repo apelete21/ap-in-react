@@ -9,6 +9,7 @@ import Motion from "../components/Motion/Motion";
 import moment from "moment";
 import { Helmet } from "react-helmet";
 import { LoadingComp } from "../components/loader";
+import { visitController } from "../service/visits"
 
 (async () => {
   const token = localStorage.getItem("jobdToken");
