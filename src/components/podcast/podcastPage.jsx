@@ -3,10 +3,12 @@ import { Helmet } from "react-helmet";
 import MenuNav from "../MenuNav";
 import { icons } from "../../service/icons";
 import { MenuButtonLight } from "../MenuButton";
-import { audioUrl } from "../../api/requests/articles";
+import { articleByCtg, audioUrl, imgUrl } from "../../api/requests/articles";
 import { useRef } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+
+const table = [1,2,3]
 
 export default function PodCastPage({ props }) {
   const seekDuration = useRef();
@@ -17,6 +19,8 @@ export default function PodCastPage({ props }) {
   const [volumStyle, setVolumStyle] = useState(100);
   const [time, setTime] = useState("00:00");
   const [timePlayed, setTimePlayed] = useState();
+  const [related, setRelated] = useState([])
+  const [loadingrltd, setLoadingrltd] = useState(true)
 
   function time_convert(value) {
     const num = value ? value?.toString()?.split(".")[0] : null;
@@ -26,6 +30,16 @@ export default function PodCastPage({ props }) {
       return `00:00`;
     } else return `${min}:${secs}`;
   }
+
+  useEffect(()=>{
+    (async()=>{
+      const {data, ok} = await articleByCtg(props?.category)
+      if (ok) {
+        setRelated(data?.related)
+      }
+      setLoadingrltd(false)
+    })()
+  }, [loadingrltd])
 
   useEffect(() => {
     control ? audioFileRef?.current?.pause() : audioFileRef.current?.play();
@@ -88,9 +102,9 @@ export default function PodCastPage({ props }) {
                 </div>
                 <div class="news-details_author d-flex">
                   <div class="author_profile">
-                    <img src={icons.prIcon} alt="News author profile" />
+                    <img src={props?.author?.profile ? imgUrl + "/" + props?.author?.profile : icons.prIcon} alt="News author profile" />
                   </div>
-                  <div class="author__name">{props?.author}</div>
+                  <div class="author__name">{props?.author?.fullName}</div>
                 </div>
               </div>
 
@@ -225,91 +239,29 @@ export default function PodCastPage({ props }) {
             </div>
 
             <div class="related_news_items_list d-flex">
-              <a href="#blocked" class="related_news_item">
-                <div class="related_news_item-imge">
-                  <img
-                    src="https://images.pexels.com/photos/35537/child-children-girl-happy.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                    alt=""
-                    class="w-100"
-                  />
-                </div>
-                <div class="related_news_item_details">
-                  <div class="related-news-item_title">
-                    <p>Make it short and sweet. Sometimes</p>
-                  </div>
-                  <div class="related-news-item_title">
-                    <b>By : Maria Carrey</b>
-                  </div>
-                </div>
-              </a>
-
-              <a href="#blocked" class="related_news_item">
-                <div class="related_news_item-imge">
-                  <img
-                    src="https://images.pexels.com/photos/35537/child-children-girl-happy.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                    alt=""
-                  />
-                </div>
-                <div class="related_news_item_details">
-                  <div class="related-news-item_title">
-                    <p>Make it short and sweet. Sometimes</p>
-                  </div>
-                  <div class="related-news-item_title">
-                    <b>by : MAria Carrey</b>
-                  </div>
-                </div>
-              </a>
-
-              <a href="#blocked" class="related_news_item">
-                <div class="related_news_item-imge">
-                  <img
-                    src="https://images.pexels.com/photos/35537/child-children-girl-happy.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                    alt=""
-                  />
-                </div>
-                <div class="related_news_item_details">
-                  <div class="related-news-item_title">
-                    <p>Make it short and sweet. Sometimes</p>
-                  </div>
-                  <div class="related-news-item_title">
-                    <b>by : MAria Carrey</b>
-                  </div>
-                </div>
-              </a>
-
-              <a href="#blocked" class="related_news_item">
-                <div class="related_news_item-imge">
-                  <img
-                    src="https://images.pexels.com/photos/35537/child-children-girl-happy.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                    alt=""
-                  />
-                </div>
-                <div class="related_news_item_details">
-                  <div class="related-news-item_title">
-                    <p>Make it short and sweet. Sometimes</p>
-                  </div>
-                  <div class="related-news-item_title">
-                    <b>by : MAria Carrey</b>
-                  </div>
-                </div>
-              </a>
-
-              <a href="#blocked" class="related_news_item">
-                <div class="related_news_item-imge">
-                  <img
-                    src="https://images.pexels.com/photos/35537/child-children-girl-happy.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                    alt=""
-                  />
-                </div>
-                <div class="related_news_item_details">
-                  <div class="related-news-item_title">
-                    <p>Make it short and sweet. Sometimes</p>
-                  </div>
-                  <div class="related-news-item_title">
-                    <b>by : MAria Carrey</b>
-                  </div>
-                </div>
-              </a>
+              {related?.map((e, i)=>{
+                return (
+                  <>
+                    <a key={i} href="#blocked" class="related_news_item">
+                      <div class="related_news_item-imge">
+                        <img
+                          src="https://images.pexels.com/photos/35537/child-children-girl-happy.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                          alt=""
+                          class="w-100"
+                        />
+                      </div>
+                      <div class="related_news_item_details">
+                        <div class="related-news-item_title">
+                          <p>Make it short and sweet. Sometimes</p>
+                        </div>
+                        <div class="related-news-item_title">
+                          <b>By : Maria Carrey</b>
+                        </div>
+                      </div>
+                    </a>
+                  </>
+                )
+              })}
             </div>
           </div>
         </div>

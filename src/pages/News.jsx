@@ -12,7 +12,6 @@ import { LoadingComp } from "../components/loader";
 
 export default function News() {
   const { title } = useParams();
-  const query = useQuery();
   const [post, setPost] = useState(null);
   const [error, seterror] = useState(false);
   const [isLoading, setisLoading] = useState(true);

@@ -59,36 +59,43 @@ export default function ApplyToJob() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!fullname.current?.value || fullname.current?.value === "") {
+      alert("Fullname field empty!")
       return setNameerror("invalid format");
     } else {
       setNameerror("");
     }
     if (!email.current?.value || email.current?.value === "") {
+      alert("email field empty!")
       return setEmailerror("invalid format");
     } else {
       setEmailerror("");
     }
     if (!phone_number.current?.value || phone_number.current?.value === "") {
+      alert("phone number field empty!")
       return setPhoneerror("invalid format");
     } else {
       setPhoneerror("");
     }
     if (!location.current?.value || location.current?.value === "") {
+      alert("Location field empty!")
       return setLocationerror("invalid format");
     } else {
       setLocationerror("");
     }
     if (!profile.current?.value || profile.current?.value === "") {
+      alert("Profile field empty!")
       return setProfileerror("invalid format");
     } else {
       setProfileerror("");
     }
     if (!motivation.current?.value || motivation.current?.value === "") {
+      alert("Motivation field empty!")
       return setMotivationerror("invalid format");
     } else {
       setMotivationerror("");
     }
     if (!hiddenFileInput.current.files) {
+      alert("File field empty!")
       return setFileerror("invalid format");
     } else {
       setFileerror("");
@@ -327,7 +334,7 @@ export default function ApplyToJob() {
                 <div class="submit--btn__box">
                   {sending ? (
                     <>
-                      <LoadingComp />
+                      <LoadingComp scale={0.1} />
                     </>
                   ) : (
                     <button
@@ -355,7 +362,7 @@ export default function ApplyToJob() {
             color: "white !important",
           }}
         >
-          <LoadingComp />
+          <LoadingComp scale={0.5} />
         </div >
 
       )}

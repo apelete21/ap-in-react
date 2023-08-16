@@ -32,7 +32,7 @@ export function ArticleCard({ element }) {
           <div className="story_date">
             {moment(element?.createdAt)?.format("ll")}
           </div>
-          <div className="story_author">By {element?.author}</div>
+          <div className="story_author">{element.author.fullName && `By ${element?.author?.fullName}`}</div>
         </div>
       </Link>
     </>
