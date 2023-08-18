@@ -7,8 +7,8 @@ import { articleByCtg, audioUrl, imgUrl } from "../../api/requests/articles";
 import { useRef } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-
-const table = [1,2,3]
+import audioImg from "../../asset/images/audio.jpg"
+import { baseUrl } from "../../api/url";
 
 export default function PodCastPage({ props }) {
   const seekDuration = useRef();
@@ -31,11 +31,11 @@ export default function PodCastPage({ props }) {
     } else return `${min}:${secs}`;
   }
 
-  useEffect(()=>{
-    (async()=>{
-      const {data, ok} = await articleByCtg(props?.category)
+  useEffect(() => {
+    (async () => {
+      const { data, ok } = await articleByCtg(props?.category)
       if (ok) {
-        setRelated(data?.related)
+        setRelated(data)
       }
       setLoadingrltd(false)
     })()
@@ -229,39 +229,51 @@ export default function PodCastPage({ props }) {
             <div class="related_news-top_bar d-flex">
               <div class="related_news_top_bar_title">Related posts</div>
               <a href="">
-                <div class="related-links-to-all-items d-flex btn default-outline light-outline">
+                {/* <div class="related-links-to-all-items d-flex btn default-outline light-outline">
                   <span>VIEW ALL</span>
                   <span>
                     <img src={icons.arLight} alt="" />
                   </span>
-                </div>
+                </div> */}
               </a>
             </div>
 
             <div class="related_news_items_list d-flex">
-              {related?.map((e, i)=>{
-                return (
-                  <>
-                    <a key={i} href="#blocked" class="related_news_item">
-                      <div class="related_news_item-imge">
-                        <img
-                          src="https://images.pexels.com/photos/35537/child-children-girl-happy.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                          alt=""
-                          class="w-100"
-                        />
-                      </div>
-                      <div class="related_news_item_details">
-                        <div class="related-news-item_title">
-                          <p>Make it short and sweet. Sometimes</p>
+              {related?.filter((e, i) => {
+                if (e?.title !== props?.title) {
+                  return e
+                }
+              })?.length ?
+
+                related?.filter((e, i) => {
+                  if (e?.title !== props?.title) {
+                    return e
+                  }
+                })?.map((e, i) => {
+                  return (
+                    <>
+                      <a key={i} href={"/stories/" + e?.title + "/c=" + e?.category} class="related_news_item">
+                        <div class="related_news_item-imge">
+                          <img
+                            src={audioImg}
+                            alt=""
+                            class="w-100"
+                          />
                         </div>
-                        <div class="related-news-item_title">
-                          <b>By : Maria Carrey</b>
+                        <div class="related_news_item_details">
+                          <div class="related-news-item_title">
+                            <p>{e?.title}</p>
+                          </div>
+                          <div class="related-news-item_title">
+                            <b>By : {e?.author?.fullName || "Unkown"}</b>
+                          </div>
                         </div>
-                      </div>
-                    </a>
-                  </>
-                )
-              })}
+                      </a>
+                    </>
+                  )
+                }) :
+                <h6>No others posts!</h6>
+              }
             </div>
           </div>
         </div>
