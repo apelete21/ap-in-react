@@ -2752,9 +2752,22 @@ GET IN TOUCH SECTION
   position: relative;
 }
 
+.others_news_author_picture {
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  overflow: hidden;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+}
+
 .others_news_author_picture img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .others_news_details__title {

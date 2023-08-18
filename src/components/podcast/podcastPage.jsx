@@ -272,7 +272,7 @@ export default function PodCastPage({ props }) {
                     </>
                   )
                 }) :
-                <h6>No other posts!</h6>
+                <h6>Sorry, No other posts!</h6>
               }
             </div>
           </div>
