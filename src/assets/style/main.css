@@ -476,6 +476,7 @@ a:focus {
 
 .section--hero__title {
   font-weight: 800;
+  word-wrap: break-word;
   color: var(--black-bold);
   font-size: 7vw;
 }
