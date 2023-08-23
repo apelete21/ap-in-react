@@ -7,7 +7,7 @@
   justify-content: center;
   top: 0;
   left: 0;
-  background-color: #636363;
+  background-color: #000000a0;
   z-index: 900000000;
 }
 
@@ -65,7 +65,7 @@ div.modal-confirm .modal-content {
   height: 95px;
   border-radius: 50%;
   z-index: 9;
-  background: #82ce34;
+  background: #000;
   padding: 15px;
   text-align: center;
   box-shadow: 1px 2px 2px rgba(72, 72, 72, 0.1);
@@ -86,7 +86,7 @@ div.modal-confirm .modal-content {
   color: #fff;
   width: 100%;
   border-radius: 4px;
-  background: #82ce34;
+  background: #000;
   text-decoration: none;
   transition: all 0.4s;
   line-height: normal;
@@ -95,7 +95,6 @@ div.modal-confirm .modal-content {
 
 .modal-confirm .btn:hover,
 .modal-confirm .btn:focus {
-  background: #6fb32b;
+  background: #000d;
   outline: none;
 }
-

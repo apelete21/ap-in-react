@@ -13,7 +13,7 @@ export function ArticleCard({ element }) {
   } else {
     style = {
       color: "white",
-      backgroundColor: "var(--primary)",
+      backgroundColor: "black",
     };
   }
 

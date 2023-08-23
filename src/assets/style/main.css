@@ -2738,6 +2738,7 @@ GET IN TOUCH SECTION
 .other_news_details .others_news_details__title h5 {
   color: var(--ful-white);
   font-weight: bold;
+  word-wrap: break-word;
 }
 
 .other_news_author-links_section {
