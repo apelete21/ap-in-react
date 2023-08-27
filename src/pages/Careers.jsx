@@ -77,7 +77,7 @@ export default function Careers() {
                 {jobs?.map((element, i) => {
                   return <JobCard element={element} key={i} />;
                 })}
-                {error ?? error?.message}
+                <h4>{error ?? error?.message}</h4>
               </div>
             ) : (
               <div
