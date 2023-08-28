@@ -117,12 +117,12 @@ export default function ArticlePage({ props }) {
           <hr class="separator--line" />
 
           <div class="others-news d-flex">
-            {related?.filter((e, i) => {
+            {[related[1], related[2]]?.filter((e, i) => {
               if (e?.title !== props?.title) {
                 return e
               }
             })?.length ?
-              related?.filter((e, i) => {
+              [related[1], related[2]]?.filter((e, i) => {
                 if (e?.title !== props?.title) {
                   return e
                 }
@@ -132,7 +132,7 @@ export default function ArticlePage({ props }) {
                     <div
                       class="others-news-item dflex"
                       style={{
-                        "--bg-img": `linear-gradient(to left, rgba(0,0,0, 0.5), rgba(0,0,0, 0.5)), url(${props?.bannerImg ? imgUrl + "/" + props?.bannerImg : OthersImg1})`,
+                        "--bg-img": `linear-gradient(to left, rgba(0,0,0, 0.5), rgba(0,0,0, 0.5)), url(${e?.bannerImg ? imgUrl + "/" + e?.bannerImg : OthersImg1})`,
                       }}
                       key={i}
                     >
@@ -143,7 +143,7 @@ export default function ArticlePage({ props }) {
                         <div class="other_news_author-links_section d-flex">
                           <div class="other_news_author d-flex">
                             <div class="others_news_author_picture">
-                              <img src={props?.author?.profile ? imgUrl + "/" + props?.author?.profile : icons.prIcon} alt="author profile" />
+                              <img src={e?.author?.profile ? imgUrl + "/" + props?.author?.profile : icons.prIcon} alt="author profile" />
                             </div>
                             <div class="others_news_author_name">
                               <span class="by">By </span>

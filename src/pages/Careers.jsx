@@ -71,21 +71,13 @@ export default function Careers() {
           </div>
 
           <div className="jobs_list__container">
-            <div className="list-text_section">
-              {/* <h4 className="list_jobs_title">LIST OF JOBS</h4> */}
-              {/* <ul className="legend_links">
-              <li className="legend_link__active">All</li>
-              <li className="legend_link">Web development</li>
-              <li className="legend_link">Digital marketing</li>
-              <li className="legend_link">Graphic Design</li>
-            </ul> */}
-            </div>
+            <div className="list-text_section"/>
             {!isLoading ? (
               <div className="jobs_detail_section">
                 {jobs?.map((element, i) => {
                   return <JobCard element={element} key={i} />;
                 })}
-                {error ?? error?.message}
+                <h4>{error ?? error?.message}</h4>
               </div>
             ) : (
               <div

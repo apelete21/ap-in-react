@@ -6,7 +6,7 @@ export const getAllJobs = async () => {
     content: "application/json",
   };
 
-  const response = await fetch(`${baseUrl}/jobs`, {
+  const response = await fetch(`${baseUrl}/jobs/available`, {
     method: "GET",
     headers: headersList,
   });
