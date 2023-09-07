@@ -115,7 +115,6 @@ export default function ApplyToJob() {
     const response = await jobApplication(bodyContent);
     if (!response?.ok) {
       window.alert(response.data.message);
-      document.forms[0].reset();
     } else {
       setSuccess(true);
       document.forms[0].reset();
@@ -334,7 +333,7 @@ export default function ApplyToJob() {
                 <div class="submit--btn__box">
                   {sending ? (
                     <>
-                      <LoadingComp scale={0.1} />
+                      <LoadingComp scale={0.5} />
                     </>
                   ) : (
                     <button
